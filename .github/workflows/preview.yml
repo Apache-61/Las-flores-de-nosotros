@@ -7,8 +7,8 @@
 #
 #  URL: https://apache-61.github.io/Las-flores-de-nosotros/
 #
-#  El flujo intenta activar Pages por su cuenta. Si no lo consigue, hay
-#  que activarlo a mano una sola vez:
+#  Requiere UN ajuste en el repositorio, una sola vez (el token de este
+#  flujo no tiene permiso para hacerlo solo):
 #      Settings → Pages → Build and deployment → Source: GitHub Actions
 #
 #  `main` no se toca: este flujo sólo escucha a la rama de desarrollo.
@@ -58,13 +58,10 @@ jobs:
       - name: Construir la versión estática
         run: npm run build
 
+      # Si este paso falla con "Get Pages site failed: Not Found", es que
+      # todavía falta el ajuste de Settings → Pages que se explica arriba.
       - name: Preparar la subida a Pages
         uses: actions/configure-pages@v5
-        with:
-          # Intenta activar Pages solo. Si tu cuenta no lo permite, este
-          # paso falla y hay que activarlo a mano una vez:
-          # Settings → Pages → Source: GitHub Actions
-          enablement: true
 
       - name: Subir la build
         uses: actions/upload-pages-artifact@v3
