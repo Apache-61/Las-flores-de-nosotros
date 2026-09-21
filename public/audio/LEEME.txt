@@ -1,0 +1,9 @@
+Aquí va la música y los sonidos.
+
+Copia los archivos en esta carpeta y después escribe la ruta en
+src/data/audio.ts, siempre SIN barra al principio:
+
+    src: 'audio/ambiente.mp3'
+
+Mientras todas las pistas estén en null no suena nada y no aparece
+ningún control de sonido.

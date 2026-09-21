@@ -1,0 +1,7 @@
+/* La cáscara de la aplicación: una sola escena a pantalla completa. */
+.app-shell {
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  overflow: hidden;
+}

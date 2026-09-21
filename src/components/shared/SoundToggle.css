@@ -1,0 +1,14 @@
+.sound-toggle {
+  position: absolute;
+  top: max(1rem, env(safe-area-inset-top));
+  right: max(1rem, env(safe-area-inset-right));
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  width: var(--touch-min);
+  height: var(--touch-min);
+  border-radius: 50%;
+  color: var(--c-cream);
+  background: rgba(30, 20, 14, 0.24);
+  backdrop-filter: blur(8px);
+}

@@ -1,0 +1,22 @@
+.atmosphere {
+  position: absolute;
+  inset: 0;
+  z-index: 25;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.atmosphere__mote {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--c-cream-warm), rgba(250, 226, 170, 0.1));
+  filter: blur(0.4px);
+  will-change: transform, opacity;
+}
+
+.atmosphere__butterfly {
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform;
+}

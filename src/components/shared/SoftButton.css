@@ -1,0 +1,43 @@
+.soft-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--touch-min);
+  padding: 0.85rem 1.85rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-sans);
+  font-size: var(--fs-ui);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  transition: background-color var(--dur-fast) var(--ease-soft),
+    border-color var(--dur-fast) var(--ease-soft),
+    color var(--dur-fast) var(--ease-soft);
+}
+
+.soft-button--solid {
+  background: linear-gradient(180deg, var(--c-flower-soft), var(--c-flower));
+  color: var(--c-earth-deep);
+  box-shadow: var(--shadow-soft), var(--glow-flower);
+}
+
+.soft-button--solid:hover {
+  background: linear-gradient(180deg, #fbe39a, var(--c-flower-soft));
+}
+
+.soft-button--ghost {
+  background: rgba(255, 252, 244, 0.06);
+  color: var(--c-cream);
+  border: 1px solid rgba(246, 236, 220, 0.28);
+  backdrop-filter: blur(6px);
+}
+
+.soft-button--ghost:hover {
+  background: rgba(255, 252, 244, 0.13);
+  border-color: rgba(246, 236, 220, 0.5);
+}
+
+.soft-button__label {
+  position: relative;
+  z-index: 1;
+}

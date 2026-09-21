@@ -1,0 +1,83 @@
+.garden {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--c-earth-deep);
+}
+
+.garden__stage {
+  position: absolute;
+  inset: 0;
+  will-change: transform, opacity, filter;
+}
+
+.garden__seeds {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+}
+
+.garden__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  /* Dos filas fijas: la bienvenida arriba y el pie siempre abajo,
+     aunque la bienvenida ya se haya desvanecido. */
+  display: grid;
+  grid-template-rows: 1fr auto;
+  justify-items: center;
+  padding: max(1.6rem, env(safe-area-inset-top)) var(--space-3)
+    max(1.3rem, env(safe-area-inset-bottom));
+  pointer-events: none;
+  text-align: center;
+}
+
+.garden__welcome {
+  max-width: 21ch;
+  align-self: start;
+  margin-top: var(--space-2);
+  font-size: var(--fs-lead);
+  color: var(--c-cream-warm);
+  text-shadow: 0 2px 18px rgba(58, 36, 20, 0.55);
+}
+
+.garden__foot {
+  align-self: end;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.garden__hint {
+  max-width: 26ch;
+  font-size: var(--fs-whisper);
+  letter-spacing: 0.1em;
+  color: var(--c-cream-warm);
+  text-shadow: 0 2px 12px rgba(58, 36, 20, 0.6);
+}
+
+.garden__progress {
+  font-family: var(--font-sans);
+  font-size: var(--fs-whisper);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  color: rgba(255, 249, 236, 0.72);
+  text-shadow: 0 1px 3px rgba(48, 32, 16, 0.8);
+}
+
+.garden__progress-count {
+  color: var(--c-flower);
+  text-shadow: 0 1px 3px rgba(48, 32, 16, 0.9);
+}
+
+/* En horizontal de teléfono el texto se aparta de las semillas */
+@media (orientation: landscape) and (max-height: 520px) {
+  .garden__welcome {
+    font-size: var(--fs-body);
+  }
+  .garden__overlay {
+    padding-top: 0.7rem;
+    padding-bottom: 0.6rem;
+  }
+}

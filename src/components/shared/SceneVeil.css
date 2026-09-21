@@ -1,0 +1,14 @@
+.scene-veil {
+  position: fixed;
+  z-index: 80;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform, opacity;
+  background: radial-gradient(
+    circle at center,
+    var(--veil-accent, var(--c-flower-soft)) 0%,
+    color-mix(in srgb, var(--veil-accent, var(--c-flower)) 70%, var(--c-cream-warm)) 38%,
+    var(--c-cream-warm) 72%,
+    var(--c-sand) 100%
+  );
+}

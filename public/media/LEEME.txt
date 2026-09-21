@@ -1,0 +1,9 @@
+Aquí van tus fotografías y tus videos.
+
+Copia los archivos en esta carpeta y después escribe la ruta en
+src/data/garden.ts, siempre SIN barra al principio:
+
+    src: 'media/foto-01.jpg'
+    src: 'media/nuestro-video.mp4'
+
+(La barra inicial rompería las rutas al publicar en GitHub Pages.)
