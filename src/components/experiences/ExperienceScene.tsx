@@ -5,7 +5,7 @@ import { withName } from '../../data/garden'
 import type { Seed } from '../../data/types'
 import { easeRise, easeSoft, stagger } from '../shared/motion'
 import { SoftButton } from '../shared/SoftButton'
-import { FlowerHead } from '../flowers/FlowerHead'
+import { Bud } from '../flowers/Bud'
 import { BlockRenderer } from './ExperienceBlocks'
 import './ExperienceScene.css'
 
@@ -94,7 +94,7 @@ export function ExperienceScene({ seed, onClose }: ExperienceSceneProps) {
               animate={{ scale: 1, rotate: 0, opacity: 1 }}
               transition={{ duration: 1.2, ease: easeRise, delay: 0.3 }}
             >
-              <FlowerHead accent={seed.accent} petals={8} variant={7} size={58} />
+              <Bud accent={seed.accent} size={40} />
             </motion.div>
 
             <motion.p

@@ -1,7 +1,7 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { memo, useMemo } from 'react'
 import { createRandom } from '../../lib/random'
-import { FlowerHead } from './FlowerHead'
+import { Bud } from './Bud'
 import { easeRise } from '../shared/motion'
 import './GardenFlower.css'
 
@@ -10,22 +10,24 @@ interface GardenFlowerProps {
   /** Escala final de la flor dentro del jardín. */
   scale: number
   variant?: number
-  petals?: number
-  /** Retraso de la floración, para que no abran todas a la vez. */
+  /** Retraso del crecimiento, para que no broten todas a la vez. */
   delay?: number
   /** true cuando la flor acaba de nacer de una semilla descubierta. */
   justBloomed?: boolean
 }
 
 /**
- * Una flor abierta del jardín: tallo, hojas y cabeza.
- * Nace creciendo desde el suelo y después se mece muy despacio.
+ * La planta que deja una semilla descubierta.
+ *
+ * No abre flor: en el jardín no hay ni una, y ése es el motivo de que el
+ * final funcione. Lo que crece aquí es tallo, hojas y un capullo todavía
+ * cerrado, esperando. Todas las flores del regalo llegan de golpe en la
+ * última semilla.
  */
 export const GardenFlower = memo(function GardenFlower({
   accent,
   scale,
   variant = 0,
-  petals = 8,
   delay = 0,
   justBloomed = false,
 }: GardenFlowerProps) {
@@ -107,16 +109,11 @@ export const GardenFlower = memo(function GardenFlower({
             left: `${((30 + stem.lean) / 60) * 100}%`,
             top: `${(stem.top / 120) * 100}%`,
           }}
-          initial={justBloomed ? { scale: 0, rotate: -35 } : false}
+          initial={justBloomed ? { scale: 0, rotate: -18 } : false}
           animate={{ scale: 1, rotate: 0 }}
           transition={{ duration: 1.25, ease: easeRise, delay: delay + 0.35 }}
         >
-          <FlowerHead
-            accent={accent}
-            petals={petals}
-            variant={variant}
-            size={52 * scale}
-          />
+          <Bud accent={accent} size={30 * scale} />
         </motion.div>
       </motion.div>
       <span className="garden-flower__shadow" aria-hidden="true" />

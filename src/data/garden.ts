@@ -88,7 +88,7 @@ export const seeds: Seed[] = [
     accent: 'var(--seed-accent-1)',
     placement: {
       portrait: { x: 24, y: 62 },
-      landscape: { x: 16, y: 66 },
+      landscape: { x: 13, y: 71 },
       depth: 0.55,
     },
     experience: {
@@ -125,7 +125,7 @@ export const seeds: Seed[] = [
     accent: 'var(--seed-accent-2)',
     placement: {
       portrait: { x: 73, y: 53 },
-      landscape: { x: 32, y: 54 },
+      landscape: { x: 30, y: 52 },
       depth: 0.38,
     },
     experience: {
@@ -170,7 +170,7 @@ export const seeds: Seed[] = [
     accent: 'var(--seed-accent-3)',
     placement: {
       portrait: { x: 44, y: 74 },
-      landscape: { x: 50, y: 73 },
+      landscape: { x: 46, y: 80 },
       depth: 0.74,
     },
     experience: {
@@ -215,7 +215,7 @@ export const seeds: Seed[] = [
     accent: 'var(--seed-accent-4)',
     placement: {
       portrait: { x: 78, y: 83 },
-      landscape: { x: 68, y: 52 },
+      landscape: { x: 70, y: 57 },
       depth: 0.86,
     },
     experience: {
@@ -263,7 +263,7 @@ export const seeds: Seed[] = [
     accent: 'var(--seed-accent-5)',
     placement: {
       portrait: { x: 19, y: 87 },
-      landscape: { x: 84, y: 69 },
+      landscape: { x: 88, y: 76 },
       depth: 0.94,
     },
     experience: {
@@ -305,10 +305,10 @@ export const seeds: Seed[] = [
     ariaLabel: 'La última semilla del jardín',
     accent: 'var(--seed-accent-future)',
     placement: {
-      portrait: { x: 50, y: 45 },
-      landscape: { x: 50, y: 44 },
-      depth: 0.22,
-      scale: 1.7,
+      portrait: { x: 50, y: 49 },
+      landscape: { x: 57, y: 51 },
+      depth: 0.45,
+      scale: 1.3,
     },
   },
 ]

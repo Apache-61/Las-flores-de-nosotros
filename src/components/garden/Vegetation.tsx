@@ -12,7 +12,7 @@ interface Sprig {
   scale: number
   rotate: number
   hue: number
-  kind: 'tuft' | 'leaf' | 'bud'
+  kind: 'tuft' | 'leaf' | 'sprig'
   /** A partir de qué nivel de crecimiento aparece (0–1). */
   threshold: number
   delay: number
@@ -39,7 +39,7 @@ function buildSprigs(count: number): Sprig[] {
       scale: 0.66 + depth * 1.5 + random() * 0.3,
       rotate: between(random, -13, 13),
       hue: random(),
-      kind: random() < 0.58 ? 'tuft' : random() < 0.7 ? 'leaf' : 'bud',
+      kind: random() < 0.54 ? 'tuft' : random() < 0.78 ? 'leaf' : 'sprig',
       threshold: random() * 0.98,
       delay: random() * 0.8,
       sway: 3.8 + random() * 3.4,
@@ -47,11 +47,19 @@ function buildSprigs(count: number): Sprig[] {
   })
 }
 
-export const Vegetation = memo(function Vegetation({ growth }: { growth: number }) {
+export const Vegetation = memo(function Vegetation({
+  growth,
+  density,
+  size,
+}: {
+  growth: number
+  density: number
+  size: number
+}) {
   const reduced = useReducedMotion()
   const sprigs = useMemo(
-    () => buildSprigs(Math.round(72 * gardenSettings.foliageDensity)),
-    [],
+    () => buildSprigs(Math.round(72 * gardenSettings.foliageDensity * density)),
+    [density],
   )
 
   return (
@@ -75,7 +83,7 @@ export const Vegetation = memo(function Vegetation({ growth }: { growth: number 
           >
             <motion.span
               className="vegetation__inner"
-              style={{ scale: sprig.scale, rotate: sprig.rotate }}
+              style={{ scale: sprig.scale * (1 + (size - 1) * 0.45), rotate: sprig.rotate }}
               animate={
                 reduced
                   ? {}
@@ -112,12 +120,14 @@ function SprigArt({ kind, hue }: { kind: Sprig['kind']; hue: number }) {
     )
   }
 
-  if (kind === 'bud') {
+  if (kind === 'sprig') {
+    // Un tallo tierno, sin nada abierto en la punta
     return (
-      <svg viewBox="0 0 26 36" width="26" height="36">
-        <path d="M13 36 C 12 26, 12 18, 13 12" stroke={green} strokeWidth="1.5" fill="none" strokeLinecap="round" />
-        <ellipse cx="13" cy="9" rx="4.4" ry="7" fill="var(--c-flower-soft)" opacity="0.75" />
-        <ellipse cx="13" cy="11" rx="3" ry="5" fill="var(--c-flower)" opacity="0.6" />
+      <svg viewBox="0 0 26 38" width="26" height="38">
+        <path d="M13 38 C 11 28, 11 18, 13 9" stroke={green} strokeWidth="1.6" fill="none" strokeLinecap="round" />
+        <path d="M13 24 C 7 22, 4 17, 5 12 C 10 14, 12 19, 13 24 Z" fill={green} opacity="0.85" />
+        <path d="M13 18 C 19 16, 22 11, 21 6 C 16 8, 14 13, 13 18 Z" fill={green} opacity="0.7" />
+        <path d="M13 9 C 11 7, 11 4, 13 2 C 15 4, 15 7, 13 9 Z" fill={green} opacity="0.9" />
       </svg>
     )
   }

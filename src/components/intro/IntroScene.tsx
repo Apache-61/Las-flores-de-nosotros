@@ -5,7 +5,7 @@ import { cid } from '../../data/contentManifest'
 import { gardenContent, gardenSettings, withName } from '../../data/garden'
 import { easeRise, easeSoft } from '../shared/motion'
 import { SoftButton } from '../shared/SoftButton'
-import { FlowerHead } from '../flowers/FlowerHead'
+import { Bud } from '../flowers/Bud'
 import './IntroScene.css'
 
 type Phase = 'waiting' | 'germinating' | 'rising'
@@ -245,7 +245,11 @@ function Germination({ phase, reduced }: { phase: Phase; reduced: boolean }) {
         </motion.g>
       </svg>
 
-      {/* la primera flor, que abre al final de la germinación */}
+      {/*
+        La germinación termina en un capullo cerrado, no en una flor.
+        Es el mismo capullo que espera en la última semilla del jardín:
+        en toda la experiencia no se abre ni una flor hasta el final.
+      */}
       <motion.div
         className="germination__flower"
         initial={{ scale: 0, opacity: 0, rotate: -40 }}
@@ -260,7 +264,7 @@ function Germination({ phase, reduced }: { phase: Phase; reduced: boolean }) {
           ease: easeRise,
         }}
       >
-        <FlowerHead accent="var(--c-flower)" petals={8} variant={3} size={64} />
+        <Bud accent="var(--c-flower)" size={46} />
       </motion.div>
     </motion.div>
   )

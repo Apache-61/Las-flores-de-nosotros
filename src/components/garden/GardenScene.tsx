@@ -98,7 +98,11 @@ export function GardenScene({
         transition={{ duration: isFinal ? 2.4 : 1.1, ease: easeRise }}
       >
         <GardenBackdrop growth={progress.growth} pointer={pointer} />
-        <Vegetation growth={progress.growth} />
+        <Vegetation
+          growth={progress.growth}
+          density={layout.densityScale}
+          size={layout.sizeScale}
+        />
 
         <div className="garden__seeds">
           {seeds.map((seed, index) => (
@@ -108,7 +112,7 @@ export function GardenScene({
               index={index}
               status={progress.statusOf(seed.id)}
               isPortrait={layout.isPortrait}
-              pointer={pointer}
+              sizeScale={layout.sizeScale}
               justBloomed={progress.lastDiscovered === seed.id}
               onSelect={onSelectSeed}
             />

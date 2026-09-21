@@ -34,18 +34,30 @@ export function stagger(delayChildren = 0.2, staggerChildren = 0.12): Variants {
   }
 }
 
-/** Respiración: el latido base de todo lo vivo del jardín. */
-export function breathing(depth: number, reduced: boolean) {
+/**
+ * Respiración: el latido base de todo lo vivo del jardín.
+ *
+ * `turn` es el puesto que ocupa el elemento en la fila. Todos laten a la
+ * misma velocidad y sólo se desfasan un poco entre sí, de modo que el
+ * jardín respira como una onda ordenada y no como seis cosas sueltas.
+ *
+ * `base` es la escala que el elemento ya tiene por su profundidad y por
+ * el tamaño de la pantalla; la respiración se monta encima.
+ */
+export function breathing(depth: number, reduced: boolean, turn = 0, base = 1) {
   if (reduced) return {}
   const amount = 0.018 + depth * 0.02
   return {
-    scale: [1, 1 + amount, 1],
+    // Parte del tamaño que ya tiene: si devolviera 1, la animación
+    // pisaría la escala del elemento y todo acabaría del mismo tamaño.
+    scale: [base, base * (1 + amount), base],
     y: [0, -(1.5 + depth * 2.5), 0],
     transition: {
-      duration: 4.6 + depth * 1.8,
+      duration: 5.2,
       ease: easeBreath,
       repeat: Infinity,
       repeatType: 'loop' as const,
+      delay: turn * 0.42,
     },
   }
 }

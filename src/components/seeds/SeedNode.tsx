@@ -2,7 +2,7 @@ import { motion, useReducedMotion } from 'framer-motion'
 import { useCallback, useRef, useState } from 'react'
 import { cid } from '../../data/contentManifest'
 import type { Seed, SeedStatus } from '../../data/types'
-import { depthToOpacity, depthToParallax, depthToScale } from '../../lib/stage'
+import { depthToOpacity, depthToScale } from '../../lib/stage'
 import { breathing, easeRise } from '../shared/motion'
 import { GardenFlower } from '../flowers/GardenFlower'
 import { SeedArt } from './SeedArt'
@@ -13,8 +13,8 @@ interface SeedNodeProps {
   status: SeedStatus
   index: number
   isPortrait: boolean
-  /** Paralaje del cursor, en valores -1…1. */
-  pointer: { x: number; y: number }
+  /** Cuánto agrandar el dibujo según el tamaño de la pantalla. */
+  sizeScale: number
   /** true si acaba de descubrirse: la flor nace en vez de estar ya abierta. */
   justBloomed: boolean
   onSelect: (seed: Seed, origin: { x: number; y: number }) => void
@@ -41,7 +41,7 @@ export function SeedNode({
   status,
   index,
   isPortrait,
-  pointer,
+  sizeScale,
   justBloomed,
   onSelect,
 }: SeedNodeProps) {
@@ -51,8 +51,7 @@ export function SeedNode({
 
   const { depth } = seed.placement
   const position = isPortrait ? seed.placement.portrait : seed.placement.landscape
-  const scale = depthToScale(depth, seed.placement.scale ?? 1)
-  const parallax = depthToParallax(depth)
+  const scale = depthToScale(depth, seed.placement.scale ?? 1) * sizeScale
 
   const isBloomed = status === 'discovered' || status === 'final'
   const isActive = status === 'active'
@@ -90,10 +89,14 @@ export function SeedNode({
       onFocus={() => setHovered(true)}
       onBlur={() => setHovered(false)}
       initial={{ opacity: 0, y: 26, scale: 0.6 }}
+      /*
+       * Una semilla plantada no persigue al cursor. Sólo respira, y lo
+       * hace en orden: cada una arranca un poco después que la anterior,
+       * así que el jardín entero late como una sola onda en vez de
+       * moverse cada cual por su lado.
+       */
       animate={{
         opacity: depthToOpacity(depth),
-        y: reduced ? 0 : pointer.y * parallax,
-        x: reduced ? 0 : pointer.x * parallax,
         scale: isOpening ? openScale : 1,
       }}
       transition={{
@@ -103,8 +106,6 @@ export function SeedNode({
           ease: easeRise,
           delay: isOpening ? 0 : 0.25 + index * 0.13,
         },
-        x: { duration: 1.6, ease: easeRise },
-        y: { duration: 1.6, ease: easeRise },
       }}
       whileTap={{ scale: 0.92 }}
     >
@@ -175,7 +176,7 @@ export function SeedNode({
               }
             : isBloomed || reduced
               ? {}
-              : breathing(isActive ? depth + 0.5 : depth, Boolean(reduced))
+              : breathing(isActive ? depth + 0.5 : depth, Boolean(reduced), index, scale)
         }
       >
         {isBloomed ? (
@@ -183,7 +184,6 @@ export function SeedNode({
             accent={seed.accent}
             scale={1 + depth * 0.36}
             variant={index + 1}
-            petals={seed.kind === 'final' ? 10 : 8}
             justBloomed={justBloomed}
           />
         ) : (

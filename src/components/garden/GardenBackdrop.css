@@ -1,7 +1,7 @@
 .garden-backdrop {
   /* Altura del cielo. Debajo empieza el paisaje.
      En vertical el horizonte sube para que el jardín llene la pantalla. */
-  --horizon: 36%;
+  --horizon: 32%;
   position: absolute;
   inset: 0;
   overflow: hidden;

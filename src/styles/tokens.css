@@ -45,12 +45,16 @@
   --text-muted: rgba(246, 236, 220, 0.66);
   --focus-ring: var(--c-flower-soft);
 
-  /* Acento propio de cada semilla. Se referencian desde src/data/garden.ts */
+  /*
+   * El acento de cada semilla. Todas son amarillas: el jardín entero
+   * florece de un solo color, y las pequeñas diferencias de tono sólo
+   * sirven para que no parezcan calcadas.
+   */
   --seed-accent-1: #f4c443;
-  --seed-accent-2: #e9a9a0;
-  --seed-accent-3: #a9c6a0;
-  --seed-accent-4: #e8b765;
-  --seed-accent-5: #c9b6e0;
+  --seed-accent-2: #f7d166;
+  --seed-accent-3: #eab72f;
+  --seed-accent-4: #f8dc8a;
+  --seed-accent-5: #edc04a;
   --seed-accent-future: #f7cf55;
 
   /* ── Tipografía ──────────────────────────────────────────────── */

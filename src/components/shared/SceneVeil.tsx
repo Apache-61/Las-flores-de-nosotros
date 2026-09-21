@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { useMemo } from 'react'
 import { between, createRandom } from '../../lib/random'
-import { FlowerHead } from '../flowers/FlowerHead'
+
 import { easeRise, easeSoft } from './motion'
 import './SceneVeil.css'
 
@@ -97,7 +97,23 @@ export function SceneVeil({ state }: { state: VeilState }) {
                   opacity: { times: [0, 0.18, 0.62, 1] },
                 }}
               >
-                <FlowerHead accent={accent} petals={7} variant={petal.id} size={petal.size} />
+                <svg
+                  viewBox="0 0 24 44"
+                  width={petal.size * 0.55}
+                  height={petal.size}
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M12 44 C 2 32, 0 16, 12 0 C 24 16, 22 32, 12 44 Z"
+                    fill={accent}
+                    opacity="0.95"
+                  />
+                  <path
+                    d="M12 40 C 7 30, 6 16, 12 5 C 13 18, 13 30, 12 40 Z"
+                    fill="var(--c-cream-warm)"
+                    opacity="0.3"
+                  />
+                </svg>
               </motion.div>
             ))}
         </div>
