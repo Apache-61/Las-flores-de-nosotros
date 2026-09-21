@@ -3,12 +3,14 @@
   inset: 0;
   z-index: 75;
   overflow: hidden;
-  background: var(--c-earth-deep);
+  /* Sin fondo propio: al principio se ve el jardín a través de la escena */
+  background: transparent;
 }
 
 .final__sky {
   position: absolute;
   inset: 0;
+  will-change: opacity;
   background:
     radial-gradient(90% 46% at 50% 8%, rgba(255, 246, 214, 0.9) 0%, transparent 70%),
     linear-gradient(
@@ -24,12 +26,11 @@
 
 .final__burst-light {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: min(58vh, 58vw);
-  height: min(58vh, 58vw);
-  margin-left: calc(min(58vh, 58vw) / -2);
-  margin-top: calc(min(58vh, 58vw) / -2);
+  width: min(64vh, 64vw);
+  height: min(64vh, 64vw);
+  /* Nace centrado en el punto exacto de la semilla (lo fija la escena) */
+  margin-left: calc(min(64vh, 64vw) / -2);
+  margin-top: calc(min(64vh, 64vw) / -2);
   border-radius: 50%;
   pointer-events: none;
   will-change: transform, opacity;
@@ -86,6 +87,35 @@
   left: 0;
   transform: translate(-50%, -50%);
   filter: drop-shadow(0 6px 12px rgba(94, 62, 24, 0.22));
+}
+
+/* Polen sobre el ramo */
+.final__pollen {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.final__mote {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--c-cream-warm), rgba(250, 226, 170, 0.15));
+  will-change: transform, opacity;
+}
+
+/* Un viñeteado muy cálido cierra la escena sin oscurecerla */
+.final__sky::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    118% 86% at 50% 42%,
+    transparent 52%,
+    rgba(150, 104, 44, 0.12) 82%,
+    rgba(120, 80, 30, 0.24) 100%
+  );
 }
 
 /* ── La frase final ─────────────────────────────────────────────────── */

@@ -45,7 +45,11 @@ export const gardenContent = {
     readyForFinal: '[FRASE CUANDO YA SÓLO QUEDA LA ÚLTIMA SEMILLA]',
     /** Se muestra cuando ya descubrió el jardín entero, final incluido. */
     completed: '[FRASE CUANDO YA LO DESCUBRIÓ TODO]',
-    /** Etiqueta del contador de progreso (ej. "2 de 6 descubiertas"). */
+    /**
+     * El progreso no se muestra como un marcador —se ve en el jardín, que
+     * cada vez tiene más flores—, pero sí se anuncia a los lectores de
+     * pantalla. Esta es la palabra que usan (ej. "2 de 6 descubiertas").
+     */
     progressLabel: 'descubiertas',
   },
 } as const
@@ -304,7 +308,7 @@ export const seeds: Seed[] = [
       portrait: { x: 50, y: 45 },
       landscape: { x: 50, y: 44 },
       depth: 0.22,
-      scale: 1.25,
+      scale: 1.7,
     },
   },
 ]

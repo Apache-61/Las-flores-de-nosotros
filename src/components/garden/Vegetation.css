@@ -1,6 +1,9 @@
 .vegetation {
   position: absolute;
   inset: 0;
+  /* Encapsula el apilamiento interno: una mata nunca tapa una semilla */
+  isolation: isolate;
+  z-index: 5;
   pointer-events: none;
 }
 

@@ -1,14 +1,31 @@
 .scene-veil {
   position: fixed;
+  inset: 0;
   z-index: 80;
-  border-radius: 50%;
   pointer-events: none;
+}
+
+.scene-veil__light {
+  position: absolute;
+  border-radius: 50%;
   will-change: transform, opacity;
+  /*
+   * La luz se mantiene siempre en crema y dorado: el color propio de la
+   * semilla sólo tiñe el núcleo. Un acento a pantalla completa rompería
+   * la paleta del jardín.
+   */
   background: radial-gradient(
     circle at center,
-    var(--veil-accent, var(--c-flower-soft)) 0%,
-    color-mix(in srgb, var(--veil-accent, var(--c-flower)) 70%, var(--c-cream-warm)) 38%,
-    var(--c-cream-warm) 72%,
+    color-mix(in srgb, var(--veil-accent, var(--c-flower)) 55%, var(--c-cream-warm)) 0%,
+    color-mix(in srgb, var(--veil-accent, var(--c-flower)) 18%, var(--c-cream-warm)) 26%,
+    var(--c-cream-warm) 58%,
     var(--c-sand) 100%
   );
+}
+
+.scene-veil__petal {
+  position: absolute;
+  translate: -50% -50%;
+  will-change: transform, opacity;
+  filter: drop-shadow(0 4px 10px rgba(107, 79, 58, 0.22));
 }

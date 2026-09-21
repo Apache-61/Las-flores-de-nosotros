@@ -37,6 +37,36 @@ export const GardenBackdrop = memo(function GardenBackdrop({
         transition={{ duration: 11, repeat: Infinity, ease: 'easeInOut' }}
       />
 
+      {/* Tres nubes muy lentas: el cielo tiene que respirar él también */}
+      {!reduced && (
+        <div className="garden-backdrop__clouds">
+          {[
+            { top: '9%', size: 46, duration: 132, delay: 0, opacity: 0.5 },
+            { top: '17%', size: 30, duration: 176, delay: -60, opacity: 0.36 },
+            { top: '4%', size: 62, duration: 214, delay: -130, opacity: 0.28 },
+          ].map((cloud, index) => (
+            <motion.span
+              key={index}
+              className="garden-backdrop__cloud"
+              style={{
+                top: cloud.top,
+                width: `${cloud.size}vw`,
+                height: `${cloud.size * 0.26}vw`,
+                opacity: cloud.opacity,
+              }}
+              initial={{ x: '-40vw' }}
+              animate={{ x: '140vw' }}
+              transition={{
+                duration: cloud.duration,
+                delay: cloud.delay,
+                repeat: Infinity,
+                ease: 'linear',
+              }}
+            />
+          ))}
+        </div>
+      )}
+
       <motion.svg
         className="garden-backdrop__hills"
         viewBox="0 0 1200 520"
@@ -69,6 +99,7 @@ export const GardenBackdrop = memo(function GardenBackdrop({
       </motion.svg>
 
       <div className="garden-backdrop__ground" />
+      <div className="garden-backdrop__sunlight" />
       <div className="garden-backdrop__haze" />
       <div className="garden-backdrop__vignette" />
     </div>

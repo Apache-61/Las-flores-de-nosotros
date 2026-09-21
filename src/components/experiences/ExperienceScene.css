@@ -14,7 +14,34 @@
   will-change: transform, opacity;
 }
 
+/* Vegetación asomando por arriba y por abajo: seguimos en el jardín */
+.experience__edges {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.experience__edge {
+  position: absolute;
+  left: -2%;
+  width: 104%;
+}
+
+.experience__edge--top {
+  top: 0;
+  height: clamp(60px, 11vh, 110px);
+}
+
+.experience__edge--bottom {
+  bottom: 0;
+  height: clamp(80px, 15vh, 150px);
+}
+
 .experience__scroll {
+  position: relative;
+  z-index: 1;
   height: 100%;
   overflow-y: auto;
   overscroll-behavior: contain;
@@ -89,6 +116,14 @@
   text-wrap: balance;
 }
 
+.experience__back-leaf {
+  width: 17px;
+  height: 17px;
+  margin-right: 0.55rem;
+  color: var(--c-leaf);
+  vertical-align: -3px;
+}
+
 .experience__footer .soft-button--ghost {
   color: var(--c-earth-deep);
   background: rgba(74, 53, 39, 0.06);
@@ -110,7 +145,7 @@
   height: var(--touch-min);
   border-radius: 50%;
   color: var(--c-earth-deep);
-  background: rgba(255, 252, 244, 0.78);
-  box-shadow: var(--shadow-soft);
+  background: rgba(255, 250, 238, 0.66);
+  box-shadow: inset 0 0 0 1px rgba(107, 79, 58, 0.16);
   backdrop-filter: blur(8px);
 }

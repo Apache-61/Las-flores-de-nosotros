@@ -1,11 +1,12 @@
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
-import { useEffect, useMemo } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import { useAudio } from '../../audio/AudioProvider'
 import { finalSequence, withName } from '../../data/garden'
 import { useElementSize } from '../../hooks/useElementSize'
 import { useStageLayout } from '../../hooks/useStageLayout'
 import { useTimedSequence } from '../../hooks/useTimedSequence'
 import { BOUQUET_BASE, buildFinalFlowers, type FinalFlower } from '../../lib/bouquet'
+import { between, createRandom } from '../../lib/random'
 import { easeRise, easeSoft } from '../shared/motion'
 import { FlowerHead } from '../flowers/FlowerHead'
 import './FinalScene.css'
@@ -14,6 +15,8 @@ type Phase = 'react' | 'expand' | 'storm' | 'pullback' | 'settle' | 'phrase'
 
 interface FinalSceneProps {
   accent: string
+  /** Punto exacto de la semilla que se tocó: de ahí nace toda la escena. */
+  origin: { x: number; y: number } | null
   onSeen: () => void
   onReturn: () => void
 }
@@ -31,7 +34,7 @@ interface FinalSceneProps {
  * Los tiempos, la cantidad de flores y la frase se configuran en
  * src/data/garden.ts → finalSequence.
  */
-export function FinalScene({ accent, onSeen, onReturn }: FinalSceneProps) {
+export function FinalScene({ accent, origin, onSeen, onReturn }: FinalSceneProps) {
   const reduced = useReducedMotion()
   const layout = useStageLayout()
   const audio = useAudio()
@@ -47,6 +50,21 @@ export function FinalScene({ accent, onSeen, onReturn }: FinalSceneProps) {
       ),
     [layout.isCompact, layout.isPortrait],
   )
+
+  const pollen = useMemo(() => {
+    const random = createRandom(9042)
+    return Array.from({ length: layout.isCompact ? 10 : 16 }, (_, id) => ({
+      id,
+      x: between(random, 8, 92),
+      y: between(random, 42, 92),
+      size: between(random, 3, 6.5),
+      rise: between(random, 90, 220),
+      drift: between(random, -30, 30),
+      opacity: between(random, 0.3, 0.7),
+      duration: between(random, 9, 17),
+      delay: between(random, 0, 7),
+    }))
+  }, [layout.isCompact])
 
   const steps = useMemo(() => {
     const t = finalSequence.timings
@@ -73,10 +91,23 @@ export function FinalScene({ accent, onSeen, onReturn }: FinalSceneProps) {
 
   useEffect(() => {
     audio.play('finale')
-    onSeen()
     // Sólo al montar: la escena final ocurre una vez.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  /*
+   * El jardín sigue vivo debajo durante la reacción de la semilla, así que
+   * no se da por vista hasta que las flores ya lo taparon del todo. Si se
+   * marcara antes, la semilla se convertiría en flor a la vista de todos.
+   */
+  const seen = useRef(false)
+  useEffect(() => {
+    if (seen.current) return
+    if (phase === 'storm' || phase === 'pullback' || phase === 'settle' || phase === 'phrase') {
+      seen.current = true
+      onSeen()
+    }
+  }, [onSeen, phase])
 
   const bouquetFormed = phase === 'settle' || phase === 'phrase'
   const gathering = bouquetFormed || phase === 'pullback'
@@ -84,9 +115,9 @@ export function FinalScene({ accent, onSeen, onReturn }: FinalSceneProps) {
 
   /** La cámara: se acerca durante la tormenta y se aleja al final. */
   const camera = {
-    react: { scale: reduced ? 1 : 1.7, y: '4%' },
-    expand: { scale: 1.5, y: '2%' },
-    storm: { scale: 1.32, y: '0%' },
+    react: { scale: reduced ? 1 : 1.8, y: '4%' },
+    expand: { scale: 1.66, y: '2%' },
+    storm: { scale: 1.52, y: '0%' },
     pullback: { scale: 1.02, y: '0%' },
     settle: { scale: 0.98, y: '0%' },
     phrase: { scale: 0.98, y: '0%' },
@@ -102,18 +133,38 @@ export function FinalScene({ accent, onSeen, onReturn }: FinalSceneProps) {
       exit={{ opacity: 0, transition: { duration: 1, ease: easeSoft } }}
       transition={{ duration: 0.9, ease: easeSoft }}
     >
-      <div className="final__sky" aria-hidden="true" />
+      {/*
+        La escena empieza siendo transparente: debajo sigue el jardín, con
+        la semilla creciendo. El cielo del final sólo se cierra cuando las
+        flores ya están tapando el mundo anterior.
+      */}
+      <motion.div
+        className="final__sky"
+        aria-hidden="true"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: phase === 'react' ? 0 : 1 }}
+        transition={{ duration: 2.2, ease: easeSoft }}
+      />
 
       {/* El destello inicial: la semilla reaccionando */}
       <motion.div
         className="final__burst-light"
         aria-hidden="true"
-        initial={{ scale: 0.2, opacity: 0 }}
+        style={
+          origin
+            ? { left: origin.x, top: origin.y }
+            : { left: '50%', top: '50%' }
+        }
+        initial={{ scale: 0.06, opacity: 0 }}
         animate={{
-          scale: phase === 'react' ? [0.2, 1.6] : 3.2,
-          opacity: phase === 'react' ? [0, 0.85] : bouquetFormed ? 0.12 : 0.4,
+          scale: phase === 'react' ? 0.5 : 3.6,
+          // Durante la reacción la luz la pone la propia semilla, en el jardín
+          opacity: phase === 'react' ? 0 : bouquetFormed ? 0.1 : 0.42,
         }}
-        transition={{ duration: 1.8, ease: easeRise }}
+        transition={{
+          duration: phase === 'react' ? finalSequence.timings.react / 1000 : 2.4,
+          ease: easeRise,
+        }}
       />
 
       <motion.div
@@ -192,6 +243,27 @@ export function FinalScene({ accent, onSeen, onReturn }: FinalSceneProps) {
           />
         ))}
       </motion.div>
+
+      {/* Polen flotando: sin esto el ramo se queda quieto como una foto */}
+      {bouquetFormed && !reduced && (
+        <div className="final__pollen" aria-hidden="true">
+          {pollen.map((mote) => (
+            <motion.span
+              key={mote.id}
+              className="final__mote"
+              style={{ left: `${mote.x}%`, top: `${mote.y}%`, width: mote.size, height: mote.size }}
+              initial={{ opacity: 0, y: 0 }}
+              animate={{ opacity: [0, mote.opacity, 0], y: -mote.rise, x: mote.drift }}
+              transition={{
+                duration: mote.duration,
+                delay: mote.delay,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+            />
+          ))}
+        </div>
+      )}
 
       {/* ── La frase final ───────────────────────────────────────────── */}
       <AnimatePresence>

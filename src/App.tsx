@@ -90,13 +90,20 @@ export default function App() {
       setFocusPoint(origin)
       progress.markOpening(seed.id)
 
+      if (seed.kind === 'final') {
+        /*
+         * La última semilla no se abre como las otras: no hay velo ni corte.
+         * La escena final entra por encima del jardín siendo transparente,
+         * para que lo primero que se vea sea la propia semilla creciendo
+         * hasta desbordarse. El mundo no se abandona: se desborda.
+         */
+        setScene({ name: 'final' })
+        return
+      }
+
       transition(origin, seed.accent, () => {
         progress.markOpening(null)
-        setScene(
-          seed.kind === 'final'
-            ? { name: 'final' }
-            : { name: 'experience', seedId: seed.id },
-        )
+        setScene({ name: 'experience', seedId: seed.id })
       })
     },
     [audio, progress, transition],
@@ -133,6 +140,12 @@ export default function App() {
     transition(origin, 'var(--c-flower)', () => setScene({ name: 'garden' }))
   }, [focusPoint, transition])
 
+  /** La escena final ya llegó a su momento: la semilla deja de crecer. */
+  const handleFinalSeen = useCallback(() => {
+    progress.markFinalSeen()
+    progress.markOpening(null)
+  }, [progress])
+
   const openSeed = useMemo(
     () =>
       scene.name === 'experience'
@@ -150,7 +163,13 @@ export default function App() {
         <GardenScene
           progress={progress}
           onSelectSeed={handleSelectSeed}
-          isBackground={scene.name !== 'garden'}
+          mode={
+            scene.name === 'garden'
+              ? 'live'
+              : scene.name === 'final'
+                ? 'final'
+                : 'experience'
+          }
           focusPoint={focusPoint}
         />
       )}
@@ -172,7 +191,8 @@ export default function App() {
           <FinalScene
             key="final"
             accent={finalSeed?.accent ?? 'var(--c-flower)'}
-            onSeen={progress.markFinalSeen}
+            origin={focusPoint}
+            onSeen={handleFinalSeen}
             onReturn={handleCloseFinal}
           />
         )}

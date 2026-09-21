@@ -15,8 +15,15 @@ import './GardenScene.css'
 interface GardenSceneProps {
   progress: GardenProgress
   onSelectSeed: (seed: Seed, origin: { x: number; y: number }) => void
-  /** true cuando hay una experiencia abierta encima: el jardín espera al fondo. */
-  isBackground: boolean
+  /**
+   * Qué está pasando por encima del jardín:
+   *  - 'live'       el jardín es la escena.
+   *  - 'experience' hay una experiencia abierta: el jardín espera detrás,
+   *                 con la cámara acercada a la semilla que se abrió.
+   *  - 'final'      empieza la escena final: el jardín NO se difumina,
+   *                 porque la semilla tiene que reaccionar a la vista.
+   */
+  mode: 'live' | 'experience' | 'final'
   /** Punto hacia el que se acercó la cámara al abrir una semilla. */
   focusPoint: { x: number; y: number } | null
 }
@@ -36,9 +43,11 @@ interface GardenSceneProps {
 export function GardenScene({
   progress,
   onSelectSeed,
-  isBackground,
+  mode,
   focusPoint,
 }: GardenSceneProps) {
+  const isBackground = mode !== 'live'
+  const isFinal = mode === 'final'
   const layout = useStageLayout()
   const reduced = useReducedMotion()
   const pointer = usePointerParallax(!layout.isTouch && !isBackground)
@@ -74,11 +83,13 @@ export function GardenScene({
         className="garden__stage"
         style={{ transformOrigin: origin }}
         animate={{
-          scale: isBackground ? (reduced ? 1 : 1.22) : 1,
-          opacity: isBackground ? 0.5 : 1,
-          filter: isBackground ? 'blur(7px)' : 'blur(0px)',
+          // En el final la cámara sólo se acerca un poco y nada se difumina:
+          // lo que va a tapar el jardín es la propia explosión de flores.
+          scale: isFinal ? (reduced ? 1 : 1.08) : isBackground ? (reduced ? 1 : 1.22) : 1,
+          opacity: isFinal ? 1 : isBackground ? 0.5 : 1,
+          filter: isBackground && !isFinal ? 'blur(7px)' : 'blur(0px)',
         }}
-        transition={{ duration: 1.1, ease: easeRise }}
+        transition={{ duration: isFinal ? 2.4 : 1.1, ease: easeRise }}
       >
         <GardenBackdrop growth={progress.growth} pointer={pointer} />
         <Vegetation growth={progress.growth} />
@@ -136,13 +147,14 @@ export function GardenScene({
             </motion.p>
           </AnimatePresence>
 
-          <p className="garden__progress" aria-live="polite">
-            <span className="garden__progress-count">
-              {progress.discoveredCount + (progress.finalSeen ? 1 : 0)}
-            </span>
-            <span aria-hidden="true"> / {progress.totalSeeds} </span>
-            <span className="u-visually-hidden">de {progress.totalSeeds} </span>
-            {gardenContent.garden.progressLabel}
+          {/*
+            El progreso no se enseña con un marcador: se ve en el jardín,
+            que cada vez tiene más flores. El número queda sólo para quien
+            navegue con lector de pantalla.
+          */}
+          <p className="u-visually-hidden" aria-live="polite">
+            {progress.discoveredCount + (progress.finalSeen ? 1 : 0)} de{' '}
+            {progress.totalSeeds} {gardenContent.garden.progressLabel}
           </p>
         </motion.div>
       </div>

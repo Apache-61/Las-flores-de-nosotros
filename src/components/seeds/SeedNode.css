@@ -27,6 +27,7 @@
   grid-area: 1 / 1;
   width: 130px;
   height: 130px;
+  will-change: transform, opacity;
   border-radius: 50%;
   pointer-events: none;
   opacity: 0;
@@ -35,6 +36,28 @@
     color-mix(in srgb, var(--seed-accent) 55%, transparent) 0%,
     transparent 68%
   );
+}
+
+.seed-node__motes {
+  grid-area: 1 / 1;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.seed-node__mote {
+  position: absolute;
+  bottom: 38%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    var(--c-cream-warm),
+    color-mix(in srgb, var(--seed-accent) 60%, transparent)
+  );
+  will-change: transform, opacity;
 }
 
 .seed-node__ripple {
@@ -82,6 +105,11 @@
 .seed-node__label--above {
   top: auto;
   bottom: calc(100% - 6px);
+}
+
+.seed-node--discovered .seed-node__label--above,
+.seed-node--final .seed-node__label--above {
+  bottom: calc(100% + 10px);
 }
 
 .seed-node--opening .seed-node__label {

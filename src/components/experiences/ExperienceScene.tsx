@@ -63,6 +63,21 @@ export function ExperienceScene({ seed, onClose }: ExperienceSceneProps) {
       }}
       transition={{ duration: 0.85, ease: easeRise, delay: 0.12 }}
     >
+      {/*
+        El jardín no se abandona al abrir una experiencia: asoma por los
+        bordes. Sin esto, la pantalla se siente un documento y no un sitio.
+      */}
+      <div className="experience__edges" aria-hidden="true">
+        <svg className="experience__edge experience__edge--top" viewBox="0 0 400 90" preserveAspectRatio="none">
+          <path d="M0 0 C 60 34, 120 10, 180 38 C 240 64, 300 22, 360 44 C 380 52, 392 46, 400 40 L400 0 Z" fill="var(--c-leaf-soft)" opacity="0.16" />
+          <path d="M0 0 C 48 22, 104 4, 158 26 C 214 48, 286 12, 342 30 C 370 40, 386 34, 400 28 L400 0 Z" fill="var(--c-leaf)" opacity="0.13" />
+        </svg>
+        <svg className="experience__edge experience__edge--bottom" viewBox="0 0 400 120" preserveAspectRatio="none">
+          <path d="M0 120 L0 62 C 54 34, 108 74, 168 52 C 228 30, 286 72, 344 50 C 368 40, 386 46, 400 54 L400 120 Z" fill="var(--c-leaf-soft)" opacity="0.2" />
+          <path d="M0 120 L0 88 C 60 66, 116 96, 176 80 C 236 64, 292 94, 350 78 C 372 72, 388 78, 400 84 L400 120 Z" fill="var(--c-leaf)" opacity="0.16" />
+        </svg>
+      </div>
+
       <div className="experience__scroll" ref={scrollRef}>
         <motion.article
           className="experience__content"
@@ -130,6 +145,25 @@ export function ExperienceScene({ seed, onClose }: ExperienceSceneProps) {
               </p>
             )}
             <SoftButton variant="ghost" onClick={onClose}>
+              <svg
+                className="experience__back-leaf"
+                viewBox="0 0 20 20"
+                aria-hidden="true"
+              >
+                <path
+                  d="M17 3 C 9 3, 3 8, 3 14 C 3 16, 4 17, 6 17 C 12 17, 17 11, 17 3 Z"
+                  fill="currentColor"
+                  opacity="0.55"
+                />
+                <path
+                  d="M6 16 C 8 12, 11 8, 16 4"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.1"
+                  strokeLinecap="round"
+                  opacity="0.75"
+                />
+              </svg>
               {experience.backLabel}
             </SoftButton>
           </motion.footer>

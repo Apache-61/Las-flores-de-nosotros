@@ -18,7 +18,7 @@
 .soft-button--solid {
   background: linear-gradient(180deg, var(--c-flower-soft), var(--c-flower));
   color: var(--c-earth-deep);
-  box-shadow: var(--shadow-soft), var(--glow-flower);
+  box-shadow: var(--shadow-soft), 0 0 26px -8px rgba(244, 196, 67, 0.5);
 }
 
 .soft-button--solid:hover {
@@ -40,4 +40,6 @@
 .soft-button__label {
   position: relative;
   z-index: 1;
+  display: inline-flex;
+  align-items: center;
 }

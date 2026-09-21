@@ -15,9 +15,7 @@
 
 .garden-flower__head {
   position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, -46%);
+  translate: -50% -50%;
   filter: drop-shadow(0 6px 10px rgba(74, 53, 39, 0.28));
 }
 

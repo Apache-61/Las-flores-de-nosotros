@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from 'framer-motion'
-import { memo } from 'react'
+import { memo, useMemo } from 'react'
+import { createRandom } from '../../lib/random'
 import { FlowerHead } from './FlowerHead'
 import { easeRise } from '../shared/motion'
 import './GardenFlower.css'
@@ -29,6 +30,25 @@ export const GardenFlower = memo(function GardenFlower({
   justBloomed = false,
 }: GardenFlowerProps) {
   const reduced = useReducedMotion()
+
+  const stem = useMemo(() => {
+    const random = createRandom(variant * 331 + 7)
+    // Hacia dónde se inclina y cuánto
+    const lean = (random() - 0.5) * 22
+    const bend = 6 + random() * 9
+    const top = 26 + random() * 10
+    const side = lean >= 0 ? 1 : -1
+    const leafY = 74 + random() * 10
+    const leafY2 = 52 + random() * 10
+    return {
+      path: `M30 120 C ${30 - bend * side} ${88}, ${30 + bend * side * 1.4} ${58}, ${30 + lean} ${top}`,
+      leafLow: `M${30 - bend * side * 0.4} ${leafY} C ${18 - bend} ${leafY - 4}, ${12 - bend} ${leafY - 16}, ${13 - bend} ${leafY - 26} C ${23 - bend} ${leafY - 22}, ${28 - bend} ${leafY - 10}, ${30 - bend * side * 0.4} ${leafY} Z`,
+      leafHigh: `M${30 + bend * side * 0.5} ${leafY2} C ${42 + bend} ${leafY2 - 4}, ${48 + bend} ${leafY2 - 15}, ${47 + bend} ${leafY2 - 24} C ${37 + bend} ${leafY2 - 20}, ${32 + bend} ${leafY2 - 9}, ${30 + bend * side * 0.5} ${leafY2} Z`,
+      lean,
+      top,
+    }
+  }, [variant])
+
   const sway = reduced
     ? {}
     : {
@@ -56,31 +76,37 @@ export const GardenFlower = memo(function GardenFlower({
       <motion.div className="garden-flower__body" animate={sway}>
         <svg
           className="garden-flower__stem"
-          viewBox="0 0 40 120"
-          width={40 * scale}
+          viewBox="0 0 60 120"
+          width={60 * scale}
           height={120 * scale}
           aria-hidden="true"
         >
+          {/* Cada tallo se curva a su manera: seis tallos rectos e iguales
+              delatarían que son el mismo componente repetido. */}
           <path
-            d="M20 120 C 18 88, 22 62, 20 30"
+            d={stem.path}
             fill="none"
             stroke="var(--c-leaf-deep)"
             strokeWidth="2.6"
             strokeLinecap="round"
           />
           <path
-            d="M20 88 C 8 84, 3 74, 4 64 C 14 66, 19 76, 20 88 Z"
+            d={stem.leafLow}
             fill="var(--c-leaf)"
-            opacity="0.92"
+            opacity="0.94"
           />
           <path
-            d="M20 68 C 31 65, 36 56, 35 47 C 26 49, 21 58, 20 68 Z"
+            d={stem.leafHigh}
             fill="var(--c-leaf-soft)"
-            opacity="0.85"
+            opacity="0.86"
           />
         </svg>
         <motion.div
           className="garden-flower__head"
+          style={{
+            left: `${((30 + stem.lean) / 60) * 100}%`,
+            top: `${(stem.top / 120) * 100}%`,
+          }}
           initial={justBloomed ? { scale: 0, rotate: -35 } : false}
           animate={{ scale: 1, rotate: 0 }}
           transition={{ duration: 1.25, ease: easeRise, delay: delay + 0.35 }}

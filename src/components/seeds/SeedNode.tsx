@@ -56,6 +56,10 @@ export function SeedNode({
   const isBloomed = status === 'discovered' || status === 'final'
   const isActive = status === 'active'
   const isOpening = status === 'opening'
+  const isLastSeed = seed.kind === 'final'
+  // La última semilla no se abre: estalla. Crece mucho más que las otras.
+  const openScale = isLastSeed ? 2.1 : 1.55
+  const openDuration = isLastSeed ? 1.3 : 0.6
 
   const handleSelect = useCallback(() => {
     const rect = ref.current?.getBoundingClientRect()
@@ -74,7 +78,7 @@ export function SeedNode({
       style={{
         left: `${position.x}%`,
         top: `${position.y}%`,
-        zIndex: 10 + Math.round(depth * 10),
+        zIndex: isOpening ? 60 : 10 + Math.round(depth * 10),
         ['--seed-accent' as string]: seed.accent,
         opacity: depthToOpacity(depth),
       }}
@@ -89,11 +93,15 @@ export function SeedNode({
         opacity: depthToOpacity(depth),
         y: reduced ? 0 : pointer.y * parallax,
         x: reduced ? 0 : pointer.x * parallax,
-        scale: isOpening ? 1.55 : 1,
+        scale: isOpening ? openScale : 1,
       }}
       transition={{
         opacity: { duration: 1.1, ease: easeRise, delay: 0.25 + index * 0.13 },
-        scale: { duration: isOpening ? 0.6 : 1.1, ease: easeRise, delay: isOpening ? 0 : 0.25 + index * 0.13 },
+        scale: {
+          duration: isOpening ? openDuration : 1.1,
+          ease: easeRise,
+          delay: isOpening ? 0 : 0.25 + index * 0.13,
+        },
         x: { duration: 1.6, ease: easeRise },
         y: { duration: 1.6, ease: easeRise },
       }}
@@ -117,25 +125,57 @@ export function SeedNode({
         </>
       )}
 
+      {/* Unas motas suben despacio desde la semilla que quiere ser descubierta */}
+      {isActive && !reduced && (
+        <span className="seed-node__motes" aria-hidden="true">
+          {[0, 1, 2].map((mote) => (
+            <motion.span
+              key={mote}
+              className="seed-node__mote"
+              style={{ left: `${44 + mote * 6}%` }}
+              animate={{ y: [6, -46], x: [0, mote === 1 ? 7 : -6], opacity: [0, 0.75, 0] }}
+              transition={{
+                duration: 4.4,
+                repeat: Infinity,
+                delay: mote * 1.5,
+                ease: 'easeOut',
+              }}
+            />
+          ))}
+        </span>
+      )}
+
       {/* Luz ambiental alrededor de la semilla activa o enfocada */}
       <motion.span
         className="seed-node__glow"
         aria-hidden="true"
         animate={{
-          opacity: isActive ? [0.3, 0.62, 0.3] : hovered ? 0.4 : 0,
-          scale: isActive ? [1, 1.12, 1] : 1,
+          opacity: isOpening ? 1 : isActive ? [0.32, 0.66, 0.32] : hovered ? 0.45 : 0,
+          scale: isOpening ? (isLastSeed ? 6.5 : 2.6) : isActive ? [1, 1.14, 1] : 1,
         }}
         transition={
-          isActive && !reduced
-            ? { duration: 4.2, repeat: Infinity, ease: 'easeInOut' }
-            : { duration: 0.5 }
+          isOpening
+            ? { duration: openDuration, ease: easeRise }
+            : isActive && !reduced
+              ? { duration: 4.2, repeat: Infinity, ease: 'easeInOut' }
+              : { duration: 0.5 }
         }
       />
 
       <motion.span
         className="seed-node__art"
         style={{ scale }}
-        animate={isBloomed || reduced ? {} : breathing(isActive ? depth + 0.5 : depth, Boolean(reduced))}
+        animate={
+          isOpening && isLastSeed && !reduced
+            ? // Un temblor contenido justo antes de desbordarse
+              {
+                rotate: [0, -2.2, 2, -1.4, 0.8, 0],
+                transition: { duration: openDuration, ease: 'easeInOut' },
+              }
+            : isBloomed || reduced
+              ? {}
+              : breathing(isActive ? depth + 0.5 : depth, Boolean(reduced))
+        }
       >
         {isBloomed ? (
           <GardenFlower
@@ -146,24 +186,34 @@ export function SeedNode({
             justBloomed={justBloomed}
           />
         ) : (
-          <SeedArt accent={seed.accent} sprouting={isActive || hovered} />
+          <SeedArt
+            accent={seed.accent}
+            /* La última semilla siempre asoma su capullo: es la única que
+               ya tiene algo dentro, y eso se tiene que ver sin explicarlo. */
+            sprouting={isLastSeed || isActive || hovered || isOpening}
+            variant={index}
+            special={isLastSeed}
+            size={isLastSeed ? 72 : 66}
+          />
         )}
       </motion.span>
 
-      {/* El nombre sólo aparece cuando se la mira: el jardín no es un menú.
-          La semilla activa lo insinúa a media luz. */}
+      {/*
+        El nombre aparece sólo al posarse encima o al llegar con el teclado.
+        La semilla activa no lo enseña: invita con luz, no con una etiqueta.
+        En el teléfono no hay ratón, así que el jardín se recorre tocando,
+        que es justo lo que queremos que pase.
+      */}
       <motion.span
         className={
-          position.y > (isPortrait ? 76 : 60)
+          // La flor crece hacia arriba, así que su nombre va arriba con ella.
+          isBloomed || position.y > (isPortrait ? 74 : 58)
             ? 'seed-node__label seed-node__label--above'
             : 'seed-node__label'
         }
         aria-hidden="true"
         initial={false}
-        animate={{
-          opacity: hovered ? 1 : isActive ? 0.62 : 0,
-          y: hovered || isActive ? 0 : 6,
-        }}
+        animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 6 }}
         transition={{ duration: 0.45, ease: easeRise }}
       >
         <span className="seed-node__label-title">{seed.label}</span>

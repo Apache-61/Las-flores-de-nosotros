@@ -73,22 +73,28 @@ cada uno**. El orden y el tema de las cinco están sin decidir a propósito.
 
 ## Qué hay construido
 
-- **Pantalla inicial** con una semilla que germina: brota el tallo, se abren las
-  hojas, nace la primera flor y la luz se lleva la pantalla al jardín.
+- **Pantalla inicial** con una semilla plantada en la tierra, de la que nace la
+  luz. Al tocarla —la semilla misma o el botón— germina: brota el tallo, se
+  abren las hojas, nace la primera flor y la luz se lleva la pantalla al jardín.
 - **El jardín**: cielo, sol, cuatro planos de campo, vegetación que crece,
   polen flotando y una mariposa que lo cruza de vez en cuando.
 - **Seis semillas** plantadas en el terreno (no en una cuadrícula), que respiran,
   reaccionan al cursor y se pueden abrir en cualquier orden.
-- **Semilla activa**: en todo momento hay una que vibra e invita a ser descubierta,
-  sin bloquear a las demás. Va cambiando sola.
+- **Semilla activa**: en todo momento hay una que respira más fuerte, se rodea de
+  luz y suelta motas de polen invitando a ser descubierta, sin bloquear a las
+  demás. Va cambiando sola.
+- **Ninguna semilla es igual a otra**: cambian de forma, tamaño e inclinación.
+  La última lleva siempre un capullo dorado asomando: se nota que guarda algo.
 - **Transición de luz**: al tocar una semilla, la luz nace en ese punto exacto,
   llena la pantalla y desde ella aparece la experiencia. Al volver, se recoge.
 - **Cinco experiencias** con placeholders de todos los tipos de contenido.
 - **El jardín recuerda**: cada semilla descubierta vuelve convertida en flor y el
   jardín entero se llena de vida (más hojas, más flores, más luz).
-- **La sexta semilla — el final**: la pantalla se llena de flores amarillas, la
-  cámara se aleja, las flores se reorganizan y se revela que forman un ramo.
-  Entonces, y sólo entonces, aparece la frase final arriba.
+- **La sexta semilla — el final**: no hay corte ni pantalla nueva. La semilla
+  crece y tiembla *dentro del jardín* hasta desbordarse de luz; entonces la
+  pantalla se llena de flores amarillas, la cámara se aleja, las flores se
+  reorganizan y se revela que forman un ramo. Entonces, y sólo entonces,
+  aparece la frase final arriba.
 
 ---
 
@@ -121,6 +127,10 @@ src/
 
 ## Detalles que quizá quieras saber
 
+- **No hay marcador de progreso.** Cuántas semillas quedan se ve en el propio
+  jardín, que cada vez tiene más flores; un contador numérico habría convertido
+  la experiencia en un juego. El número sigue anunciándose a los lectores de
+  pantalla.
 - **El jardín recuerda lo descubierto** entre visitas. Para empezar de cero,
   abre la página añadiendo `#reset` al final de la dirección. No hay botón
   visible para no romper la experiencia. Se desactiva con

@@ -62,20 +62,11 @@ export function IntroScene({ onGerminated }: IntroSceneProps) {
       aria-label="Entrada al jardín"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0, transition: { duration: 0.8, ease: easeSoft } }}
+      /* Se retira deprisa y detrás de la luz: si se desvaneciera despacio,
+         se vería el fantasma de la planta sobre el jardín. */
+      exit={{ opacity: 0, transition: { duration: 0.25, ease: easeSoft } }}
       transition={{ duration: 1.6, ease: easeSoft }}
     >
-      {/* La luz que nace de la semilla y termina llevándose la escena */}
-      <motion.div
-        className="intro__light"
-        aria-hidden="true"
-        animate={{
-          opacity: phase === 'rising' ? 0.9 : growing ? 0.42 : 0.16,
-          scale: phase === 'rising' ? 3.4 : growing ? 1.5 : 1,
-        }}
-        transition={{ duration: phase === 'rising' ? 1.6 : 2.4, ease: easeRise }}
-      />
-
       <div className="intro__body">
         <AnimatePresence>
           {!growing && (
@@ -99,22 +90,62 @@ export function IntroScene({ onGerminated }: IntroSceneProps) {
           )}
         </AnimatePresence>
 
-        {/* La semilla: es a la vez ilustración y botón */}
-        <div className="intro__seed-area">
-          <motion.div
-            ref={seedRef}
-            className="intro__seed"
-            animate={
-              growing || reduced
-                ? {}
-                : { y: [0, -7, 0], scale: [1, 1.035, 1] }
-            }
-            transition={{ duration: 4.4, repeat: Infinity, ease: 'easeInOut' }}
-          >
-            <Germination phase={phase} reduced={Boolean(reduced)} />
-          </motion.div>
-        </div>
+      </div>
 
+      {/*
+        El suelo de la escena. La semilla no flota: está plantada en la
+        tierra, y de ahí sale la luz. Todo lo demás ocurre encima.
+      */}
+      <div className="intro__scene">
+        <motion.div
+          className="intro__soil"
+          aria-hidden="true"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{
+            opacity: phase === 'rising' ? 0 : 1,
+            y: phase === 'rising' ? 40 : 0,
+          }}
+          transition={{ duration: phase === 'rising' ? 1.5 : 2.4, ease: easeSoft }}
+        />
+
+        <motion.div
+          className="intro__light"
+          aria-hidden="true"
+          initial={{ scale: 0.5, opacity: 0.34 }}
+          animate={{
+            scale: phase === 'rising' ? 7 : growing ? 1.7 : [0.62, 0.78, 0.62],
+            opacity: phase === 'rising' ? 1 : growing ? 0.85 : [0.34, 0.52, 0.34],
+          }}
+          transition={
+            phase === 'rising'
+              ? { duration: 1.7, ease: easeRise }
+              : growing
+                ? { duration: 2.2, ease: easeRise }
+                : { duration: 6.5, repeat: Infinity, ease: 'easeInOut' }
+          }
+        />
+
+        {!growing && (
+          <button
+            type="button"
+            className="intro__seed-hit"
+            onClick={germinate}
+            aria-hidden="true"
+            tabIndex={-1}
+          />
+        )}
+
+        <motion.div
+          ref={seedRef}
+          className="intro__seed"
+          animate={growing || reduced ? {} : { y: [0, -5, 0], scale: [1, 1.03, 1] }}
+          transition={{ duration: 4.4, repeat: Infinity, ease: 'easeInOut' }}
+        >
+          <Germination phase={phase} reduced={Boolean(reduced)} />
+        </motion.div>
+      </div>
+
+      <div className="intro__foot">
         <AnimatePresence>
           {!growing && (
             <motion.div
@@ -150,10 +181,9 @@ function Germination({ phase, reduced }: { phase: Phase; reduced: boolean }) {
   return (
     <motion.div
       className="germination"
-      /* En reposo la planta baja para que la semilla quede centrada;
-         al germinar sube y deja sitio al tallo que va a crecer. */
-      animate={{ y: growing ? 0 : 72 }}
-      transition={{ duration: 1.6, ease: easeRise }}
+      /* El hueco de arriba del dibujo es el aire donde crecerá el tallo:
+         la semilla se queda siempre apoyada en la línea de tierra. */
+      animate={{ y: 0 }}
     >
       <svg
         className="germination__plant"
@@ -205,9 +235,10 @@ function Germination({ phase, reduced }: { phase: Phase; reduced: boolean }) {
           animate={growing ? { y: 6, opacity: 0.85 } : { y: 0, opacity: 1 }}
           transition={{ duration: duration * 1.2, ease: easeSoft }}
         >
-          <ellipse cx="80" cy="196" rx="18" ry="13" fill="var(--c-earth)" />
-          <ellipse cx="80" cy="192" rx="12" ry="8" fill="var(--c-earth-soft)" opacity="0.5" />
-          <ellipse cx="80" cy="208" rx="30" ry="5" fill="rgba(0, 0, 0, 0.35)" />
+          <ellipse cx="80" cy="194" rx="24" ry="17" fill="#7b5a3c" />
+          <ellipse cx="80" cy="189" rx="16" ry="10" fill="#9a7550" opacity="0.55" />
+          <ellipse cx="80" cy="186" rx="7" ry="4" fill="var(--c-cream-warm)" opacity="0.22" />
+          <ellipse cx="80" cy="210" rx="30" ry="4" fill="rgba(0, 0, 0, 0.3)" />
         </motion.g>
       </svg>
 
