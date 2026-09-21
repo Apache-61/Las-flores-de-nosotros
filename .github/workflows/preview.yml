@@ -1,0 +1,84 @@
+# ──────────────────────────────────────────────────────────────────────
+#  Preview de El Jardín de Nuestra Distancia
+#
+#  Construye el proyecto y lo publica en GitHub Pages cada vez que se
+#  sube algo a la rama de desarrollo, para poder abrirlo desde el móvil
+#  o desde cualquier navegador sin clonar nada.
+#
+#  URL: https://apache-61.github.io/Las-flores-de-nosotros/
+#
+#  El flujo intenta activar Pages por su cuenta. Si no lo consigue, hay
+#  que activarlo a mano una sola vez:
+#      Settings → Pages → Build and deployment → Source: GitHub Actions
+#
+#  `main` no se toca: este flujo sólo escucha a la rama de desarrollo.
+#  Para publicar desde main más adelante, añade `- main` bajo `branches`.
+# ──────────────────────────────────────────────────────────────────────
+
+name: Preview en GitHub Pages
+
+on:
+  push:
+    branches:
+      - claude/eager-franklin-3jkl0l
+  # Permite lanzarlo a mano desde la pestaña Actions
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Un despliegue a la vez. Los pushes que lleguen mientras hay uno en
+# curso esperan, y sólo se publica el último: no se pisan entre ellos.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  construir:
+    name: Construir
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Preparar Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Comprobar que no hay errores de TypeScript
+        run: npm run typecheck
+
+      - name: Construir la versión estática
+        run: npm run build
+
+      - name: Preparar la subida a Pages
+        uses: actions/configure-pages@v5
+        with:
+          # Intenta activar Pages solo. Si tu cuenta no lo permite, este
+          # paso falla y hay que activarlo a mano una vez:
+          # Settings → Pages → Source: GitHub Actions
+          enablement: true
+
+      - name: Subir la build
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  publicar:
+    name: Publicar
+    needs: construir
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.despliegue.outputs.page_url }}
+    steps:
+      - name: Desplegar en GitHub Pages
+        id: despliegue
+        uses: actions/deploy-pages@v4
