@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { useCallback, useRef, useState } from 'react'
+import { cid } from '../../data/contentManifest'
 import type { Seed, SeedStatus } from '../../data/types'
 import { depthToOpacity, depthToParallax, depthToScale } from '../../lib/stage'
 import { breathing, easeRise } from '../shared/motion'
@@ -216,8 +217,12 @@ export function SeedNode({
         animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 6 }}
         transition={{ duration: 0.45, ease: easeRise }}
       >
-        <span className="seed-node__label-title">{seed.label}</span>
-        <span className="seed-node__label-sub">{seed.subtitle}</span>
+        <span className="seed-node__label-title" data-cid={cid(`seeds.${seed.id}.label`)}>
+          {seed.label}
+        </span>
+        <span className="seed-node__label-sub" data-cid={cid(`seeds.${seed.id}.subtitle`)}>
+          {seed.subtitle}
+        </span>
       </motion.span>
     </motion.button>
   )

@@ -1,6 +1,7 @@
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { useEffect, useMemo, useRef } from 'react'
 import { useAudio } from '../../audio/AudioProvider'
+import { cid } from '../../data/contentManifest'
 import { finalSequence, withName } from '../../data/garden'
 import { useElementSize } from '../../hooks/useElementSize'
 import { useStageLayout } from '../../hooks/useStageLayout'
@@ -283,6 +284,7 @@ export function FinalScene({ accent, origin, onSeen, onReturn }: FinalSceneProps
             {finalSequence.eyebrow && (
               <motion.p
                 className="final__eyebrow u-eyebrow"
+                data-cid={cid('finalSequence.eyebrow')}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 0.8 }}
                 transition={{ duration: 1.6, delay: 0.5 }}
@@ -291,6 +293,7 @@ export function FinalScene({ accent, origin, onSeen, onReturn }: FinalSceneProps
               </motion.p>
             )}
             <p
+              data-cid={cid('finalSequence.message')}
               className={
                 finalSequence.phrase.font === 'serif'
                   ? 'final__message u-serif'
@@ -302,6 +305,7 @@ export function FinalScene({ accent, origin, onSeen, onReturn }: FinalSceneProps
             {finalSequence.signature && (
               <motion.p
                 className="final__signature"
+                data-cid={cid('finalSequence.signature')}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 0.75 }}
                 transition={{ duration: 1.6, delay: 1.4 }}
@@ -320,6 +324,7 @@ export function FinalScene({ accent, origin, onSeen, onReturn }: FinalSceneProps
             key="final-return"
             type="button"
             className="final__return"
+            data-cid={cid('finalSequence.returnLabel')}
             onClick={onReturn}
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.5 }}

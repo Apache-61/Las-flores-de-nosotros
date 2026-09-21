@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { useEffect, useRef } from 'react'
+import { cid } from '../../data/contentManifest'
 import { withName } from '../../data/garden'
 import type { Seed } from '../../data/types'
 import { easeRise, easeSoft, stagger } from '../shared/motion'
@@ -98,6 +99,7 @@ export function ExperienceScene({ seed, onClose }: ExperienceSceneProps) {
 
             <motion.p
               className="experience__eyebrow u-eyebrow"
+              data-cid={cid(`seeds.${seed.id}.experience.eyebrow`)}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease: easeRise, delay: 0.45 }}
@@ -110,6 +112,7 @@ export function ExperienceScene({ seed, onClose }: ExperienceSceneProps) {
               ref={headingRef}
               tabIndex={-1}
               className="experience__title u-serif"
+              data-cid={cid(`seeds.${seed.id}.experience.title`)}
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: easeRise, delay: 0.55 }}
@@ -119,6 +122,7 @@ export function ExperienceScene({ seed, onClose }: ExperienceSceneProps) {
 
             <motion.p
               className="experience__subtitle"
+              data-cid={cid(`seeds.${seed.id}.experience.subtitle`)}
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: easeRise, delay: 0.68 }}
@@ -129,7 +133,7 @@ export function ExperienceScene({ seed, onClose }: ExperienceSceneProps) {
 
           <div className="experience__blocks">
             {experience.blocks.map((block, index) => (
-              <BlockRenderer key={index} block={block} seedId={seed.id} />
+              <BlockRenderer key={index} block={block} seedId={seed.id} index={index} />
             ))}
           </div>
 
@@ -140,11 +144,18 @@ export function ExperienceScene({ seed, onClose }: ExperienceSceneProps) {
             transition={{ duration: 1, ease: easeRise, delay: 0.9 }}
           >
             {experience.closingWhisper && (
-              <p className="experience__whisper u-serif">
+              <p
+                className="experience__whisper u-serif"
+                data-cid={cid(`seeds.${seed.id}.experience.closingWhisper`)}
+              >
                 {withName(experience.closingWhisper)}
               </p>
             )}
-            <SoftButton variant="ghost" onClick={onClose}>
+            <SoftButton
+              variant="ghost"
+              onClick={onClose}
+              cid={cid(`seeds.${seed.id}.experience.backLabel`)}
+            >
               <svg
                 className="experience__back-leaf"
                 viewBox="0 0 20 20"

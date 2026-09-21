@@ -1,5 +1,6 @@
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { useEffect, useState } from 'react'
+import { cid } from '../../data/contentManifest'
 import { gardenContent, seeds, withName } from '../../data/garden'
 import type { Seed } from '../../data/types'
 import type { GardenProgress } from '../../hooks/useGardenProgress'
@@ -63,6 +64,11 @@ export function GardenScene({
     ? `${focusPoint.x}px ${focusPoint.y}px`
     : '50% 50%'
 
+  const hintPath = progress.finalSeen
+    ? 'gardenContent.garden.completed'
+    : progress.isFinalReady
+      ? 'gardenContent.garden.readyForFinal'
+      : 'gardenContent.garden.hint'
   const hint = progress.finalSeen
     ? gardenContent.garden.completed
     : progress.isFinalReady
@@ -119,6 +125,7 @@ export function GardenScene({
             <motion.p
               key="welcome"
               className="garden__welcome u-serif"
+              data-cid={cid('gardenContent.garden.welcome')}
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
@@ -138,6 +145,7 @@ export function GardenScene({
             <motion.p
               key={hint}
               className="garden__hint"
+              data-cid={cid(hintPath)}
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 0.78, y: 0 }}
               exit={{ opacity: 0, y: -6 }}

@@ -1,0 +1,67 @@
+/*
+ * Los identificadores del modo autor.
+ *
+ * Se dibujan con `::after` sobre los elementos que ya existen: en modo
+ * normal no hay ni un nodo de más, ni una regla de más, así que la
+ * experiencia no puede verse afectada.
+ */
+
+body[data-author='author'] [data-cid] {
+  position: relative;
+}
+
+body[data-author='author'] [data-cid]::after {
+  content: attr(data-cid);
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  z-index: 200;
+  translate: -50% -100%;
+  padding: 1px 5px;
+  border-radius: 6px;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 500;
+  font-style: normal;
+  letter-spacing: 0.06em;
+  line-height: 1.5;
+  white-space: nowrap;
+  text-transform: none;
+  text-shadow: none;
+  color: #2a1b10;
+  background: rgba(244, 196, 67, 0.92);
+  box-shadow: 0 1px 4px rgba(40, 24, 12, 0.35);
+  pointer-events: none;
+}
+
+/* Sobre fondo claro, el mismo distintivo pero con más contraste */
+body[data-author='author'] .experience [data-cid]::after {
+  background: rgba(74, 53, 39, 0.9);
+  color: var(--c-cream-warm);
+}
+
+/* Aviso permanente de que la página no está en modo regalo */
+.author-banner {
+  position: fixed;
+  /* Arriba a la izquierda: es la única zona que la experiencia no usa */
+  left: max(0.6rem, env(safe-area-inset-left));
+  top: max(0.6rem, env(safe-area-inset-top));
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  max-width: calc(100vw - 1.2rem);
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: #2a1b10;
+  background: rgba(244, 196, 67, 0.94);
+  box-shadow: 0 6px 18px -8px rgba(40, 24, 12, 0.6);
+}
+
+.author-banner a {
+  color: inherit;
+  font-weight: 500;
+}

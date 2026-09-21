@@ -9,6 +9,7 @@ import type {
   TextBlock,
   VideoBlock,
 } from '../../data/types'
+import { cid } from '../../data/contentManifest'
 import { withName } from '../../data/garden'
 import { riseIn } from '../shared/motion'
 import { PlaceholderFrame } from './PlaceholderFrame'
@@ -22,48 +23,61 @@ import './ExperienceBlocks.css'
 export function BlockRenderer({
   block,
   seedId,
+  index,
 }: {
   block: ExperienceBlock
   seedId: string
+  index: number
 }) {
+  /** La ruta de un campo de este bloque dentro del manifiesto de contenido. */
+  const at = (campo: string) =>
+    cid(`seeds.${seedId}.experience.blocks.${index}.${campo}`)
+
   return (
     <motion.section className="block" variants={riseIn}>
-      {renderBlock(block, seedId)}
+      {renderBlock(block, seedId, at)}
     </motion.section>
   )
 }
 
-function renderBlock(block: ExperienceBlock, seedId: string) {
+/** Devuelve el identificador de contenido de un campo del bloque. */
+type At = (campo: string) => string | undefined
+
+function renderBlock(block: ExperienceBlock, seedId: string, at: At) {
   switch (block.kind) {
     case 'text':
-      return <TextContent block={block} />
+      return <TextContent block={block} at={at} />
     case 'quote':
-      return <QuoteContent block={block} />
+      return <QuoteContent block={block} at={at} />
     case 'gallery':
-      return <GalleryContent block={block} seedId={seedId} />
+      return <GalleryContent block={block} seedId={seedId} at={at} />
     case 'video':
-      return <VideoContent block={block} seedId={seedId} />
+      return <VideoContent block={block} seedId={seedId} at={at} />
     case 'playlist':
-      return <PlaylistContent block={block} seedId={seedId} />
+      return <PlaylistContent block={block} seedId={seedId} at={at} />
     case 'map':
-      return <MapContent block={block} />
+      return <MapContent block={block} at={at} />
     case 'facts':
-      return <FactsContent block={block} />
+      return <FactsContent block={block} at={at} />
   }
 }
 
-function Heading({ text }: { text?: string }) {
+function Heading({ text, cid: id }: { text?: string; cid?: string }) {
   if (!text) return null
-  return <h2 className="block__heading u-serif">{withName(text)}</h2>
+  return (
+    <h2 className="block__heading u-serif" data-cid={id}>
+      {withName(text)}
+    </h2>
+  )
 }
 
 /* ── Texto ─────────────────────────────────────────────────────────── */
 
-function TextContent({ block }: { block: TextBlock }) {
+function TextContent({ block, at }: { block: TextBlock; at: At }) {
   return (
     <>
-      <Heading text={block.heading} />
-      <div className="block__prose">
+      <Heading text={block.heading} cid={at('heading')} />
+      <div className="block__prose" data-cid={at('paragraphs')}>
         {block.paragraphs.map((paragraph, index) => (
           <p key={index}>{withName(paragraph)}</p>
         ))}
@@ -74,12 +88,14 @@ function TextContent({ block }: { block: TextBlock }) {
 
 /* ── Frase suelta ──────────────────────────────────────────────────── */
 
-function QuoteContent({ block }: { block: QuoteBlock }) {
+function QuoteContent({ block, at }: { block: QuoteBlock; at: At }) {
   return (
     <figure className="block__quote">
-      <blockquote className="u-serif">{withName(block.text)}</blockquote>
+      <blockquote className="u-serif" data-cid={at('text')}>
+        {withName(block.text)}
+      </blockquote>
       {block.attribution && (
-        <figcaption>{withName(block.attribution)}</figcaption>
+        <figcaption data-cid={at('attribution')}>{withName(block.attribution)}</figcaption>
       )}
     </figure>
   )
@@ -87,19 +103,27 @@ function QuoteContent({ block }: { block: QuoteBlock }) {
 
 /* ── Fotografías ───────────────────────────────────────────────────── */
 
-function GalleryContent({ block, seedId }: { block: GalleryBlock; seedId: string }) {
+function GalleryContent({
+  block,
+  seedId,
+  at,
+}: {
+  block: GalleryBlock
+  seedId: string
+  at: At
+}) {
   return (
     <>
-      <Heading text={block.heading} />
+      <Heading text={block.heading} cid={at('heading')} />
       <div className="block__gallery">
         {block.items.map((item, index) => (
-          <figure key={index} className="block__photo">
+          <figure key={index} className="block__photo" data-cid={at(`items.${index}`)}>
             {item.src ? (
               <img src={item.src} alt={item.alt} loading="lazy" decoding="async" />
             ) : (
               <PlaceholderFrame
-                token="[AGREGA FOTO]"
-                hint={`src/data/garden.ts → ${seedId} → gallery → items[${index}].src (imágenes en public/media/)`}
+                token={`[${at(`items.${index}`) ?? '··'}] Falta la fotografía`}
+                hint={`Cópiala en public/media/ y escribe la ruta en src/data/garden.ts → ${seedId} → gallery → items[${index}].src`}
               />
             )}
             <figcaption>{withName(item.caption)}</figcaption>
@@ -112,16 +136,24 @@ function GalleryContent({ block, seedId }: { block: GalleryBlock; seedId: string
 
 /* ── Video ─────────────────────────────────────────────────────────── */
 
-function VideoContent({ block, seedId }: { block: VideoBlock; seedId: string }) {
+function VideoContent({
+  block,
+  seedId,
+  at,
+}: {
+  block: VideoBlock
+  seedId: string
+  at: At
+}) {
   return (
     <>
-      <Heading text={block.heading} />
-      <div className="block__video">
+      <Heading text={block.heading} cid={at('heading')} />
+      <div className="block__video" data-cid={at('src')}>
         {block.src === null && (
           <PlaceholderFrame
-            token="[VIDEO_URL]"
+            token={`[${at('src') ?? '··'}] Falta el video`}
             ratio="16 / 9"
-            hint={`src/data/garden.ts → ${seedId} → video → src (archivo en public/media/ o URL de /embed/)`}
+            hint={`Cópialo en public/media/ y escribe la ruta en src/data/garden.ts → ${seedId} → video → src (o una URL de /embed/)`}
           />
         )}
         {block.src !== null && block.mode === 'file' && (
@@ -145,19 +177,29 @@ function VideoContent({ block, seedId }: { block: VideoBlock; seedId: string }) 
           </div>
         )}
       </div>
-      <p className="block__caption">{withName(block.caption)}</p>
+      <p className="block__caption" data-cid={at('caption')}>
+        {withName(block.caption)}
+      </p>
     </>
   )
 }
 
 /* ── Playlist ──────────────────────────────────────────────────────── */
 
-function PlaylistContent({ block, seedId }: { block: PlaylistBlock; seedId: string }) {
+function PlaylistContent({
+  block,
+  seedId,
+  at,
+}: {
+  block: PlaylistBlock
+  seedId: string
+  at: At
+}) {
   return (
     <>
-      <Heading text={block.heading} />
+      <Heading text={block.heading} cid={at('heading')} />
       {block.embedUrl ? (
-        <div className="block__embed block__embed--playlist">
+        <div className="block__embed block__embed--playlist" data-cid={at('embedUrl')}>
           <iframe
             src={block.embedUrl}
             title="Playlist"
@@ -167,14 +209,14 @@ function PlaylistContent({ block, seedId }: { block: PlaylistBlock; seedId: stri
         </div>
       ) : (
         <PlaceholderFrame
-          token="[PLAYLIST_URL]"
+          token={`[${at('embedUrl') ?? '··'}] Falta la playlist`}
           ratio="3 / 2"
-          hint={`src/data/garden.ts → ${seedId} → playlist → embedUrl (URL de "Insertar" de Spotify, Apple Music o YouTube)`}
+          hint={`Pega la URL de "Insertar" en src/data/garden.ts → ${seedId} → playlist → embedUrl`}
         />
       )}
       <ol className="block__tracks">
         {block.tracks.map((track, index) => (
-          <li key={index}>
+          <li key={index} data-cid={at(`tracks.${index}`)}>
             <span className="block__track-index">{String(index + 1).padStart(2, '0')}</span>
             <span className="block__track-body">
               <span className="block__track-title">{withName(track.title)}</span>
@@ -190,24 +232,28 @@ function PlaylistContent({ block, seedId }: { block: PlaylistBlock; seedId: stri
 
 /* ── Mapa ──────────────────────────────────────────────────────────── */
 
-function MapContent({ block }: { block: MapBlock }) {
+function MapContent({ block, at }: { block: MapBlock; at: At }) {
   return (
     <>
-      <Heading text={block.heading} />
+      <Heading text={block.heading} cid={at('heading')} />
       {block.embedUrl ? (
         <div className="block__embed block__embed--map">
           <iframe src={block.embedUrl} title="Mapa" loading="lazy" />
         </div>
       ) : (
-        <DrawnMap block={block} />
+        <DrawnMap block={block} at={at} />
       )}
-      {block.note && <p className="block__caption">{withName(block.note)}</p>}
+      {block.note && (
+        <p className="block__caption" data-cid={at('note')}>
+          {withName(block.note)}
+        </p>
+      )}
     </>
   )
 }
 
 /** Mapa ilustrado: dos puntos y la distancia entre ellos. Sin librerías. */
-function DrawnMap({ block }: { block: MapBlock }) {
+function DrawnMap({ block, at }: { block: MapBlock; at: At }) {
   return (
     <div className="drawn-map">
       <svg viewBox="0 0 400 200" className="drawn-map__canvas" role="img"
@@ -250,12 +296,14 @@ function DrawnMap({ block }: { block: MapBlock }) {
       </svg>
 
       <div className="drawn-map__legend">
-        <span className="drawn-map__place">
+        <span className="drawn-map__place" data-cid={at('from')}>
           <strong>{withName(block.from.label)}</strong>
           <em>{withName(block.from.detail)}</em>
         </span>
-        <span className="drawn-map__distance">{withName(block.distanceLabel)}</span>
-        <span className="drawn-map__place drawn-map__place--end">
+        <span className="drawn-map__distance" data-cid={at('distanceLabel')}>
+          {withName(block.distanceLabel)}
+        </span>
+        <span className="drawn-map__place drawn-map__place--end" data-cid={at('to')}>
           <strong>{withName(block.to.label)}</strong>
           <em>{withName(block.to.detail)}</em>
         </span>
@@ -266,13 +314,13 @@ function DrawnMap({ block }: { block: MapBlock }) {
 
 /* ── Datos ─────────────────────────────────────────────────────────── */
 
-function FactsContent({ block }: { block: FactsBlock }) {
+function FactsContent({ block, at }: { block: FactsBlock; at: At }) {
   return (
     <>
-      <Heading text={block.heading} />
+      <Heading text={block.heading} cid={at('heading')} />
       <dl className="block__facts">
         {block.items.map((item, index) => (
-          <div key={index} className="block__fact">
+          <div key={index} className="block__fact" data-cid={at(`items.${index}`)}>
             <dt>{withName(item.label)}</dt>
             <dd className="u-serif">{withName(item.value)}</dd>
           </div>

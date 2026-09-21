@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
-    "typecheck": "tsc -b --noEmit"
+    "typecheck": "tsc -b --noEmit",
+    "content:guide": "node scripts/content-guide.mjs",
+    "content:check": "node scripts/content-guide.mjs --check"
   },
   "dependencies": {
     "framer-motion": "^12.23.12",

@@ -55,6 +55,10 @@ jobs:
       - name: Comprobar que no hay errores de TypeScript
         run: npm run typecheck
 
+      # Si alguien añade un texto y no lo documenta, esto lo detiene aquí
+      - name: Comprobar que la guía de contenido está al día
+        run: npm run content:check
+
       - name: Construir la versión estática
         run: npm run build
 

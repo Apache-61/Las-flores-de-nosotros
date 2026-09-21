@@ -31,6 +31,48 @@ npm run typecheck
 
 ---
 
+## Por dónde empezar: la guía de contenido
+
+**[`CONTENT_GUIDE.md`](CONTENT_GUIDE.md) es tu formulario maestro.** Lista los
+**98 elementos** que componen el regalo, cada uno con su identificador —`[01]`,
+`[02]`…—, qué tienes que escribir, dónde aparece, qué formato necesita y si es
+imprescindible u opcional.
+
+Ese identificador es el mismo en tres sitios, y nunca se escribe a mano dos veces:
+
+| | |
+|---|---|
+| La guía | `CONTENT_GUIDE.md`, generada a partir del manifiesto |
+| La fuente de verdad | `src/data/contentManifest.ts` |
+| La página | los textos pendientes llevan el número dentro: `[03 — ESCRIBE LA FRASE DE ENTRADA]` |
+
+### Los dos modos de autor
+
+Añade esto al final de la dirección, en el navegador:
+
+- **`#author`** — muestra el identificador de cada elemento sobre la propia
+  experiencia, en etiquetas pequeñas. Sirve para saber qué número corresponde a
+  qué texto sin tener que buscarlo.
+- **`#content`** — abre la lista completa: los 98 elementos con su estado
+  (pendiente, opcional, listo), su valor actual y el archivo y la línea donde se
+  edita cada uno. Tiene buscador y un filtro de «sólo lo que falta».
+
+Sin ninguno de los dos, la página es exactamente el regalo: ni un número, ni una
+etiqueta, ni rastro de herramientas.
+
+### Regenerar la guía
+
+```bash
+npm run content:guide    # reescribe CONTENT_GUIDE.md con el estado real
+npm run content:check    # sólo comprueba, sin escribir (lo usa el CI)
+```
+
+El comando además **valida el proyecto**: que los identificadores sean únicos y
+correlativos, que cada elemento documentado exista de verdad en los datos, que
+los marcadores de la guía coincidan con los del código y que no haya ningún
+texto editable sin documentar. Si algo no cuadra, no escribe la guía y dice
+exactamente qué falla.
+
 ## Dónde se escribe cada cosa
 
 **Casi todo está en un solo archivo: `src/data/garden.ts`.**
@@ -51,6 +93,7 @@ No hace falta saber React: se cambia el texto entre comillas y listo.
 | **La frase final** | `finalSequence.message` |
 | La música y los sonidos | `src/data/audio.ts` (archivos en `public/audio/`) |
 | Colores y tipografías | `src/styles/tokens.css` |
+| **Qué falta por rellenar** | `CONTENT_GUIDE.md`, o la página con `#content` |
 | Ritmo de la animación final | `finalSequence.timings` |
 
 > Las rutas de archivos se escriben **sin barra al principio**
@@ -101,10 +144,15 @@ cada uno**. El orden y el tema de las cinco están sin decidir a propósito.
 ## Estructura
 
 ```
+CONTENT_GUIDE.md     ← el formulario con los 98 elementos (se genera solo)
+scripts/
+  content-guide.mjs  ← lo genera y valida (npm run content:guide)
 src/
   data/
     garden.ts        ← TODO EL CONTENIDO (es el archivo que vas a editar)
     audio.ts         ← música y sonidos
+    contentManifest.ts ← la fuente de verdad de los identificadores
+    contentValues.ts   ← conecta cada identificador con su valor real
     types.ts         ← tipos; no hace falta tocarlo
   components/
     intro/           pantalla inicial y germinación

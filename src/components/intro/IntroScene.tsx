@@ -1,6 +1,7 @@
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { useAudio } from '../../audio/AudioProvider'
+import { cid } from '../../data/contentManifest'
 import { gardenContent, gardenSettings, withName } from '../../data/garden'
 import { easeRise, easeSoft } from '../shared/motion'
 import { SoftButton } from '../shared/SoftButton'
@@ -79,11 +80,11 @@ export function IntroScene({ onGerminated }: IntroSceneProps) {
               transition={{ duration: 1.5, ease: easeRise, delay: 0.5 }}
             >
               {gardenContent.intro.eyebrow && (
-                <p className="intro__eyebrow u-eyebrow">
+                <p className="intro__eyebrow u-eyebrow" data-cid={cid('gardenContent.intro.eyebrow')}>
                   {withName(gardenContent.intro.eyebrow)}
                 </p>
               )}
-              <h1 className="intro__message u-serif">
+              <h1 className="intro__message u-serif" data-cid={cid('gardenContent.intro.message')}>
                 {withName(gardenContent.intro.message)}
               </h1>
             </motion.header>
@@ -156,9 +157,11 @@ export function IntroScene({ onGerminated }: IntroSceneProps) {
               exit={{ opacity: 0, transition: { duration: 0.4 } }}
               transition={{ duration: 1.2, ease: easeRise, delay: 1.1 }}
             >
-              <SoftButton onClick={germinate}>{gardenContent.intro.action}</SoftButton>
+              <SoftButton onClick={germinate} cid={cid('gardenContent.intro.action')}>
+                {gardenContent.intro.action}
+              </SoftButton>
               {gardenContent.intro.hint && (
-                <p className="intro__hint">{withName(gardenContent.intro.hint)}</p>
+                <p className="intro__hint" data-cid={cid('gardenContent.intro.hint')}>{withName(gardenContent.intro.hint)}</p>
               )}
             </motion.div>
           )}

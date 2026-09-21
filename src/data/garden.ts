@@ -23,28 +23,28 @@ import type { Seed } from './types'
 
 export const gardenContent = {
   /** Su nombre. Puedes usarlo en cualquier texto escribiendo {nombre}. */
-  recipientName: '[NOMBRE]',
+  recipientName: '[01 — ESCRIBE SU NOMBRE]',
 
   intro: {
     /** Pequeña línea sobre la frase principal. Déjala vacía ('') si no la quieres. */
-    eyebrow: '[LÍNEA PEQUEÑA SOBRE LA FRASE]',
+    eyebrow: '[02 — LÍNEA PEQUEÑA]',
     /** [INTRO_MESSAGE] — la primera frase que ella va a leer. */
-    message: '[ESCRIBE AQUÍ LA FRASE DE INTRODUCCIÓN]',
+    message: '[03 — ESCRIBE LA FRASE DE ENTRADA]',
     /** Texto del botón que hace germinar la semilla. Provisional. */
     action: 'Haz crecer el jardín',
     /** Se lee bajo el botón, muy pequeño. Déjalo vacío ('') si no lo quieres. */
-    hint: '[PISTA OPCIONAL]',
+    hint: '[05 — PISTA OPCIONAL]',
   },
 
   garden: {
     /** Frase breve que recibe al llegar al jardín (aparece y se desvanece). */
-    welcome: '[FRASE DE BIENVENIDA AL JARDÍN]',
+    welcome: '[06 — FRASE DE BIENVENIDA AL JARDÍN]',
     /** Invitación discreta a explorar. */
-    hint: '[PISTA PARA EXPLORAR]',
+    hint: '[07 — FRASE PARA INVITAR A EXPLORAR]',
     /** Se muestra cuando ya descubrió las cinco primeras semillas. */
-    readyForFinal: '[FRASE CUANDO YA SÓLO QUEDA LA ÚLTIMA SEMILLA]',
+    readyForFinal: '[08 — FRASE CUANDO SÓLO QUEDA LA ÚLTIMA SEMILLA]',
     /** Se muestra cuando ya descubrió el jardín entero, final incluido. */
-    completed: '[FRASE CUANDO YA LO DESCUBRIÓ TODO]',
+    completed: '[09 — FRASE CUANDO YA LO DESCUBRIÓ TODO]',
     /**
      * El progreso no se muestra como un marcador —se ve en el jardín, que
      * cada vez tiene más flores—, pero sí se anuncia a los lectores de
@@ -82,8 +82,8 @@ export const seeds: Seed[] = [
   {
     id: 'seed-01',
     kind: 'experience',
-    label: '[TÍTULO DE LA SEMILLA 01]',
-    subtitle: '[SUBTÍTULO 01]',
+    label: '[11 — TÍTULO DE LA SEMILLA 01]',
+    subtitle: '[12 — SUBTÍTULO 01]',
     ariaLabel: 'Primera semilla del jardín',
     accent: 'var(--seed-accent-1)',
     placement: {
@@ -92,24 +92,24 @@ export const seeds: Seed[] = [
       depth: 0.55,
     },
     experience: {
-      eyebrow: '[PLACEHOLDER DE EXPERIENCIA 01]',
-      title: '[TÍTULO DE ESTA SECCIÓN]',
-      subtitle: '[SUBTÍTULO DE ESTA SECCIÓN]',
+      eyebrow: '[14 — ENCABEZADO DE LA EXPERIENCIA 01]',
+      title: '[15 — TÍTULO DE LA EXPERIENCIA 01]',
+      subtitle: '[16 — SUBTÍTULO DE LA EXPERIENCIA 01]',
       backLabel: 'Volver al jardín',
-      closingWhisper: '[FRASE AL CERRAR ESTA SECCIÓN]',
+      closingWhisper: '[17 — FRASE AL CERRAR ESTA SECCIÓN]',
       blocks: [
         {
           kind: 'text',
-          heading: '[ENCABEZADO OPCIONAL]',
+          heading: '[19 — ENCABEZADO DEL TEXTO]',
           paragraphs: [
-            '[LETTER_CONTENT — ESCRIBE AQUÍ TU MENSAJE. Cada texto entre comillas es un párrafo.]',
+            '[20 — ESCRIBE AQUÍ TU TEXTO]',
             '[ESCRIBE AQUÍ EL SEGUNDO PÁRRAFO. Puedes añadir tantos como quieras, separados por comas.]',
           ],
         },
         {
           kind: 'quote',
-          text: '[ESCRIBE AQUÍ UNA FRASE CORTA]',
-          attribution: '[FIRMA O FECHA]',
+          text: '[21 — ESCRIBE UNA FRASE CORTA]',
+          attribution: '[22 — FIRMA O FECHA]',
         },
       ],
     },
@@ -119,8 +119,8 @@ export const seeds: Seed[] = [
   {
     id: 'seed-02',
     kind: 'experience',
-    label: '[TÍTULO DE LA SEMILLA 02]',
-    subtitle: '[SUBTÍTULO 02]',
+    label: '[23 — TÍTULO DE LA SEMILLA 02]',
+    subtitle: '[24 — SUBTÍTULO 02]',
     ariaLabel: 'Segunda semilla del jardín',
     accent: 'var(--seed-accent-2)',
     placement: {
@@ -129,19 +129,19 @@ export const seeds: Seed[] = [
       depth: 0.38,
     },
     experience: {
-      eyebrow: '[PLACEHOLDER DE EXPERIENCIA 02]',
-      title: '[TÍTULO DE ESTA SECCIÓN]',
-      subtitle: '[SUBTÍTULO DE ESTA SECCIÓN]',
+      eyebrow: '[26 — ENCABEZADO DE LA EXPERIENCIA 02]',
+      title: '[27 — TÍTULO DE LA EXPERIENCIA 02]',
+      subtitle: '[28 — SUBTÍTULO DE LA EXPERIENCIA 02]',
       backLabel: 'Volver al jardín',
-      closingWhisper: '[FRASE AL CERRAR ESTA SECCIÓN]',
+      closingWhisper: '[29 — FRASE AL CERRAR ESTA SECCIÓN]',
       blocks: [
         {
           kind: 'text',
-          paragraphs: ['[ESCRIBE AQUÍ UNA INTRODUCCIÓN BREVE PARA LAS FOTOS]'],
+          paragraphs: ['[31 — ESCRIBE UNA INTRODUCCIÓN PARA LAS FOTOS]'],
         },
         {
           kind: 'gallery',
-          heading: '[ENCABEZADO DE LA GALERÍA]',
+          heading: '[32 — ENCABEZADO DE LA GALERÍA]',
           /*
            * FOTOGRAFÍAS
            * 1. Copia tus imágenes en la carpeta  public/media/
@@ -151,9 +151,9 @@ export const seeds: Seed[] = [
            * Mientras `src` sea null se muestra un marco vacío con el placeholder.
            */
           items: [
-            { src: null, alt: '[DESCRIBE LA FOTO 01]', caption: '[MEMORY_01]' },
-            { src: null, alt: '[DESCRIBE LA FOTO 02]', caption: '[MEMORY_02]' },
-            { src: null, alt: '[DESCRIBE LA FOTO 03]', caption: '[MEMORY_03]' },
+            { src: null, alt: '[DESCRIBE LA FOTO 01]', caption: '[33 — AGREGA LA FOTO 01]' },
+            { src: null, alt: '[DESCRIBE LA FOTO 02]', caption: '[34 — AGREGA LA FOTO 02]' },
+            { src: null, alt: '[DESCRIBE LA FOTO 03]', caption: '[35 — AGREGA LA FOTO 03]' },
           ],
         },
       ],
@@ -164,8 +164,8 @@ export const seeds: Seed[] = [
   {
     id: 'seed-03',
     kind: 'experience',
-    label: '[TÍTULO DE LA SEMILLA 03]',
-    subtitle: '[SUBTÍTULO 03]',
+    label: '[36 — TÍTULO DE LA SEMILLA 03]',
+    subtitle: '[37 — SUBTÍTULO 03]',
     ariaLabel: 'Tercera semilla del jardín',
     accent: 'var(--seed-accent-3)',
     placement: {
@@ -174,15 +174,15 @@ export const seeds: Seed[] = [
       depth: 0.74,
     },
     experience: {
-      eyebrow: '[PLACEHOLDER DE EXPERIENCIA 03]',
-      title: '[TÍTULO DE ESTA SECCIÓN]',
-      subtitle: '[SUBTÍTULO DE ESTA SECCIÓN]',
+      eyebrow: '[39 — ENCABEZADO DE LA EXPERIENCIA 03]',
+      title: '[40 — TÍTULO DE LA EXPERIENCIA 03]',
+      subtitle: '[41 — SUBTÍTULO DE LA EXPERIENCIA 03]',
       backLabel: 'Volver al jardín',
-      closingWhisper: '[FRASE AL CERRAR ESTA SECCIÓN]',
+      closingWhisper: '[42 — FRASE AL CERRAR ESTA SECCIÓN]',
       blocks: [
         {
           kind: 'playlist',
-          heading: '[ENCABEZADO DE LA MÚSICA]',
+          heading: '[44 — ENCABEZADO DE LA MÚSICA]',
           /*
            * PLAYLIST
            * Pega aquí la URL de EMBED (no la de compartir):
@@ -192,14 +192,14 @@ export const seeds: Seed[] = [
            */
           embedUrl: null, // [PLAYLIST_URL]
           tracks: [
-            { title: '[CANCIÓN 01]', artist: '[ARTISTA]', note: '[POR QUÉ ESTA CANCIÓN]' },
-            { title: '[CANCIÓN 02]', artist: '[ARTISTA]', note: '[POR QUÉ ESTA CANCIÓN]' },
-            { title: '[CANCIÓN 03]', artist: '[ARTISTA]', note: '[POR QUÉ ESTA CANCIÓN]' },
+            { title: '[46 — CANCIÓN 01]', artist: '[ARTISTA]', note: '[POR QUÉ ESTA CANCIÓN]' },
+            { title: '[47 — CANCIÓN 02]', artist: '[ARTISTA]', note: '[POR QUÉ ESTA CANCIÓN]' },
+            { title: '[48 — CANCIÓN 03]', artist: '[ARTISTA]', note: '[POR QUÉ ESTA CANCIÓN]' },
           ],
         },
         {
           kind: 'text',
-          paragraphs: ['[ESCRIBE AQUÍ ALGO SOBRE ESTA MÚSICA]'],
+          paragraphs: ['[49 — ESCRIBE ALGO SOBRE ESTA MÚSICA]'],
         },
       ],
     },
@@ -209,8 +209,8 @@ export const seeds: Seed[] = [
   {
     id: 'seed-04',
     kind: 'experience',
-    label: '[TÍTULO DE LA SEMILLA 04]',
-    subtitle: '[SUBTÍTULO 04]',
+    label: '[50 — TÍTULO DE LA SEMILLA 04]',
+    subtitle: '[51 — SUBTÍTULO 04]',
     ariaLabel: 'Cuarta semilla del jardín',
     accent: 'var(--seed-accent-4)',
     placement: {
@@ -219,15 +219,15 @@ export const seeds: Seed[] = [
       depth: 0.86,
     },
     experience: {
-      eyebrow: '[PLACEHOLDER DE EXPERIENCIA 04]',
-      title: '[TÍTULO DE ESTA SECCIÓN]',
-      subtitle: '[SUBTÍTULO DE ESTA SECCIÓN]',
+      eyebrow: '[53 — ENCABEZADO DE LA EXPERIENCIA 04]',
+      title: '[54 — TÍTULO DE LA EXPERIENCIA 04]',
+      subtitle: '[55 — SUBTÍTULO DE LA EXPERIENCIA 04]',
       backLabel: 'Volver al jardín',
-      closingWhisper: '[FRASE AL CERRAR ESTA SECCIÓN]',
+      closingWhisper: '[56 — FRASE AL CERRAR ESTA SECCIÓN]',
       blocks: [
         {
           kind: 'video',
-          heading: '[ENCABEZADO DEL VIDEO]',
+          heading: '[58 — ENCABEZADO DEL VIDEO]',
           /*
            * VIDEO — dos formas:
            *  a) Archivo propio:  mode: 'file'   src: 'media/video.mp4'
@@ -238,15 +238,15 @@ export const seeds: Seed[] = [
           mode: 'file',
           src: null, // [VIDEO_URL]
           poster: null, // imagen de portada opcional: 'media/portada.jpg'
-          caption: '[DESCRIBE AQUÍ EL VIDEO]',
+          caption: '[62 — DESCRIBE EL VIDEO]',
         },
         {
           kind: 'facts',
-          heading: '[ENCABEZADO DE LOS DATOS]',
+          heading: '[63 — ENCABEZADO DE LOS DATOS]',
           items: [
-            { label: '[ETIQUETA 01]', value: '[DATO 01]' },
-            { label: '[ETIQUETA 02]', value: '[DATO 02]' },
-            { label: '[ETIQUETA 03]', value: '[DATO 03]' },
+            { label: '[64 — DATO 01]', value: '[DATO 01]' },
+            { label: '[65 — DATO 02]', value: '[DATO 02]' },
+            { label: '[66 — DATO 03]', value: '[DATO 03]' },
           ],
         },
       ],
@@ -257,8 +257,8 @@ export const seeds: Seed[] = [
   {
     id: 'seed-05',
     kind: 'experience',
-    label: '[TÍTULO DE LA SEMILLA 05]',
-    subtitle: '[SUBTÍTULO 05]',
+    label: '[67 — TÍTULO DE LA SEMILLA 05]',
+    subtitle: '[68 — SUBTÍTULO 05]',
     ariaLabel: 'Quinta semilla del jardín',
     accent: 'var(--seed-accent-5)',
     placement: {
@@ -267,15 +267,15 @@ export const seeds: Seed[] = [
       depth: 0.94,
     },
     experience: {
-      eyebrow: '[PLACEHOLDER DE EXPERIENCIA 05]',
-      title: '[TÍTULO DE ESTA SECCIÓN]',
-      subtitle: '[SUBTÍTULO DE ESTA SECCIÓN]',
+      eyebrow: '[70 — ENCABEZADO DE LA EXPERIENCIA 05]',
+      title: '[71 — TÍTULO DE LA EXPERIENCIA 05]',
+      subtitle: '[72 — SUBTÍTULO DE LA EXPERIENCIA 05]',
       backLabel: 'Volver al jardín',
-      closingWhisper: '[FRASE AL CERRAR ESTA SECCIÓN]',
+      closingWhisper: '[73 — FRASE AL CERRAR ESTA SECCIÓN]',
       blocks: [
         {
           kind: 'map',
-          heading: '[ENCABEZADO DEL MAPA]',
+          heading: '[75 — ENCABEZADO DEL MAPA]',
           /*
            * MAPA
            * Si dejas `embedUrl` en null se dibuja un mapa ilustrado con los
@@ -284,10 +284,10 @@ export const seeds: Seed[] = [
            * → copia el valor de src y pégalo aquí entre comillas.
            */
           embedUrl: null,
-          from: { label: '[MAP_LOCATION_A]', detail: '[CIUDAD, PAÍS]' },
-          to: { label: '[MAP_LOCATION_B]', detail: '[CIUDAD, PAÍS]' },
-          distanceLabel: '[DISTANCIA ENTRE LOS DOS PUNTOS]',
-          note: '[ESCRIBE AQUÍ ALGO SOBRE ESTOS DOS LUGARES]',
+          from: { label: '[76 — TU LUGAR]', detail: '[CIUDAD, PAÍS]' },
+          to: { label: '[77 — SU LUGAR]', detail: '[CIUDAD, PAÍS]' },
+          distanceLabel: '[78 — LA DISTANCIA ENTRE LOS DOS]',
+          note: '[79 — ESCRIBE ALGO SOBRE ESTOS DOS LUGARES]',
         },
       ],
     },
@@ -300,8 +300,8 @@ export const seeds: Seed[] = [
   {
     id: 'seed-future',
     kind: 'final',
-    label: '[TÍTULO DE LA SEMILLA FINAL]',
-    subtitle: '[SUBTÍTULO DE LA SEMILLA FINAL]',
+    label: '[81 — TÍTULO DE LA ÚLTIMA SEMILLA]',
+    subtitle: '[82 — SUBTÍTULO DE LA ÚLTIMA SEMILLA]',
     ariaLabel: 'La última semilla del jardín',
     accent: 'var(--seed-accent-future)',
     placement: {
@@ -329,11 +329,11 @@ export const seeds: Seed[] = [
 
 export const finalSequence = {
   /** [FINAL_MESSAGE] — la frase que aparece sobre el ramo. */
-  message: '[ESCRIBE AQUÍ LA FRASE FINAL]',
+  message: '[84 — ESCRIBE LA FRASE FINAL]',
   /** Línea pequeña encima de la frase. Déjala vacía ('') si no la quieres. */
-  eyebrow: '[PEQUEÑA LÍNEA SOBRE LA FRASE FINAL]',
+  eyebrow: '[85 — LÍNEA SOBRE LA FRASE FINAL]',
   /** Firma bajo la frase. Vacía ('') para no mostrarla. */
-  signature: '[FIRMA]',
+  signature: '[86 — FIRMA]',
 
   /** Apariencia de la frase final. */
   phrase: {

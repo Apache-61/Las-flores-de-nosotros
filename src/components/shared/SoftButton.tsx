@@ -9,6 +9,8 @@ interface SoftButtonProps {
   variant?: 'solid' | 'ghost'
   className?: string
   ariaLabel?: string
+  /** Identificador del manifiesto de contenido, para el modo autor. */
+  cid?: string
 }
 
 /**
@@ -21,12 +23,14 @@ export function SoftButton({
   variant = 'solid',
   className = '',
   ariaLabel,
+  cid,
 }: SoftButtonProps) {
   return (
     <motion.button
       type="button"
       onClick={onClick}
       aria-label={ariaLabel}
+      data-cid={cid}
       className={`soft-button soft-button--${variant} ${className}`.trim()}
       whileHover={{ scale: 1.035 }}
       whileTap={{ scale: 0.97 }}

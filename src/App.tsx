@@ -3,13 +3,16 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useAudio } from './audio/AudioProvider'
 import { seeds } from './data/garden'
 import type { Seed, SeedId } from './data/types'
+import { useAuthorMode } from './hooks/useAuthorMode'
 import { useGardenProgress } from './hooks/useGardenProgress'
+import { ContentPanel } from './components/author/ContentPanel'
 import { ExperienceScene } from './components/experiences/ExperienceScene'
 import { FinalScene } from './components/final/FinalScene'
 import { GardenScene } from './components/garden/GardenScene'
 import { IntroScene } from './components/intro/IntroScene'
 import { SceneVeil, type VeilState } from './components/shared/SceneVeil'
 import { SoundToggle } from './components/shared/SoundToggle'
+import './components/author/authorTag.css'
 import './App.css'
 
 type Scene =
@@ -39,6 +42,7 @@ const centerOfScreen = () => ({
 export default function App() {
   const progress = useGardenProgress()
   const audio = useAudio()
+  const authorMode = useAuthorMode()
   const [scene, setScene] = useState<Scene>({ name: 'intro' })
   const [focusPoint, setFocusPoint] = useState<{ x: number; y: number } | null>(null)
   const [veil, setVeil] = useState<VeilState>({
@@ -157,6 +161,15 @@ export default function App() {
   const finalSeed = useMemo(() => seeds.find((seed) => seed.kind === 'final'), [])
   const gardenMounted = scene.name !== 'intro'
 
+  // La lista de contenido sustituye a la experiencia mientras está abierta
+  if (authorMode === 'content') {
+    return (
+      <div className="app-shell">
+        <ContentPanel />
+      </div>
+    )
+  }
+
   return (
     <div className="app-shell">
       {gardenMounted && (
@@ -201,6 +214,15 @@ export default function App() {
       <SceneVeil state={veil} />
 
       {scene.name === 'garden' && <SoundToggle />}
+
+      {/* En modo autor, un recordatorio de que esto no es el regalo todavía */}
+      {authorMode === 'author' && (
+        <div className="author-banner">
+          <span>Modo autor</span>
+          <a href="#content">ver la lista</a>
+          <a href="#">salir</a>
+        </div>
+      )}
     </div>
   )
 }
