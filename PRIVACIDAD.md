@@ -82,11 +82,20 @@ pública que pueda filtrarse.
 **Protege:** del todo. **Cuesta:** que ella no pueda volver a abrirlo con
 un enlace cuando quiera.
 
-## Lo que recomiendo
+## Lo que se decidió
 
-La opción 2 si quieres que siga siendo tan fácil como mandar un enlace, y
-la 3 si te incomoda que el video pueda verlo alguien más. Las dos se
-pueden aplicar después, sin tocar nada de la experiencia.
+**La opción 1.** El jardín se queda como está: público, con el enlace
+como único secreto, y fuera de los buscadores gracias al `robots.txt` y
+al `noindex`. Es una decisión tomada a sabiendas, no un descuido.
+
+Lo que eso significa, dicho una vez y sin dramatizar: quien tenga la
+dirección entra, y quien dé con el repositorio ve los textos, las fotos y
+el video. Nadie va a llegar buscando un nombre en Google, pero el enlace
+es la llave y no hay otra.
+
+Si algún día cambia de opinión, las opciones 2 y 3 siguen ahí y se
+aplican después sin tocar nada de la experiencia: son cambios de dónde
+vive el sitio, no de cómo funciona.
 
 ## Dos cosas a tener en cuenta pase lo que pase
 
