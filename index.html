@@ -9,6 +9,14 @@
     <!-- [TÍTULO DE LA PESTAÑA] — cámbialo por lo que quieras que ella vea en el navegador -->
     <title>El Jardín de Nuestra Distancia</title>
     <meta name="description" content="Un jardín que crece a kilómetros de distancia." />
+    <!--
+      Esto es un regalo privado, no una página que queramos encontrable.
+      noindex pide a los buscadores que no la listen; noarchive y
+      nosnippet, que no guarden copia ni muestren un trozo del texto.
+      No impide entrar a quien tenga el enlace: para eso, ver el README.
+    -->
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+    <meta name="referrer" content="no-referrer" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

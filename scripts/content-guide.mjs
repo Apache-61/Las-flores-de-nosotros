@@ -29,10 +29,12 @@ const problemas = []
 
 /* ── 1. Los identificadores son únicos y correlativos ──────────────── */
 const vistos = new Set()
+// El ancho del id crece con el catálogo: 01…99, y 001…999 a partir de cien.
+const anchoId = String(contentManifest.length).length
 contentManifest.forEach((item, indice) => {
   if (vistos.has(item.id)) problemas.push(`Identificador repetido: ${item.id}`)
   vistos.add(item.id)
-  const esperado = String(indice + 1).padStart(2, '0')
+  const esperado = String(indice + 1).padStart(anchoId, '0')
   if (item.id !== esperado) {
     problemas.push(`El elemento ${item.id} (${item.label}) rompe la numeración: se esperaba ${esperado}`)
   }

@@ -14,14 +14,14 @@ export type SeedId =
 
 /**
  * Estados posibles de una semilla.
- * - `undiscovered`: aún cerrada (locked).
- * - `active`:       vibra sutilmente invitando a ser descubierta.
- * - `opening`:      el usuario la tocó y está creciendo hacia su experiencia.
- * - `discovered`:   ya fue abierta; en el jardín se ve como flor.
- * - `final`:        exclusivo de `seed-future`, la gran animación final.
+ * - `waiting`:    todavía no le toca; el jardín se recorre en orden.
+ * - `active`:     es la que toca abrir ahora, y lo dice con luz.
+ * - `opening`:    se tocó y está creciendo hacia su experiencia.
+ * - `discovered`: ya se abrió; en el jardín queda como brote germinado.
+ * - `final`:      exclusivo de `seed-future`, la gran animación final.
  */
 export type SeedStatus =
-  | 'undiscovered'
+  | 'waiting'
   | 'active'
   | 'opening'
   | 'discovered'
@@ -115,9 +115,32 @@ export interface MapBlock {
   to: MapPlace
   /** Texto que aparece sobre la línea que une ambos puntos. */
   distanceLabel: string
+  /**
+   * Una imagen del mapa (por ejemplo una captura con la ruta marcada).
+   * Cópiala en public/media/ y escribe aquí 'media/mapa.jpg'.
+   * Tiene prioridad sobre el mapa dibujado.
+   */
+  image?: string | null
   /** URL de embed de Google Maps. `null` = se dibuja el mapa ilustrado. */
   embedUrl: string | null
   note?: string
+}
+
+/**
+ * Una canción que suena de fondo mientras se lee la sección.
+ *
+ * No se reproduce sola: los navegadores no lo permiten, y además
+ * arrancar música sin avisar es de mala educación. Aparece un control
+ * discreto y suena cuando ella quiera.
+ */
+export interface MusicBlock {
+  kind: 'music'
+  /** El identificador del video de YouTube, no la dirección entera. */
+  youtubeId: string | null
+  title: string
+  artist: string
+  /** Texto del control que enciende la música. */
+  label: string
 }
 
 /** Un dato suelto con etiqueta: fechas, números, cuentas pequeñas. */
@@ -130,6 +153,7 @@ export interface FactsBlock {
 export type ExperienceBlock =
   | TextBlock
   | QuoteBlock
+  | MusicBlock
   | GalleryBlock
   | VideoBlock
   | PlaylistBlock

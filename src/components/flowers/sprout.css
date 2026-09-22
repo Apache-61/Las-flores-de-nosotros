@@ -1,0 +1,20 @@
+.sprout {
+  position: relative;
+  transform-origin: 50% 100%;
+  pointer-events: none;
+}
+
+.sprout__body {
+  position: relative;
+  transform-origin: 50% 100%;
+}
+
+.sprout__plant {
+  display: block;
+}
+
+.sprout__bud {
+  position: absolute;
+  translate: -50% -50%;
+  filter: drop-shadow(0 4px 8px rgba(74, 53, 39, 0.26));
+}

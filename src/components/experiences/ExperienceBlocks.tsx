@@ -12,6 +12,7 @@ import type {
 import { cid } from '../../data/contentManifest'
 import { withName } from '../../data/garden'
 import { riseIn } from '../shared/motion'
+import { MusicPlayer } from './MusicPlayer'
 import { PlaceholderFrame } from './PlaceholderFrame'
 import './ExperienceBlocks.css'
 
@@ -32,10 +33,12 @@ export function BlockRenderer({
   /** La ruta de un campo de este bloque dentro del manifiesto de contenido. */
   const at = (campo: string) =>
     cid(`seeds.${seedId}.experience.blocks.${index}.${campo}`)
+  /** El identificador del bloque entero, para los que se documentan juntos. */
+  const propio = cid(`seeds.${seedId}.experience.blocks.${index}`)
 
   return (
     <motion.section className="block" variants={riseIn}>
-      {renderBlock(block, seedId, at)}
+      {renderBlock(block, seedId, at, propio)}
     </motion.section>
   )
 }
@@ -43,7 +46,7 @@ export function BlockRenderer({
 /** Devuelve el identificador de contenido de un campo del bloque. */
 type At = (campo: string) => string | undefined
 
-function renderBlock(block: ExperienceBlock, seedId: string, at: At) {
+function renderBlock(block: ExperienceBlock, seedId: string, at: At, propio?: string) {
   switch (block.kind) {
     case 'text':
       return <TextContent block={block} at={at} />
@@ -59,6 +62,8 @@ function renderBlock(block: ExperienceBlock, seedId: string, at: At) {
       return <MapContent block={block} at={at} />
     case 'facts':
       return <FactsContent block={block} at={at} />
+    case 'music':
+      return <MusicPlayer block={block} cid={propio} />
   }
 }
 
@@ -270,7 +275,21 @@ function MapContent({ block, at }: { block: MapBlock; at: At }) {
   return (
     <>
       <Heading text={block.heading} cid={at('heading')} />
-      {block.embedUrl ? (
+      {block.image ? (
+        <figure className="block__map-image" data-cid={at('image')}>
+          <img
+            src={block.image}
+            alt={`Mapa entre ${withName(block.from.label)} y ${withName(block.to.label)}`}
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>
+            <span>{withName(block.from.label)}</span>
+            <span className="block__map-distance">{withName(block.distanceLabel)}</span>
+            <span>{withName(block.to.label)}</span>
+          </figcaption>
+        </figure>
+      ) : block.embedUrl ? (
         <div className="block__embed block__embed--map">
           <iframe src={block.embedUrl} title="Mapa" loading="lazy" />
         </div>

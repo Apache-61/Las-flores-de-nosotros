@@ -63,8 +63,6 @@ export function useGardenProgress() {
     () => stored.current?.value?.finalSeen ?? false,
   )
   const [openingSeedId, setOpeningSeedId] = useState<SeedId | null>(null)
-  /** Índice que rota la semilla que invita a ser descubierta. */
-  const [rotation, setRotation] = useState(0)
 
   useEffect(() => {
     if (!gardenSettings.persistProgress) return
@@ -84,26 +82,18 @@ export function useGardenProgress() {
   const allExperiencesDiscovered = pending.length === 0
 
   /**
-   * La semilla activa: una de las que aún no se descubren. Va cambiando
-   * sola cada cierto tiempo para que el jardín no se sienta estático.
-   * Cuando ya no queda ninguna, la invitación pasa a la semilla final.
+   * La semilla que toca abrir.
+   *
+   * El jardín se recorre en orden: siempre es la primera sin descubrir,
+   * y cuando ya no queda ninguna, la última. Así la historia se lee
+   * como está escrita y no a saltos.
    */
   const activeSeedId: SeedId | null = useMemo(() => {
     if (allExperiencesDiscovered) {
       return finalSeen ? null : (finalSeed?.id ?? null)
     }
-    return pending[rotation % pending.length] ?? null
-  }, [allExperiencesDiscovered, finalSeen, pending, rotation])
-
-  useEffect(() => {
-    const interval = gardenSettings.activeSeedRotationMs
-    if (!interval || pending.length < 2) return
-    const timer = window.setInterval(
-      () => setRotation((value) => value + 1),
-      interval,
-    )
-    return () => window.clearInterval(timer)
-  }, [pending.length])
+    return pending[0] ?? null
+  }, [allExperiencesDiscovered, finalSeen, pending])
 
   const statusOf = useCallback(
     (id: SeedId): SeedStatus => {
@@ -111,9 +101,15 @@ export function useGardenProgress() {
       if (id === finalSeed?.id && finalSeen) return 'final'
       if (discovered.includes(id)) return 'discovered'
       if (id === activeSeedId) return 'active'
-      return 'undiscovered'
+      return 'waiting'
     },
     [activeSeedId, discovered, finalSeen, openingSeedId],
+  )
+
+  /** Sólo se puede abrir la semilla a la que le toca. */
+  const canOpen = useCallback(
+    (id: SeedId) => id === activeSeedId || discovered.includes(id),
+    [activeSeedId, discovered],
   )
 
   const markOpening = useCallback((id: SeedId | null) => setOpeningSeedId(id), [])
@@ -121,7 +117,6 @@ export function useGardenProgress() {
   const markDiscovered = useCallback((id: SeedId) => {
     setDiscovered((current) => (current.includes(id) ? current : [...current, id]))
     setLastDiscovered(id)
-    setRotation((value) => value + 1)
   }, [])
 
   const markFinalSeen = useCallback(() => setFinalSeen(true), [])
@@ -147,6 +142,7 @@ export function useGardenProgress() {
     /** 0 → jardín recién nacido, 1 → jardín lleno de vida. */
     growth: discovered.length / experienceSeedIds.length,
     statusOf,
+    canOpen,
     markOpening,
     markDiscovered,
     markFinalSeen,

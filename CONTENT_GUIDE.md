@@ -3,8 +3,8 @@
 > Este archivo se genera solo. No lo edites a mano: ejecuta `npm run content:guide`
 > y se vuelve a escribir a partir de `src/data/contentManifest.ts` y de los datos reales.
 
-**98 elementos** en total, de los cuales **29 son imprescindibles**.
-Ahora mismo faltan **8**.
+**100 elementos** en total, de los cuales **29 son imprescindibles**.
+Ahora mismo faltan **2**.
 
 Cada elemento tiene un identificador —`[01]`, `[02]`…— que es el mismo aquí, en el
 manifiesto y en la página. Para ver esos identificadores sobre la propia experiencia,
@@ -24,7 +24,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 ## A. La entrada
 
-### [01] Su nombre
+### [001] Su nombre
 
 **Qué escribir:** El nombre de la persona a la que le regalas el jardín.
 
@@ -40,7 +40,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [02] Línea sobre la frase inicial
+### [002] Línea sobre la frase inicial
 
 **Qué escribir:** Una línea pequeña que aparece encima de la frase de entrada. Puedes usar {nombre}.
 
@@ -56,7 +56,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [03] Frase de entrada
+### [003] Frase de entrada
 
 **Qué escribir:** La primera frase que ella va a leer, con la semilla aún sin germinar.
 
@@ -72,7 +72,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [04] Texto del botón de entrada
+### [004] Texto del botón de entrada
 
 **Qué escribir:** Lo que dice el botón que hace germinar la semilla.
 
@@ -88,7 +88,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [05] Pista de la entrada
+### [005] Pista de la entrada
 
 **Qué escribir:** Una indicación muy discreta bajo el botón.
 
@@ -108,7 +108,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 ## B. El jardín
 
-### [06] Bienvenida al jardín
+### [006] Bienvenida al jardín
 
 **Qué escribir:** La frase que la recibe al llegar al jardín. Se desvanece sola a los pocos segundos.
 
@@ -124,7 +124,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [07] Invitación a explorar
+### [007] Invitación a explorar
 
 **Qué escribir:** La frase que invita a tocar las semillas, mientras queden por descubrir.
 
@@ -140,7 +140,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [08] Cuando sólo queda la última
+### [008] Cuando sólo queda la última
 
 **Qué escribir:** Sustituye a la anterior cuando ya descubrió las cinco primeras semillas.
 
@@ -156,7 +156,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [09] Cuando ya lo descubrió todo
+### [009] Cuando ya lo descubrió todo
 
 **Qué escribir:** La frase del jardín una vez vista también la escena final.
 
@@ -172,7 +172,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [10] Palabra del progreso
+### [010] Palabra del progreso
 
 **Qué escribir:** La palabra que usan los lectores de pantalla para el progreso ("2 de 6 descubiertas").
 
@@ -192,7 +192,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 ## C. Semilla 01
 
-### [11] Título de la semilla 01
+### [011] Título de la semilla 01
 
 **Qué escribir:** El nombre de esta semilla. Es lo que ella ve al pasar por encima.
 
@@ -208,7 +208,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [12] Subtítulo de la semilla 01
+### [012] Subtítulo de la semilla 01
 
 **Qué escribir:** Una línea aún más pequeña bajo el título de la semilla.
 
@@ -224,7 +224,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [13] Descripción accesible 01
+### [013] Descripción accesible 01
 
 **Qué escribir:** Cómo describe esta semilla un lector de pantalla.
 
@@ -240,7 +240,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ☑️ Ya funciona
 
-### [14] Encabezado de la experiencia 01
+### [014] Encabezado de la experiencia 01
 
 **Qué escribir:** La línea pequeña sobre el título, dentro de la pantalla que abre esta semilla.
 
@@ -256,7 +256,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [15] Título de la experiencia 01
+### [015] Título de la experiencia 01
 
 **Qué escribir:** El título grande de la pantalla que abre esta semilla.
 
@@ -272,7 +272,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [16] Subtítulo de la experiencia 01
+### [016] Subtítulo de la experiencia 01
 
 **Qué escribir:** Una línea bajo el título que sitúa lo que va a leer.
 
@@ -288,7 +288,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [17] Frase de cierre 01
+### [017] Frase de cierre 01
 
 **Qué escribir:** La frase que remata esta sección, justo antes del botón para volver.
 
@@ -304,7 +304,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [18] Botón de volver 01
+### [018] Botón de volver 01
 
 **Qué escribir:** El texto del botón que devuelve al jardín.
 
@@ -320,7 +320,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ☑️ Ya funciona
 
-### [19] Encabezado del texto
+### [019] Encabezado del texto
 
 **Qué escribir:** Un pequeño encabezado sobre el cuerpo del texto.
 
@@ -336,7 +336,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [20] Cuerpo del texto
+### [020] Cuerpo del texto
 
 **Qué escribir:** El texto largo de esta sección: la carta, el recuerdo, lo que quieras contarle.
 
@@ -352,7 +352,23 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [21] Frase destacada
+### [021] Canción de fondo del poema
+
+**Qué escribir:** La canción que suena mientras ella lee, y los textos del control que la enciende.
+
+**Dónde aparece:** Dentro de la experiencia 01, en un control discreto bajo el texto.
+
+**Formato:** Cambia youtubeId por el código del video de YouTube (lo que va después de v= en la direccion). title, artist y label son los textos del control.
+
+**Tipo:** Canción · Opcional
+
+**Dónde se edita:** `src/data/garden.ts` → `seeds.seed-01.experience.blocks.1`
+
+**Valor actual:** `kind: music · youtubeId: 0mdMN2l414A · title: Nuestra canción · artist: Para escuchar mientras lees · label: Poner músic…`
+
+**Estado:** ✅ Listo
+
+### [022] Frase destacada
 
 **Qué escribir:** Una frase suelta que se muestra centrada y en cursiva, separada del resto.
 
@@ -362,13 +378,13 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Tipo:** Frase · Opcional
 
-**Dónde se edita:** `src/data/garden.ts` → `seeds.seed-01.experience.blocks.1.text`
+**Dónde se edita:** `src/data/garden.ts` → `seeds.seed-01.experience.blocks.2.text`
 
 **Valor actual:** `Amo tu locura`
 
 **Estado:** ✅ Listo
 
-### [22] Firma de la frase
+### [023] Firma de la frase
 
 **Qué escribir:** Quién la dijo o cuándo: una firma o una fecha bajo la frase destacada.
 
@@ -378,7 +394,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Tipo:** Texto · Opcional
 
-**Dónde se edita:** `src/data/garden.ts` → `seeds.seed-01.experience.blocks.1.attribution`
+**Dónde se edita:** `src/data/garden.ts` → `seeds.seed-01.experience.blocks.2.attribution`
 
 **Valor actual:** `-Hectortilla    4/2/2025`
 
@@ -388,7 +404,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 ## D. Semilla 02
 
-### [23] Título de la semilla 02
+### [024] Título de la semilla 02
 
 **Qué escribir:** El nombre de esta semilla. Es lo que ella ve al pasar por encima.
 
@@ -404,7 +420,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [24] Subtítulo de la semilla 02
+### [025] Subtítulo de la semilla 02
 
 **Qué escribir:** Una línea aún más pequeña bajo el título de la semilla.
 
@@ -420,7 +436,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [25] Descripción accesible 02
+### [026] Descripción accesible 02
 
 **Qué escribir:** Cómo describe esta semilla un lector de pantalla.
 
@@ -436,7 +452,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ☑️ Ya funciona
 
-### [26] Encabezado de la experiencia 02
+### [027] Encabezado de la experiencia 02
 
 **Qué escribir:** La línea pequeña sobre el título, dentro de la pantalla que abre esta semilla.
 
@@ -452,7 +468,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [27] Título de la experiencia 02
+### [028] Título de la experiencia 02
 
 **Qué escribir:** El título grande de la pantalla que abre esta semilla.
 
@@ -468,7 +484,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [28] Subtítulo de la experiencia 02
+### [029] Subtítulo de la experiencia 02
 
 **Qué escribir:** Una línea bajo el título que sitúa lo que va a leer.
 
@@ -484,7 +500,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [29] Frase de cierre 02
+### [030] Frase de cierre 02
 
 **Qué escribir:** La frase que remata esta sección, justo antes del botón para volver.
 
@@ -500,7 +516,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [30] Botón de volver 02
+### [031] Botón de volver 02
 
 **Qué escribir:** El texto del botón que devuelve al jardín.
 
@@ -516,7 +532,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ☑️ Ya funciona
 
-### [31] Introducción a las fotos
+### [032] Introducción a las fotos
 
 **Qué escribir:** Un texto breve que presenta las fotografías.
 
@@ -532,7 +548,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [32] Encabezado de la galería
+### [033] Encabezado de la galería
 
 **Qué escribir:** El encabezado sobre el conjunto de fotografías.
 
@@ -548,7 +564,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [33] Fotografía 01
+### [034] Fotografía 01
 
 **Qué escribir:** Una fotografía: el archivo, su descripción y su pie.
 
@@ -564,7 +580,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [34] Fotografía 02
+### [035] Fotografía 02
 
 **Qué escribir:** Una fotografía: el archivo, su descripción y su pie.
 
@@ -580,7 +596,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [35] Fotografía 03
+### [036] Fotografía 03
 
 **Qué escribir:** Una fotografía: el archivo, su descripción y su pie.
 
@@ -600,7 +616,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 ## E. Semilla 03
 
-### [36] Título de la semilla 03
+### [037] Título de la semilla 03
 
 **Qué escribir:** El nombre de esta semilla. Es lo que ella ve al pasar por encima.
 
@@ -616,7 +632,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [37] Subtítulo de la semilla 03
+### [038] Subtítulo de la semilla 03
 
 **Qué escribir:** Una línea aún más pequeña bajo el título de la semilla.
 
@@ -632,7 +648,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [38] Descripción accesible 03
+### [039] Descripción accesible 03
 
 **Qué escribir:** Cómo describe esta semilla un lector de pantalla.
 
@@ -648,7 +664,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ☑️ Ya funciona
 
-### [39] Encabezado de la experiencia 03
+### [040] Encabezado de la experiencia 03
 
 **Qué escribir:** La línea pequeña sobre el título, dentro de la pantalla que abre esta semilla.
 
@@ -664,7 +680,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [40] Título de la experiencia 03
+### [041] Título de la experiencia 03
 
 **Qué escribir:** El título grande de la pantalla que abre esta semilla.
 
@@ -680,7 +696,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [41] Subtítulo de la experiencia 03
+### [042] Subtítulo de la experiencia 03
 
 **Qué escribir:** Una línea bajo el título que sitúa lo que va a leer.
 
@@ -696,7 +712,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [42] Frase de cierre 03
+### [043] Frase de cierre 03
 
 **Qué escribir:** La frase que remata esta sección, justo antes del botón para volver.
 
@@ -712,7 +728,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [43] Botón de volver 03
+### [044] Botón de volver 03
 
 **Qué escribir:** El texto del botón que devuelve al jardín.
 
@@ -728,7 +744,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ☑️ Ya funciona
 
-### [44] Encabezado de la música
+### [045] Encabezado de la música
 
 **Qué escribir:** El encabezado sobre la lista de canciones.
 
@@ -744,7 +760,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [45] Playlist
+### [046] Playlist
 
 **Qué escribir:** La lista de reproducción, incrustada en la página.
 
@@ -760,7 +776,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [46] Canción 01
+### [047] Canción 01
 
 **Qué escribir:** Una canción de la lista: título, artista y por qué es vuestra.
 
@@ -776,7 +792,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [47] Canción 02
+### [048] Canción 02
 
 **Qué escribir:** Una canción de la lista: título, artista y por qué es vuestra.
 
@@ -792,7 +808,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [48] Canción 03
+### [049] Canción 03
 
 **Qué escribir:** Una canción de la lista: título, artista y por qué es vuestra.
 
@@ -808,7 +824,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [49] Texto sobre la música
+### [050] Texto sobre la música
 
 **Qué escribir:** Un texto que acompaña a la música.
 
@@ -828,7 +844,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 ## F. Semilla 04
 
-### [50] Título de la semilla 04
+### [051] Título de la semilla 04
 
 **Qué escribir:** El nombre de esta semilla. Es lo que ella ve al pasar por encima.
 
@@ -844,7 +860,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [51] Subtítulo de la semilla 04
+### [052] Subtítulo de la semilla 04
 
 **Qué escribir:** Una línea aún más pequeña bajo el título de la semilla.
 
@@ -860,7 +876,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [52] Descripción accesible 04
+### [053] Descripción accesible 04
 
 **Qué escribir:** Cómo describe esta semilla un lector de pantalla.
 
@@ -876,7 +892,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ☑️ Ya funciona
 
-### [53] Encabezado de la experiencia 04
+### [054] Encabezado de la experiencia 04
 
 **Qué escribir:** La línea pequeña sobre el título, dentro de la pantalla que abre esta semilla.
 
@@ -892,7 +908,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [54] Título de la experiencia 04
+### [055] Título de la experiencia 04
 
 **Qué escribir:** El título grande de la pantalla que abre esta semilla.
 
@@ -908,7 +924,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [55] Subtítulo de la experiencia 04
+### [056] Subtítulo de la experiencia 04
 
 **Qué escribir:** Una línea bajo el título que sitúa lo que va a leer.
 
@@ -924,7 +940,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [56] Frase de cierre 04
+### [057] Frase de cierre 04
 
 **Qué escribir:** La frase que remata esta sección, justo antes del botón para volver.
 
@@ -940,7 +956,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [57] Botón de volver 04
+### [058] Botón de volver 04
 
 **Qué escribir:** El texto del botón que devuelve al jardín.
 
@@ -956,7 +972,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ☑️ Ya funciona
 
-### [58] Encabezado del video
+### [059] Encabezado del video
 
 **Qué escribir:** El encabezado sobre el video.
 
@@ -972,7 +988,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [59] Tipo de video
+### [060] Tipo de video
 
 **Qué escribir:** Si el video es un archivo tuyo o está en YouTube/Vimeo.
 
@@ -988,7 +1004,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ☑️ Ya funciona
 
-### [60] Video
+### [061] Video
 
 **Qué escribir:** El video que quieres que vea.
 
@@ -1000,11 +1016,11 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-04.experience.blocks.0.src`
 
-**Valor actual:** `null`
+**Valor actual:** `media/video.mp4`
 
-**Estado:** ⬜ Pendiente
+**Estado:** ✅ Listo
 
-### [61] Portada del video
+### [062] Portada del video
 
 **Qué escribir:** La imagen que se ve antes de darle al play.
 
@@ -1016,11 +1032,11 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-04.experience.blocks.0.poster`
 
-**Valor actual:** `null`
+**Valor actual:** `media/portada.jpg`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
-### [62] Pie del video
+### [063] Pie del video
 
 **Qué escribir:** El texto que explica qué es ese video.
 
@@ -1036,7 +1052,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [63] Encabezado de los datos
+### [064] Encabezado de los datos
 
 **Qué escribir:** El encabezado sobre los datos con etiqueta.
 
@@ -1052,7 +1068,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [64] Dato 01
+### [065] Dato 01
 
 **Qué escribir:** Un dato con su etiqueta: una fecha, un número, una cuenta que lleváis.
 
@@ -1068,7 +1084,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [65] Dato 02
+### [066] Dato 02
 
 **Qué escribir:** Un dato con su etiqueta: una fecha, un número, una cuenta que lleváis.
 
@@ -1084,7 +1100,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [66] Dato 03
+### [067] Dato 03
 
 **Qué escribir:** Un dato con su etiqueta: una fecha, un número, una cuenta que lleváis.
 
@@ -1104,7 +1120,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 ## G. Semilla 05
 
-### [67] Título de la semilla 05
+### [068] Título de la semilla 05
 
 **Qué escribir:** El nombre de esta semilla. Es lo que ella ve al pasar por encima.
 
@@ -1120,7 +1136,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [68] Subtítulo de la semilla 05
+### [069] Subtítulo de la semilla 05
 
 **Qué escribir:** Una línea aún más pequeña bajo el título de la semilla.
 
@@ -1136,7 +1152,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [69] Descripción accesible 05
+### [070] Descripción accesible 05
 
 **Qué escribir:** Cómo describe esta semilla un lector de pantalla.
 
@@ -1152,7 +1168,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ☑️ Ya funciona
 
-### [70] Encabezado de la experiencia 05
+### [071] Encabezado de la experiencia 05
 
 **Qué escribir:** La línea pequeña sobre el título, dentro de la pantalla que abre esta semilla.
 
@@ -1168,7 +1184,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [71] Título de la experiencia 05
+### [072] Título de la experiencia 05
 
 **Qué escribir:** El título grande de la pantalla que abre esta semilla.
 
@@ -1184,7 +1200,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [72] Subtítulo de la experiencia 05
+### [073] Subtítulo de la experiencia 05
 
 **Qué escribir:** Una línea bajo el título que sitúa lo que va a leer.
 
@@ -1200,7 +1216,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [73] Frase de cierre 05
+### [074] Frase de cierre 05
 
 **Qué escribir:** La frase que remata esta sección, justo antes del botón para volver.
 
@@ -1216,7 +1232,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [74] Botón de volver 05
+### [075] Botón de volver 05
 
 **Qué escribir:** El texto del botón que devuelve al jardín.
 
@@ -1232,7 +1248,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ☑️ Ya funciona
 
-### [75] Encabezado del mapa
+### [076] Encabezado del mapa
 
 **Qué escribir:** El encabezado sobre el mapa.
 
@@ -1248,7 +1264,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [76] Lugar de origen
+### [077] Lugar de origen
 
 **Qué escribir:** Uno de los dos extremos de la distancia: dónde estás tú.
 
@@ -1264,7 +1280,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [77] Lugar de destino
+### [078] Lugar de destino
 
 **Qué escribir:** El otro extremo: dónde está ella.
 
@@ -1280,7 +1296,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [78] Distancia
+### [079] Distancia
 
 **Qué escribir:** Lo que separa los dos puntos, dicho como quieras.
 
@@ -1296,7 +1312,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [79] Texto del mapa
+### [080] Texto del mapa
 
 **Qué escribir:** Un texto sobre esos dos lugares.
 
@@ -1312,7 +1328,23 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [80] Mapa real
+### [081] Imagen del mapa
+
+**Qué escribir:** Una imagen del mapa, por ejemplo una captura con la ruta marcada entre los dos lugares.
+
+**Dónde aparece:** Dentro de la experiencia 05, ocupando el sitio del mapa.
+
+**Formato:** Cópiala en public/media/ y escribe 'media/mapa.jpg'. Si la pones, sustituye al mapa dibujado.
+
+**Tipo:** Fotografía · Opcional
+
+**Dónde se edita:** `src/data/garden.ts` → `seeds.seed-05.experience.blocks.0.image`
+
+**Valor actual:** `media/mapa.jpg`
+
+**Estado:** ✅ Listo
+
+### [082] Mapa real
 
 **Qué escribir:** Un mapa de Google en lugar del mapa ilustrado.
 
@@ -1332,7 +1364,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 ## H. La última semilla
 
-### [81] Título de la última semilla
+### [083] Título de la última semilla
 
 **Qué escribir:** El nombre de la sexta semilla, la que dispara el final.
 
@@ -1348,7 +1380,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [82] Subtítulo de la última semilla
+### [084] Subtítulo de la última semilla
 
 **Qué escribir:** La línea pequeña bajo su título.
 
@@ -1364,7 +1396,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [83] Descripción accesible de la última
+### [085] Descripción accesible de la última
 
 **Qué escribir:** Cómo describe esta semilla un lector de pantalla.
 
@@ -1384,7 +1416,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 ## I. El final
 
-### [84] La frase final
+### [086] La frase final
 
 **Qué escribir:** La frase que aparece sobre el ramo. Es el remate de todo el regalo.
 
@@ -1400,7 +1432,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [85] Línea sobre la frase final
+### [087] Línea sobre la frase final
 
 **Qué escribir:** Una línea pequeña encima de la frase final.
 
@@ -1416,7 +1448,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [86] Firma final
+### [088] Firma final
 
 **Qué escribir:** Tu firma bajo la frase final.
 
@@ -1432,7 +1464,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ✅ Listo
 
-### [87] Botón de volver del final
+### [089] Botón de volver del final
 
 **Qué escribir:** El texto del enlace discreto para volver al jardín tras el ramo.
 
@@ -1448,7 +1480,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ☑️ Ya funciona
 
-### [88] Apariencia de la frase final
+### [090] Apariencia de la frase final
 
 **Qué escribir:** Cómo se ve la frase final: tipografía, tamaño, posición y ancho.
 
@@ -1464,7 +1496,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ☑️ Ya funciona
 
-### [89] Tiempos de la escena final
+### [091] Tiempos de la escena final
 
 **Qué escribir:** Cuánto dura cada momento del final, en milisegundos.
 
@@ -1480,7 +1512,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ☑️ Ya funciona
 
-### [90] Número de flores del ramo
+### [092] Número de flores del ramo
 
 **Qué escribir:** Cuántas flores forman el ramo, en móvil y en escritorio.
 
@@ -1496,7 +1528,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ☑️ Ya funciona
 
-### [91] Permitir volver tras el final
+### [093] Permitir volver tras el final
 
 **Qué escribir:** Si tras el ramo aparece el enlace para volver al jardín.
 
@@ -1516,7 +1548,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 ## J. El sonido
 
-### [92] Música del jardín
+### [094] Música del jardín
 
 **Qué escribir:** El archivo de sonido. Mientras esté en null no suena nada y no aparece ningún control.
 
@@ -1532,7 +1564,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ⬜ Opcional
 
-### [93] Sonido de la germinación
+### [095] Sonido de la germinación
 
 **Qué escribir:** El archivo de sonido. Mientras esté en null no suena nada y no aparece ningún control.
 
@@ -1544,11 +1576,11 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/audio.ts` → `audio.germination.src`
 
-**Valor actual:** `null`
+**Valor actual:** `audio/germinacion.mp3`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
-### [94] Sonido al tocar una semilla
+### [096] Sonido al tocar una semilla
 
 **Qué escribir:** El archivo de sonido. Mientras esté en null no suena nada y no aparece ningún control.
 
@@ -1560,11 +1592,11 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/audio.ts` → `audio.seedTap.src`
 
-**Valor actual:** `null`
+**Valor actual:** `audio/toque.mp3`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
-### [95] Sonido al abrirse una flor
+### [097] Sonido al abrirse una flor
 
 **Qué escribir:** El archivo de sonido. Mientras esté en null no suena nada y no aparece ningún control.
 
@@ -1576,11 +1608,11 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/audio.ts` → `audio.bloom.src`
 
-**Valor actual:** `null`
+**Valor actual:** `audio/brote.mp3`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
-### [96] Sonido del final
+### [098] Sonido del final
 
 **Qué escribir:** El archivo de sonido. Mientras esté en null no suena nada y no aparece ningún control.
 
@@ -1592,15 +1624,15 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/audio.ts` → `audio.finale.src`
 
-**Valor actual:** `null`
+**Valor actual:** `audio/final.mp3`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
 ---
 
 ## K. Ajustes de la experiencia
 
-### [97] Título de la pestaña
+### [099] Título de la pestaña
 
 **Qué escribir:** Lo que se lee en la pestaña del navegador y al compartir el enlace.
 
@@ -1616,7 +1648,7 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Estado:** ☑️ Ya funciona
 
-### [98] Ajustes finos del jardín
+### [100] Ajustes finos del jardín
 
 **Qué escribir:** El ritmo y la densidad del jardín. Ya están puestos en valores que funcionan.
 

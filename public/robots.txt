@@ -1,0 +1,3 @@
+# Un regalo no se indexa.
+User-agent: *
+Disallow: /

@@ -30,12 +30,21 @@ export interface AudioCue {
   ambient?: boolean
 }
 
+/*
+ * Los cuatro sonidos están sintetizados a propósito para este jardín:
+ * notas limpias de una misma escala, para que suenen como piezas de lo
+ * mismo y nunca se interpongan. Si prefieres otros, sustituye el archivo
+ * en public/audio/ y deja la ruta como está.
+ *
+ * `ambient` sigue en null: una música de fondo constante competiría con
+ * la canción del poema, y es mejor que sólo suene la que importa.
+ */
 export const audioCues: Record<AudioCueId, AudioCue> = {
-  ambient: { src: null, volume: 0.35, loop: true, ambient: true },
-  germination: { src: null, volume: 0.5 },
-  seedTap: { src: null, volume: 0.35 },
-  bloom: { src: null, volume: 0.4 },
-  finale: { src: null, volume: 0.55 },
+  ambient: { src: null, volume: 0.3, loop: true, ambient: true },
+  germination: { src: 'audio/germinacion.mp3', volume: 0.55 },
+  seedTap: { src: 'audio/toque.mp3', volume: 0.4 },
+  bloom: { src: 'audio/brote.mp3', volume: 0.45 },
+  finale: { src: 'audio/final.mp3', volume: 0.6 },
 }
 
 /** Etiquetas del interruptor de sonido (sólo aparece si hay alguna pista). */

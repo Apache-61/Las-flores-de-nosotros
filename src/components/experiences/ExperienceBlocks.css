@@ -184,6 +184,48 @@
   color: rgba(74, 53, 39, 0.55);
 }
 
+/* ── Mapa con imagen propia ────────────────────────────────────────── */
+
+.block__map-image {
+  margin: 0;
+  padding: var(--space-2);
+  border-radius: var(--radius-m);
+  background: linear-gradient(160deg, rgba(255, 252, 244, 0.9), rgba(232, 213, 184, 0.5));
+  box-shadow: var(--shadow-soft);
+}
+
+.block__map-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-s);
+}
+
+.block__map-image figcaption {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: var(--space-2);
+  align-items: center;
+  margin-top: var(--space-2);
+  font-family: var(--font-serif);
+  font-size: 1.02rem;
+  color: var(--c-earth-deep);
+}
+
+.block__map-image figcaption span:last-child {
+  text-align: right;
+}
+
+.block__map-distance {
+  padding: 0.28rem 0.7rem;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-sans);
+  font-size: var(--fs-whisper);
+  letter-spacing: 0.06em;
+  text-align: center;
+  background: rgba(244, 196, 67, 0.32);
+}
+
 /* ── Mapa ilustrado ────────────────────────────────────────────────── */
 
 .drawn-map {

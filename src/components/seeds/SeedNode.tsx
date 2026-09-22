@@ -4,7 +4,7 @@ import { cid } from '../../data/contentManifest'
 import type { Seed, SeedStatus } from '../../data/types'
 import { depthToOpacity, depthToScale } from '../../lib/stage'
 import { breathing, easeRise } from '../shared/motion'
-import { GardenFlower } from '../flowers/GardenFlower'
+import { Sprout } from '../flowers/Sprout'
 import { SeedArt } from './SeedArt'
 import './SeedNode.css'
 
@@ -15,14 +15,16 @@ interface SeedNodeProps {
   isPortrait: boolean
   /** Cuánto agrandar el dibujo según el tamaño de la pantalla. */
   sizeScale: number
-  /** true si acaba de descubrirse: la flor nace en vez de estar ya abierta. */
+  /** true si acaba de descubrirse: el brote nace a la vista. */
   justBloomed: boolean
+  /** false mientras no le toque el turno: no se puede abrir todavía. */
+  canOpen: boolean
   onSelect: (seed: Seed, origin: { x: number; y: number }) => void
 }
 
 const statusHint: Record<SeedStatus, string> = {
-  undiscovered: 'sin descubrir',
-  active: 'esperando a ser descubierta',
+  waiting: 'todavía no le toca',
+  active: 'es la que toca abrir ahora',
   opening: 'abriéndose',
   discovered: 'ya descubierta',
   final: 'ya descubierta',
@@ -43,6 +45,7 @@ export function SeedNode({
   isPortrait,
   sizeScale,
   justBloomed,
+  canOpen,
   onSelect,
 }: SeedNodeProps) {
   const reduced = useReducedMotion()
@@ -62,12 +65,13 @@ export function SeedNode({
   const openDuration = isLastSeed ? 1.3 : 0.6
 
   const handleSelect = useCallback(() => {
+    if (!canOpen) return
     const rect = ref.current?.getBoundingClientRect()
     const origin = rect
       ? { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 }
       : { x: window.innerWidth / 2, y: window.innerHeight / 2 }
     onSelect(seed, origin)
-  }, [onSelect, seed])
+  }, [canOpen, onSelect, seed])
 
   return (
     <motion.button
@@ -83,6 +87,7 @@ export function SeedNode({
         opacity: depthToOpacity(depth),
       }}
       aria-label={`${seed.ariaLabel}: ${seed.label} — ${statusHint[status]}`}
+      aria-disabled={!canOpen || undefined}
       onClick={handleSelect}
       onHoverStart={() => setHovered(true)}
       onHoverEnd={() => setHovered(false)}
@@ -96,7 +101,8 @@ export function SeedNode({
        * moverse cada cual por su lado.
        */
       animate={{
-        opacity: depthToOpacity(depth),
+        // Las que aún no tocan esperan más apagadas, como dormidas
+        opacity: canOpen ? depthToOpacity(depth) : depthToOpacity(depth) * 0.62,
         scale: isOpening ? openScale : 1,
       }}
       transition={{
@@ -107,7 +113,7 @@ export function SeedNode({
           delay: isOpening ? 0 : 0.25 + index * 0.13,
         },
       }}
-      whileTap={{ scale: 0.92 }}
+      whileTap={canOpen ? { scale: 0.92 } : undefined}
     >
       {/* Onda de invitación: sólo en la semilla activa */}
       {isActive && !reduced && (
@@ -152,7 +158,7 @@ export function SeedNode({
         className="seed-node__glow"
         aria-hidden="true"
         animate={{
-          opacity: isOpening ? 1 : isActive ? [0.32, 0.66, 0.32] : hovered ? 0.45 : 0,
+          opacity: isOpening ? 1 : isActive ? [0.32, 0.66, 0.32] : hovered && canOpen ? 0.45 : 0,
           scale: isOpening ? (isLastSeed ? 6.5 : 2.6) : isActive ? [1, 1.14, 1] : 1,
         }}
         transition={
@@ -180,18 +186,18 @@ export function SeedNode({
         }
       >
         {isBloomed ? (
-          <GardenFlower
+          <Sprout
             accent={seed.accent}
-            scale={1 + depth * 0.36}
+            scale={(0.9 + depth * 0.3) * sizeScale}
             variant={index + 1}
             justBloomed={justBloomed}
           />
         ) : (
           <SeedArt
             accent={seed.accent}
-            /* La última semilla siempre asoma su capullo: es la única que
-               ya tiene algo dentro, y eso se tiene que ver sin explicarlo. */
-            sprouting={isLastSeed || isActive || hovered || isOpening}
+            /* Ninguna semilla asoma nada antes de tiempo: el brote sale
+               cuando le toca el turno, o cuando ya se está abriendo. */
+            sprouting={isActive || (hovered && canOpen) || isOpening}
             variant={index}
             special={isLastSeed}
             size={isLastSeed ? 72 : 66}
@@ -214,7 +220,7 @@ export function SeedNode({
         }
         aria-hidden="true"
         initial={false}
-        animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 6 }}
+        animate={{ opacity: hovered && canOpen ? 1 : 0, y: hovered && canOpen ? 0 : 6 }}
         transition={{ duration: 0.45, ease: easeRise }}
       >
         <span className="seed-node__label-title" data-cid={cid(`seeds.${seed.id}.label`)}>

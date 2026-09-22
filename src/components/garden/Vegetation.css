@@ -23,10 +23,8 @@
   opacity: 0.88;
 }
 
-.vegetation__sprig--leaf {
-  opacity: 0.82;
+.vegetation__sprig--blade {
+  opacity: 0.8;
 }
 
-.vegetation__sprig--sprig {
-  opacity: 0.86;
-}
+

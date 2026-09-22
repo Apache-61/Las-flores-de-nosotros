@@ -114,6 +114,7 @@ export function GardenScene({
               isPortrait={layout.isPortrait}
               sizeScale={layout.sizeScale}
               justBloomed={progress.lastDiscovered === seed.id}
+              canOpen={progress.canOpen(seed.id)}
               onSelect={onSelectSeed}
             />
           ))}

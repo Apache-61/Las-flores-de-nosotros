@@ -124,6 +124,18 @@ export const seeds: Seed[] = [
           ],
         },
         {
+          /*
+           * MÚSICA DE FONDO
+           * Sólo hace falta el identificador del video de YouTube: el
+           * trozo que va después de `v=` en la dirección.
+           */
+          kind: 'music',
+          youtubeId: '0mdMN2l414A',
+          title: 'Nuestra canción',
+          artist: 'Para escuchar mientras lees',
+          label: 'Poner música',
+        },
+        {
           kind: 'quote',
           text: 'Amo tu locura',
           attribution: '-Hectortilla    4/2/2025',
@@ -266,8 +278,8 @@ export const seeds: Seed[] = [
            *     (usa siempre la URL de /embed/, no la de la barra del navegador)
            */
           mode: 'file',
-          src: null, // [VIDEO_URL]
-          poster: null, // imagen de portada opcional: 'media/portada.jpg'
+          src: 'media/video.mp4',
+          poster: 'media/portada.jpg',
           caption: 'Una pequeña conversacion para que puedas hablar conmigo sin importar que pase',
         },
         {
@@ -313,6 +325,7 @@ export const seeds: Seed[] = [
            * Si prefieres un mapa real: Google Maps → Compartir → Insertar un mapa
            * → copia el valor de src y pégalo aquí entre comillas.
            */
+          image: 'media/mapa.jpg',
           embedUrl: null,
           from: { label: 'Tec de Monterrey', detail: 'Guadalajara, Mexico' },
           to: { label: 'GCB', detail: 'Chía, Colombia' },

@@ -1,3 +1,8 @@
+/* Una semilla a la que aún no le toca no invita a tocarla */
+.seed-node--waiting {
+  cursor: default;
+}
+
 .seed-node {
   position: absolute;
   display: grid;
