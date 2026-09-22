@@ -168,9 +168,21 @@ export const seeds: Seed[] = [
            * Mientras `src` sea null se muestra un marco vacío con el placeholder.
            */
           items: [
-            { src: null, alt: 'La foto de nuestra primera cita, el comienzo de todo', caption: 'media/foto-1.jpg' },
-            { src: null, alt: 'La foto de tu fiesta de 15, aca apenas estabamos comenzando a salir', caption: 'media/foto-2.jpg' },
-            { src: null, alt: 'La foto del asado de tu mama, y como se asento la relación', caption: 'media/foto-3.jpg' },
+            {
+              src: 'media/Foto-1.jpeg',
+              alt: 'La foto de nuestra primera cita, el comienzo de todo',
+              caption: 'La foto de nuestra primera cita, el comienzo de todo',
+            },
+            {
+              src: 'media/Foto-2.jpeg',
+              alt: 'La foto de tu fiesta de 15, aca apenas estabamos comenzando a salir',
+              caption: 'La foto de tu fiesta de 15, aca apenas estabamos comenzando a salir',
+            },
+            {
+              src: 'media/Foto-3.jpeg',
+              alt: 'La foto del asado de tu mama, y como se asento la relación',
+              caption: 'La foto del asado de tu mama, y como se asento la relación',
+            },
           ],
         },
       ],
@@ -207,7 +219,8 @@ export const seeds: Seed[] = [
            *   Ejemplo: 'https://open.spotify.com/embed/playlist/XXXXXXXX'
            * Mientras sea null se muestra la lista de canciones de abajo.
            */
-          embedUrl: null, <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/142c6245QedAIHP9BYNRGC?utm_source=generator&si=527086c8c6a3407e" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          embedUrl:
+            'https://open.spotify.com/embed/playlist/142c6245QedAIHP9BYNRGC?utm_source=generator',
           tracks: [
             { title: 'Te encontre', artist: 'El Vega', note: 'Nuestra cancion de la relacion' },
             { title: 'Te Amo y Mas', artist: 'El Libro de la Vida', note: 'Representa la ternura de la relacion junto con nuestra pelicula' },

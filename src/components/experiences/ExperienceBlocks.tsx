@@ -74,13 +74,47 @@ function Heading({ text, cid: id }: { text?: string; cid?: string }) {
 /* ── Texto ─────────────────────────────────────────────────────────── */
 
 function TextContent({ block, at }: { block: TextBlock; at: At }) {
+  /*
+   * Una línea en blanco significa que el texto está escrito en verso: lo
+   * que separa es la estrofa, no el párrafo. Presentado como párrafos
+   * sueltos, un poema queda desparramado y pierde el ritmo, así que los
+   * versos se agrupan y sólo respiran entre estrofa y estrofa.
+   */
+  const enVerso = block.paragraphs.some((linea) => linea.trim() === '')
+
+  const estrofas = enVerso
+    ? block.paragraphs.reduce<string[][]>(
+        (grupos, linea) => {
+          if (linea.trim() === '') return [...grupos, []]
+          const ultimo = grupos[grupos.length - 1] as string[]
+          ultimo.push(linea)
+          return grupos
+        },
+        [[]],
+      ).filter((grupo) => grupo.length > 0)
+    : []
+
   return (
     <>
       <Heading text={block.heading} cid={at('heading')} />
-      <div className="block__prose" data-cid={at('paragraphs')}>
-        {block.paragraphs.map((paragraph, index) => (
-          <p key={index}>{withName(paragraph)}</p>
-        ))}
+      <div
+        className={enVerso ? 'block__prose block__prose--verso' : 'block__prose'}
+        data-cid={at('paragraphs')}
+      >
+        {enVerso
+          ? estrofas.map((estrofa, index) => (
+              <p key={index}>
+                {estrofa.map((verso, i) => (
+                  <span key={i}>
+                    {withName(verso)}
+                    {i < estrofa.length - 1 && <br />}
+                  </span>
+                ))}
+              </p>
+            ))
+          : block.paragraphs.map((paragraph, index) => (
+              <p key={index}>{withName(paragraph)}</p>
+            ))}
       </div>
     </>
   )

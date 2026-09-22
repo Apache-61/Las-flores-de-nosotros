@@ -19,6 +19,14 @@
   color: var(--text-on-light);
 }
 
+/* Un texto en verso: los versos juntos, las estrofas separadas */
+.block__prose--verso {
+  gap: var(--space-3);
+  font-family: var(--font-serif);
+  font-size: clamp(1.08rem, 3.6vw, 1.25rem);
+  line-height: 1.55;
+}
+
 .block__caption {
   font-size: var(--fs-whisper);
   line-height: 1.6;

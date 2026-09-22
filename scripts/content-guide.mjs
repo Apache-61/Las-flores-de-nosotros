@@ -52,16 +52,22 @@ contentManifest.forEach((item) => {
   }
 })
 
-/* ── 3. El marcador del manifiesto coincide con el de los datos ────── */
+/* ── 3. Un marcador sin rellenar lleva el número que le toca ───────── */
+/*
+ * Rellenar un elemento hace desaparecer su marcador, que es justamente
+ * lo que se espera. Lo que no puede pasar es que quede un marcador con
+ * un número que no es el suyo: eso sí sería una referencia rota.
+ */
+const marcador = /\[(\d{2,3})\s*—/g
 contentManifest.forEach((item) => {
-  if (item.placeholder === null) return
   const valor = valorDe(item)
   const textos = JSON.stringify(valor ?? '')
-  if (!textos.includes(item.placeholder)) {
-    problemas.push(
-      `El elemento ${item.id} (${item.label}) dice tener el marcador ${item.placeholder}, ` +
-        `pero en ${item.file} pone: ${formatContentValue(valor).slice(0, 60)}`,
-    )
+  for (const encontrado of textos.matchAll(marcador)) {
+    if (encontrado[1] !== item.id) {
+      problemas.push(
+        `El elemento ${item.id} (${item.label}) contiene un marcador de otro elemento: ${encontrado[0]}…`,
+      )
+    }
   }
 })
 

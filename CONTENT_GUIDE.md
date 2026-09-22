@@ -4,7 +4,7 @@
 > y se vuelve a escribir a partir de `src/data/contentManifest.ts` y de los datos reales.
 
 **98 elementos** en total, de los cuales **29 son imprescindibles**.
-Ahora mismo faltan **77**.
+Ahora mismo faltan **8**.
 
 Cada elemento tiene un identificador —`[01]`, `[02]`…— que es el mismo aquí, en el
 manifiesto y en la página. Para ver esos identificadores sobre la propia experiencia,
@@ -36,9 +36,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `gardenContent.recipientName`
 
-**Valor actual:** `[01 — ESCRIBE SU NOMBRE]`
+**Valor actual:** `Karlita`
 
-**Estado:** ⬜ Pendiente
+**Estado:** ✅ Listo
 
 ### [02] Línea sobre la frase inicial
 
@@ -52,9 +52,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `gardenContent.intro.eyebrow`
 
-**Valor actual:** `[02 — LÍNEA PEQUEÑA]`
+**Valor actual:** `Un detallito para mi`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
 ### [03] Frase de entrada
 
@@ -68,9 +68,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `gardenContent.intro.message`
 
-**Valor actual:** `[03 — ESCRIBE LA FRASE DE ENTRADA]`
+**Valor actual:** `HERMOSA NIÑA`
 
-**Estado:** ⬜ Pendiente
+**Estado:** ✅ Listo
 
 ### [04] Texto del botón de entrada
 
@@ -84,9 +84,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `gardenContent.intro.action`
 
-**Valor actual:** `Haz crecer el jardín`
+**Valor actual:** `Echemosle un vistazo`
 
-**Estado:** ☑️ Ya funciona
+**Estado:** ✅ Listo
 
 ### [05] Pista de la entrada
 
@@ -100,9 +100,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `gardenContent.intro.hint`
 
-**Valor actual:** `[05 — PISTA OPCIONAL]`
+**Valor actual:** `a mis sentimientos`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
 ---
 
@@ -120,9 +120,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `gardenContent.garden.welcome`
 
-**Valor actual:** `[06 — FRASE DE BIENVENIDA AL JARDÍN]`
+**Valor actual:** `Un pequeño recordatorio de cuanto Te Amo`
 
-**Estado:** ⬜ Pendiente
+**Estado:** ✅ Listo
 
 ### [07] Invitación a explorar
 
@@ -136,9 +136,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `gardenContent.garden.hint`
 
-**Valor actual:** `[07 — FRASE PARA INVITAR A EXPLORAR]`
+**Valor actual:** `Toca las semillas en orden`
 
-**Estado:** ⬜ Pendiente
+**Estado:** ✅ Listo
 
 ### [08] Cuando sólo queda la última
 
@@ -152,9 +152,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `gardenContent.garden.readyForFinal`
 
-**Valor actual:** `[08 — FRASE CUANDO SÓLO QUEDA LA ÚLTIMA SEMILLA]`
+**Valor actual:** `¡¡¡Ahora el gran FINAL!!!`
 
-**Estado:** ⬜ Pendiente
+**Estado:** ✅ Listo
 
 ### [09] Cuando ya lo descubrió todo
 
@@ -168,9 +168,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `gardenContent.garden.completed`
 
-**Valor actual:** `[09 — FRASE CUANDO YA LO DESCUBRIÓ TODO]`
+**Valor actual:** `Feliz DÍA de las Flores Amarillas`
 
-**Estado:** ⬜ Pendiente
+**Estado:** ✅ Listo
 
 ### [10] Palabra del progreso
 
@@ -204,9 +204,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-01.label`
 
-**Valor actual:** `[11 — TÍTULO DE LA SEMILLA 01]`
+**Valor actual:** `Lo que mi corazón grita`
 
-**Estado:** ⬜ Pendiente
+**Estado:** ✅ Listo
 
 ### [12] Subtítulo de la semilla 01
 
@@ -220,9 +220,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-01.subtitle`
 
-**Valor actual:** `[12 — SUBTÍTULO 01]`
+**Valor actual:** `Unas pequeñas Palabras`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
 ### [13] Descripción accesible 01
 
@@ -252,9 +252,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-01.experience.eyebrow`
 
-**Valor actual:** `[14 — ENCABEZADO DE LA EXPERIENCIA 01]`
+**Valor actual:** `Unas pequeñas Palabras`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
 ### [15] Título de la experiencia 01
 
@@ -268,9 +268,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-01.experience.title`
 
-**Valor actual:** `[15 — TÍTULO DE LA EXPERIENCIA 01]`
+**Valor actual:** `Lo que mi corazón grita`
 
-**Estado:** ⬜ Pendiente
+**Estado:** ✅ Listo
 
 ### [16] Subtítulo de la experiencia 01
 
@@ -284,9 +284,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-01.experience.subtitle`
 
-**Valor actual:** `[16 — SUBTÍTULO DE LA EXPERIENCIA 01]`
+**Valor actual:** `Un breve poema para cuando lo necesites`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
 ### [17] Frase de cierre 01
 
@@ -300,9 +300,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-01.experience.closingWhisper`
 
-**Valor actual:** `[17 — FRASE AL CERRAR ESTA SECCIÓN]`
+**Valor actual:** `Siempre escribiendote con pasión`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
 ### [18] Botón de volver 01
 
@@ -332,9 +332,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-01.experience.blocks.0.heading`
 
-**Valor actual:** `[19 — ENCABEZADO DEL TEXTO]`
+**Valor actual:** `Flores Amarillas`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
 ### [20] Cuerpo del texto
 
@@ -348,9 +348,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-01.experience.blocks.0.paragraphs`
 
-**Valor actual:** `[20 — ESCRIBE AQUÍ TU TEXTO] · [ESCRIBE AQUÍ EL SEGUNDO PÁRRAFO. Puedes añadir tantos como quieras, separados por comas.…`
+**Valor actual:** `Caen los pétalos de las flores, · como en aquellos amores, · en donde el sentimiento brilla, · persistente como las olas…`
 
-**Estado:** ⬜ Pendiente
+**Estado:** ✅ Listo
 
 ### [21] Frase destacada
 
@@ -364,9 +364,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-01.experience.blocks.1.text`
 
-**Valor actual:** `[21 — ESCRIBE UNA FRASE CORTA]`
+**Valor actual:** `Amo tu locura`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
 ### [22] Firma de la frase
 
@@ -380,9 +380,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-01.experience.blocks.1.attribution`
 
-**Valor actual:** `[22 — FIRMA O FECHA]`
+**Valor actual:** `-Hectortilla    4/2/2025`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
 ---
 
@@ -400,9 +400,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-02.label`
 
-**Valor actual:** `[23 — TÍTULO DE LA SEMILLA 02]`
+**Valor actual:** `Un vistazo a nuestro pasado`
 
-**Estado:** ⬜ Pendiente
+**Estado:** ✅ Listo
 
 ### [24] Subtítulo de la semilla 02
 
@@ -416,9 +416,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-02.subtitle`
 
-**Valor actual:** `[24 — SUBTÍTULO 02]`
+**Valor actual:** `Nuestras memorias`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
 ### [25] Descripción accesible 02
 
@@ -448,9 +448,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-02.experience.eyebrow`
 
-**Valor actual:** `[26 — ENCABEZADO DE LA EXPERIENCIA 02]`
+**Valor actual:** `Nuestras memorias`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
 ### [27] Título de la experiencia 02
 
@@ -464,9 +464,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-02.experience.title`
 
-**Valor actual:** `[27 — TÍTULO DE LA EXPERIENCIA 02]`
+**Valor actual:** `Un vistazo a nuestro pasado`
 
-**Estado:** ⬜ Pendiente
+**Estado:** ✅ Listo
 
 ### [28] Subtítulo de la experiencia 02
 
@@ -480,9 +480,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-02.experience.subtitle`
 
-**Valor actual:** `[28 — SUBTÍTULO DE LA EXPERIENCIA 02]`
+**Valor actual:** `A veces toca mirar el pasado para imaginar el futuro`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
 ### [29] Frase de cierre 02
 
@@ -496,9 +496,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-02.experience.closingWhisper`
 
-**Valor actual:** `[29 — FRASE AL CERRAR ESTA SECCIÓN]`
+**Valor actual:** `Mis fotitos favoritas jijiji`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
 ### [30] Botón de volver 02
 
@@ -528,9 +528,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-02.experience.blocks.0.paragraphs`
 
-**Valor actual:** `[31 — ESCRIBE UNA INTRODUCCIÓN PARA LAS FOTOS]`
+**Valor actual:** `Algunos de los momentos mejor capturados que hemos pasado`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
 ### [32] Encabezado de la galería
 
@@ -544,9 +544,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-02.experience.blocks.1.heading`
 
-**Valor actual:** `[32 — ENCABEZADO DE LA GALERÍA]`
+**Valor actual:** `Bueno... mejor dicho mis favoritas...`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
 ### [33] Fotografía 01
 
@@ -560,9 +560,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-02.experience.blocks.1.items.0`
 
-**Valor actual:** `src: null · alt: [DESCRIBE LA FOTO 01] · caption: [33 — AGREGA LA FOTO 01]`
+**Valor actual:** `src: media/Foto-1.jpeg · alt: La foto de nuestra primera cita, el comienzo de todo · caption: La foto de nuestra primera…`
 
-**Estado:** ⬜ Pendiente
+**Estado:** ✅ Listo
 
 ### [34] Fotografía 02
 
@@ -576,9 +576,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-02.experience.blocks.1.items.1`
 
-**Valor actual:** `src: null · alt: [DESCRIBE LA FOTO 02] · caption: [34 — AGREGA LA FOTO 02]`
+**Valor actual:** `src: media/Foto-2.jpeg · alt: La foto de tu fiesta de 15, aca apenas estabamos comenzando a salir · caption: La foto de …`
 
-**Estado:** ⬜ Pendiente
+**Estado:** ✅ Listo
 
 ### [35] Fotografía 03
 
@@ -592,9 +592,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-02.experience.blocks.1.items.2`
 
-**Valor actual:** `src: null · alt: [DESCRIBE LA FOTO 03] · caption: [35 — AGREGA LA FOTO 03]`
+**Valor actual:** `src: media/Foto-3.jpeg · alt: La foto del asado de tu mama, y como se asento la relación · caption: La foto del asado de…`
 
-**Estado:** ⬜ Pendiente
+**Estado:** ✅ Listo
 
 ---
 
@@ -612,9 +612,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-03.label`
 
-**Valor actual:** `[36 — TÍTULO DE LA SEMILLA 03]`
+**Valor actual:** `Lo que corazon escucha`
 
-**Estado:** ⬜ Pendiente
+**Estado:** ✅ Listo
 
 ### [37] Subtítulo de la semilla 03
 
@@ -628,9 +628,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-03.subtitle`
 
-**Valor actual:** `[37 — SUBTÍTULO 03]`
+**Valor actual:** `Nuestra musiquita`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
 ### [38] Descripción accesible 03
 
@@ -660,9 +660,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-03.experience.eyebrow`
 
-**Valor actual:** `[39 — ENCABEZADO DE LA EXPERIENCIA 03]`
+**Valor actual:** `Nuestra musiquita`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
 ### [40] Título de la experiencia 03
 
@@ -676,9 +676,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-03.experience.title`
 
-**Valor actual:** `[40 — TÍTULO DE LA EXPERIENCIA 03]`
+**Valor actual:** `Lo que corazon escucha`
 
-**Estado:** ⬜ Pendiente
+**Estado:** ✅ Listo
 
 ### [41] Subtítulo de la experiencia 03
 
@@ -692,9 +692,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-03.experience.subtitle`
 
-**Valor actual:** `[41 — SUBTÍTULO DE LA EXPERIENCIA 03]`
+**Valor actual:** `El soundtrack que nos ha acompañado todo este tiempo`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
 ### [42] Frase de cierre 03
 
@@ -708,9 +708,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-03.experience.closingWhisper`
 
-**Valor actual:** `[42 — FRASE AL CERRAR ESTA SECCIÓN]`
+**Valor actual:** `Perdonnnn, no supe que mas canciones ponerrrrrrr`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
 ### [43] Botón de volver 03
 
@@ -740,9 +740,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-03.experience.blocks.0.heading`
 
-**Valor actual:** `[44 — ENCABEZADO DE LA MÚSICA]`
+**Valor actual:** `Por fin nuestra Playlist...`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
 ### [45] Playlist
 
@@ -756,9 +756,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-03.experience.blocks.0.embedUrl`
 
-**Valor actual:** `null`
+**Valor actual:** `https://open.spotify.com/embed/playlist/142c6245QedAIHP9BYNRGC?utm_source=generator`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
 ### [46] Canción 01
 
@@ -772,9 +772,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-03.experience.blocks.0.tracks.0`
 
-**Valor actual:** `title: [46 — CANCIÓN 01] · artist: [ARTISTA] · note: [POR QUÉ ESTA CANCIÓN]`
+**Valor actual:** `title: Te encontre · artist: El Vega · note: Nuestra cancion de la relacion`
 
-**Estado:** ⬜ Pendiente
+**Estado:** ✅ Listo
 
 ### [47] Canción 02
 
@@ -788,9 +788,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-03.experience.blocks.0.tracks.1`
 
-**Valor actual:** `title: [47 — CANCIÓN 02] · artist: [ARTISTA] · note: [POR QUÉ ESTA CANCIÓN]`
+**Valor actual:** `title: Te Amo y Mas · artist: El Libro de la Vida · note: Representa la ternura de la relacion junto con nuestra pelicul…`
 
-**Estado:** ⬜ Pendiente
+**Estado:** ✅ Listo
 
 ### [48] Canción 03
 
@@ -804,9 +804,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-03.experience.blocks.0.tracks.2`
 
-**Valor actual:** `title: [48 — CANCIÓN 03] · artist: [ARTISTA] · note: [POR QUÉ ESTA CANCIÓN]`
+**Valor actual:** `title: Machu Pichu · artist: Camilo y Evaluna · note: Fue magico cuando la cantamos juntos, ademas si estas loca...`
 
-**Estado:** ⬜ Pendiente
+**Estado:** ✅ Listo
 
 ### [49] Texto sobre la música
 
@@ -820,9 +820,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-03.experience.blocks.1.paragraphs`
 
-**Valor actual:** `[49 — ESCRIBE ALGO SOBRE ESTA MÚSICA]`
+**Valor actual:** `[...con la famosa Trinidad Musical]`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
 ---
 
@@ -840,9 +840,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-04.label`
 
-**Valor actual:** `[50 — TÍTULO DE LA SEMILLA 04]`
+**Valor actual:** `Lo que mi corazon ve`
 
-**Estado:** ⬜ Pendiente
+**Estado:** ✅ Listo
 
 ### [51] Subtítulo de la semilla 04
 
@@ -856,9 +856,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-04.subtitle`
 
-**Valor actual:** `[51 — SUBTÍTULO 04]`
+**Valor actual:** `Una pequeña charla conmigo`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
 ### [52] Descripción accesible 04
 
@@ -888,9 +888,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-04.experience.eyebrow`
 
-**Valor actual:** `[53 — ENCABEZADO DE LA EXPERIENCIA 04]`
+**Valor actual:** `Una pequeña charla conmigo`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
 ### [54] Título de la experiencia 04
 
@@ -904,9 +904,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-04.experience.title`
 
-**Valor actual:** `[54 — TÍTULO DE LA EXPERIENCIA 04]`
+**Valor actual:** `Lo que mi corazon ve`
 
-**Estado:** ⬜ Pendiente
+**Estado:** ✅ Listo
 
 ### [55] Subtítulo de la experiencia 04
 
@@ -920,9 +920,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-04.experience.subtitle`
 
-**Valor actual:** `[55 — SUBTÍTULO DE LA EXPERIENCIA 04]`
+**Valor actual:** `Para cuando te sientas solita =)`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
 ### [56] Frase de cierre 04
 
@@ -936,9 +936,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-04.experience.closingWhisper`
 
-**Valor actual:** `[56 — FRASE AL CERRAR ESTA SECCIÓN]`
+**Valor actual:** `Con mucho amor, de tu Amor`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
 ### [57] Botón de volver 04
 
@@ -968,9 +968,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-04.experience.blocks.0.heading`
 
-**Valor actual:** `[58 — ENCABEZADO DEL VIDEO]`
+**Valor actual:** `Siempre a un Click de distancia`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
 ### [59] Tipo de video
 
@@ -1032,9 +1032,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-04.experience.blocks.0.caption`
 
-**Valor actual:** `[62 — DESCRIBE EL VIDEO]`
+**Valor actual:** `Una pequeña conversacion para que puedas hablar conmigo sin importar que pase`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
 ### [63] Encabezado de los datos
 
@@ -1048,9 +1048,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-04.experience.blocks.1.heading`
 
-**Valor actual:** `[63 — ENCABEZADO DE LOS DATOS]`
+**Valor actual:** `Nuestras Fechas:`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
 ### [64] Dato 01
 
@@ -1064,9 +1064,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-04.experience.blocks.1.items.0`
 
-**Valor actual:** `label: [64 — DATO 01] · value: [DATO 01]`
+**Valor actual:** `label: 15/12/2024 · value: Nuestra Primera Cita`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
 ### [65] Dato 02
 
@@ -1080,9 +1080,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-04.experience.blocks.1.items.1`
 
-**Valor actual:** `label: [65 — DATO 02] · value: [DATO 02]`
+**Valor actual:** `label: 16/1/2025 · value: Nuestro Primer Beso`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
 ### [66] Dato 03
 
@@ -1096,9 +1096,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-04.experience.blocks.1.items.2`
 
-**Valor actual:** `label: [66 — DATO 03] · value: [DATO 03]`
+**Valor actual:** `label: 4/2/2025 · value: El comienzo de este viaje`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
 ---
 
@@ -1116,9 +1116,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-05.label`
 
-**Valor actual:** `[67 — TÍTULO DE LA SEMILLA 05]`
+**Valor actual:** `¿Donde estamos?`
 
-**Estado:** ⬜ Pendiente
+**Estado:** ✅ Listo
 
 ### [68] Subtítulo de la semilla 05
 
@@ -1132,9 +1132,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-05.subtitle`
 
-**Valor actual:** `[68 — SUBTÍTULO 05]`
+**Valor actual:** `Un mapa de nuestra nueva etapa`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
 ### [69] Descripción accesible 05
 
@@ -1164,9 +1164,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-05.experience.eyebrow`
 
-**Valor actual:** `[70 — ENCABEZADO DE LA EXPERIENCIA 05]`
+**Valor actual:** `Un mapa de nuestra nueva etapa`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
 ### [71] Título de la experiencia 05
 
@@ -1180,9 +1180,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-05.experience.title`
 
-**Valor actual:** `[71 — TÍTULO DE LA EXPERIENCIA 05]`
+**Valor actual:** `¿Donde estamos?`
 
-**Estado:** ⬜ Pendiente
+**Estado:** ✅ Listo
 
 ### [72] Subtítulo de la experiencia 05
 
@@ -1196,9 +1196,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-05.experience.subtitle`
 
-**Valor actual:** `[72 — SUBTÍTULO DE LA EXPERIENCIA 05]`
+**Valor actual:** `Damnnn si que estamos lejos, pero aunque estemos 1000 kilometros separados...`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
 ### [73] Frase de cierre 05
 
@@ -1212,9 +1212,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-05.experience.closingWhisper`
 
-**Valor actual:** `[73 — FRASE AL CERRAR ESTA SECCIÓN]`
+**Valor actual:** `...Nuestros corazones siempre estaran juntos`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
 ### [74] Botón de volver 05
 
@@ -1244,9 +1244,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-05.experience.blocks.0.heading`
 
-**Valor actual:** `[75 — ENCABEZADO DEL MAPA]`
+**Valor actual:** `¡¡¡A 3632.67 km de distancia!!!`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
 ### [76] Lugar de origen
 
@@ -1260,9 +1260,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-05.experience.blocks.0.from`
 
-**Valor actual:** `label: [76 — TU LUGAR] · detail: [CIUDAD, PAÍS]`
+**Valor actual:** `label: Tec de Monterrey · detail: Guadalajara, Mexico`
 
-**Estado:** ⬜ Pendiente
+**Estado:** ✅ Listo
 
 ### [77] Lugar de destino
 
@@ -1276,9 +1276,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-05.experience.blocks.0.to`
 
-**Valor actual:** `label: [77 — SU LUGAR] · detail: [CIUDAD, PAÍS]`
+**Valor actual:** `label: GCB · detail: Chía, Colombia`
 
-**Estado:** ⬜ Pendiente
+**Estado:** ✅ Listo
 
 ### [78] Distancia
 
@@ -1292,9 +1292,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-05.experience.blocks.0.distanceLabel`
 
-**Valor actual:** `[78 — LA DISTANCIA ENTRE LOS DOS]`
+**Valor actual:** `3632.67 km`
 
-**Estado:** ⬜ Pendiente
+**Estado:** ✅ Listo
 
 ### [79] Texto del mapa
 
@@ -1308,9 +1308,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-05.experience.blocks.0.note`
 
-**Valor actual:** `[79 — ESCRIBE ALGO SOBRE ESTOS DOS LUGARES]`
+**Valor actual:** `Pero tu corazon a solo milimetros`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
 ### [80] Mapa real
 
@@ -1344,9 +1344,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-future.label`
 
-**Valor actual:** `[81 — TÍTULO DE LA ÚLTIMA SEMILLA]`
+**Valor actual:** `El gran final`
 
-**Estado:** ⬜ Pendiente
+**Estado:** ✅ Listo
 
 ### [82] Subtítulo de la última semilla
 
@@ -1360,9 +1360,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `seeds.seed-future.subtitle`
 
-**Valor actual:** `[82 — SUBTÍTULO DE LA ÚLTIMA SEMILLA]`
+**Valor actual:** `Lo que te mereces en este dia tan especial`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
 ### [83] Descripción accesible de la última
 
@@ -1396,9 +1396,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `finalSequence.message`
 
-**Valor actual:** `[84 — ESCRIBE LA FRASE FINAL]`
+**Valor actual:** `Feliz Día De las Flores Amarillas`
 
-**Estado:** ⬜ Pendiente
+**Estado:** ✅ Listo
 
 ### [85] Línea sobre la frase final
 
@@ -1412,9 +1412,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `finalSequence.eyebrow`
 
-**Valor actual:** `[85 — LÍNEA SOBRE LA FRASE FINAL]`
+**Valor actual:** `Esta vez yo encontre la solucion`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
 ### [86] Firma final
 
@@ -1428,9 +1428,9 @@ En cualquier texto puedes escribir `{nombre}` y se sustituye por el nombre del e
 
 **Dónde se edita:** `src/data/garden.ts` → `finalSequence.signature`
 
-**Valor actual:** `[86 — FIRMA]`
+**Valor actual:** `-Hectortilla`
 
-**Estado:** ⬜ Opcional
+**Estado:** ✅ Listo
 
 ### [87] Botón de volver del final
 
