@@ -23,28 +23,28 @@ import type { Seed } from './types'
 
 export const gardenContent = {
   /** Su nombre. Puedes usarlo en cualquier texto escribiendo {nombre}. */
-  recipientName: '[01 — ESCRIBE SU NOMBRE]',
+  recipientName: 'Karlita',
 
   intro: {
     /** Pequeña línea sobre la frase principal. Déjala vacía ('') si no la quieres. */
-    eyebrow: '[02 — LÍNEA PEQUEÑA]',
+    eyebrow: 'Un detallito para mi',
     /** [INTRO_MESSAGE] — la primera frase que ella va a leer. */
-    message: '[03 — ESCRIBE LA FRASE DE ENTRADA]',
+    message: 'HERMOSA NIÑA',
     /** Texto del botón que hace germinar la semilla. Provisional. */
-    action: 'Haz crecer el jardín',
+    action: 'Echemosle un vistazo',
     /** Se lee bajo el botón, muy pequeño. Déjalo vacío ('') si no lo quieres. */
-    hint: '[05 — PISTA OPCIONAL]',
+    hint: 'a mis sentimientos',
   },
 
   garden: {
     /** Frase breve que recibe al llegar al jardín (aparece y se desvanece). */
-    welcome: '[06 — FRASE DE BIENVENIDA AL JARDÍN]',
+    welcome: 'Un pequeño recordatorio de cuanto Te Amo',
     /** Invitación discreta a explorar. */
-    hint: '[07 — FRASE PARA INVITAR A EXPLORAR]',
+    hint: 'Toca las semillas en orden',
     /** Se muestra cuando ya descubrió las cinco primeras semillas. */
-    readyForFinal: '[08 — FRASE CUANDO SÓLO QUEDA LA ÚLTIMA SEMILLA]',
+    readyForFinal: '¡¡¡Ahora el gran FINAL!!!',
     /** Se muestra cuando ya descubrió el jardín entero, final incluido. */
-    completed: '[09 — FRASE CUANDO YA LO DESCUBRIÓ TODO]',
+    completed: 'Feliz DÍA de las Flores Amarillas',
     /**
      * El progreso no se muestra como un marcador —se ve en el jardín, que
      * cada vez tiene más flores—, pero sí se anuncia a los lectores de
@@ -82,8 +82,8 @@ export const seeds: Seed[] = [
   {
     id: 'seed-01',
     kind: 'experience',
-    label: '[11 — TÍTULO DE LA SEMILLA 01]',
-    subtitle: '[12 — SUBTÍTULO 01]',
+    label: 'Lo que mi corazón grita',
+    subtitle: 'Unas pequeñas Palabras',
     ariaLabel: 'Primera semilla del jardín',
     accent: 'var(--seed-accent-1)',
     placement: {
@@ -92,24 +92,41 @@ export const seeds: Seed[] = [
       depth: 0.55,
     },
     experience: {
-      eyebrow: '[14 — ENCABEZADO DE LA EXPERIENCIA 01]',
-      title: '[15 — TÍTULO DE LA EXPERIENCIA 01]',
-      subtitle: '[16 — SUBTÍTULO DE LA EXPERIENCIA 01]',
+      eyebrow: 'Unas pequeñas Palabras',
+      title: 'Lo que mi corazón grita',
+      subtitle: 'Un breve poema para cuando lo necesites',
       backLabel: 'Volver al jardín',
-      closingWhisper: '[17 — FRASE AL CERRAR ESTA SECCIÓN]',
+      closingWhisper: 'Siempre escribiendote con pasión',
       blocks: [
         {
           kind: 'text',
-          heading: '[19 — ENCABEZADO DEL TEXTO]',
+          heading: 'Flores Amarillas',
           paragraphs: [
-            '[20 — ESCRIBE AQUÍ TU TEXTO]',
-            '[ESCRIBE AQUÍ EL SEGUNDO PÁRRAFO. Puedes añadir tantos como quieras, separados por comas.]',
+            'Caen los pétalos de las flores,',
+            'como en aquellos amores,',
+            'en donde el sentimiento brilla,',
+            'persistente como las olas en la orilla.',
+            '',
+            'A pesar de que la distancia es un desafío,',
+            'que nunca podrá tumbar este navío.',
+            'Ya han pasado los meses y el año,',
+            'y cada día más te extraño.',
+            '',
+            'Los días sin tu calor me pesan,',
+            'las noches me atormentan,',
+            'pero el anhelo de un mañana me levanta',
+            'y a toda duda espanta.',
+            '',
+            'Eres mi luz.',
+            'Eres mi cielo.',
+            '',
+            'Tu eres mi mayor anhelo.',
           ],
         },
         {
           kind: 'quote',
-          text: '[21 — ESCRIBE UNA FRASE CORTA]',
-          attribution: '[22 — FIRMA O FECHA]',
+          text: 'Amo tu locura',
+          attribution: '-Hectortilla    4/2/2025',
         },
       ],
     },
@@ -119,8 +136,8 @@ export const seeds: Seed[] = [
   {
     id: 'seed-02',
     kind: 'experience',
-    label: '[23 — TÍTULO DE LA SEMILLA 02]',
-    subtitle: '[24 — SUBTÍTULO 02]',
+    label: 'Un vistazo a nuestro pasado',
+    subtitle: 'Nuestras memorias',
     ariaLabel: 'Segunda semilla del jardín',
     accent: 'var(--seed-accent-2)',
     placement: {
@@ -129,19 +146,19 @@ export const seeds: Seed[] = [
       depth: 0.38,
     },
     experience: {
-      eyebrow: '[26 — ENCABEZADO DE LA EXPERIENCIA 02]',
-      title: '[27 — TÍTULO DE LA EXPERIENCIA 02]',
-      subtitle: '[28 — SUBTÍTULO DE LA EXPERIENCIA 02]',
+      eyebrow: 'Nuestras memorias',
+      title: 'Un vistazo a nuestro pasado',
+      subtitle: 'A veces toca mirar el pasado para imaginar el futuro',
       backLabel: 'Volver al jardín',
-      closingWhisper: '[29 — FRASE AL CERRAR ESTA SECCIÓN]',
+      closingWhisper: 'Mis fotitos favoritas jijiji',
       blocks: [
         {
           kind: 'text',
-          paragraphs: ['[31 — ESCRIBE UNA INTRODUCCIÓN PARA LAS FOTOS]'],
+          paragraphs: ['Algunos de los momentos mejor capturados que hemos pasado'],
         },
         {
           kind: 'gallery',
-          heading: '[32 — ENCABEZADO DE LA GALERÍA]',
+          heading: 'Bueno... mejor dicho mis favoritas...',
           /*
            * FOTOGRAFÍAS
            * 1. Copia tus imágenes en la carpeta  public/media/
@@ -151,9 +168,9 @@ export const seeds: Seed[] = [
            * Mientras `src` sea null se muestra un marco vacío con el placeholder.
            */
           items: [
-            { src: null, alt: '[DESCRIBE LA FOTO 01]', caption: '[33 — AGREGA LA FOTO 01]' },
-            { src: null, alt: '[DESCRIBE LA FOTO 02]', caption: '[34 — AGREGA LA FOTO 02]' },
-            { src: null, alt: '[DESCRIBE LA FOTO 03]', caption: '[35 — AGREGA LA FOTO 03]' },
+            { src: null, alt: 'La foto de nuestra primera cita, el comienzo de todo', caption: 'media/foto-1.jpg' },
+            { src: null, alt: 'La foto de tu fiesta de 15, aca apenas estabamos comenzando a salir', caption: 'media/foto-2.jpg' },
+            { src: null, alt: 'La foto del asado de tu mama, y como se asento la relación', caption: 'media/foto-3.jpg' },
           ],
         },
       ],
@@ -164,8 +181,8 @@ export const seeds: Seed[] = [
   {
     id: 'seed-03',
     kind: 'experience',
-    label: '[36 — TÍTULO DE LA SEMILLA 03]',
-    subtitle: '[37 — SUBTÍTULO 03]',
+    label: 'Lo que corazon escucha',
+    subtitle: 'Nuestra musiquita',
     ariaLabel: 'Tercera semilla del jardín',
     accent: 'var(--seed-accent-3)',
     placement: {
@@ -174,15 +191,15 @@ export const seeds: Seed[] = [
       depth: 0.74,
     },
     experience: {
-      eyebrow: '[39 — ENCABEZADO DE LA EXPERIENCIA 03]',
-      title: '[40 — TÍTULO DE LA EXPERIENCIA 03]',
-      subtitle: '[41 — SUBTÍTULO DE LA EXPERIENCIA 03]',
+      eyebrow: 'Nuestra musiquita',
+      title: 'Lo que corazon escucha',
+      subtitle: 'El soundtrack que nos ha acompañado todo este tiempo',
       backLabel: 'Volver al jardín',
-      closingWhisper: '[42 — FRASE AL CERRAR ESTA SECCIÓN]',
+      closingWhisper: 'Perdonnnn, no supe que mas canciones ponerrrrrrr',
       blocks: [
         {
           kind: 'playlist',
-          heading: '[44 — ENCABEZADO DE LA MÚSICA]',
+          heading: 'Por fin nuestra Playlist...',
           /*
            * PLAYLIST
            * Pega aquí la URL de EMBED (no la de compartir):
@@ -190,16 +207,16 @@ export const seeds: Seed[] = [
            *   Ejemplo: 'https://open.spotify.com/embed/playlist/XXXXXXXX'
            * Mientras sea null se muestra la lista de canciones de abajo.
            */
-          embedUrl: null, // [PLAYLIST_URL]
+          embedUrl: null, <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/142c6245QedAIHP9BYNRGC?utm_source=generator&si=527086c8c6a3407e" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
           tracks: [
-            { title: '[46 — CANCIÓN 01]', artist: '[ARTISTA]', note: '[POR QUÉ ESTA CANCIÓN]' },
-            { title: '[47 — CANCIÓN 02]', artist: '[ARTISTA]', note: '[POR QUÉ ESTA CANCIÓN]' },
-            { title: '[48 — CANCIÓN 03]', artist: '[ARTISTA]', note: '[POR QUÉ ESTA CANCIÓN]' },
+            { title: 'Te encontre', artist: 'El Vega', note: 'Nuestra cancion de la relacion' },
+            { title: 'Te Amo y Mas', artist: 'El Libro de la Vida', note: 'Representa la ternura de la relacion junto con nuestra pelicula' },
+            { title: 'Machu Pichu', artist: 'Camilo y Evaluna', note: 'Fue magico cuando la cantamos juntos, ademas si estas loca...' },
           ],
         },
         {
           kind: 'text',
-          paragraphs: ['[49 — ESCRIBE ALGO SOBRE ESTA MÚSICA]'],
+          paragraphs: ['[...con la famosa Trinidad Musical]'],
         },
       ],
     },
@@ -209,8 +226,8 @@ export const seeds: Seed[] = [
   {
     id: 'seed-04',
     kind: 'experience',
-    label: '[50 — TÍTULO DE LA SEMILLA 04]',
-    subtitle: '[51 — SUBTÍTULO 04]',
+    label: 'Lo que mi corazon ve',
+    subtitle: 'Una pequeña charla conmigo',
     ariaLabel: 'Cuarta semilla del jardín',
     accent: 'var(--seed-accent-4)',
     placement: {
@@ -219,15 +236,15 @@ export const seeds: Seed[] = [
       depth: 0.86,
     },
     experience: {
-      eyebrow: '[53 — ENCABEZADO DE LA EXPERIENCIA 04]',
-      title: '[54 — TÍTULO DE LA EXPERIENCIA 04]',
-      subtitle: '[55 — SUBTÍTULO DE LA EXPERIENCIA 04]',
+      eyebrow: 'Una pequeña charla conmigo',
+      title: 'Lo que mi corazon ve',
+      subtitle: 'Para cuando te sientas solita =)',
       backLabel: 'Volver al jardín',
-      closingWhisper: '[56 — FRASE AL CERRAR ESTA SECCIÓN]',
+      closingWhisper: 'Con mucho amor, de tu Amor',
       blocks: [
         {
           kind: 'video',
-          heading: '[58 — ENCABEZADO DEL VIDEO]',
+          heading: 'Siempre a un Click de distancia',
           /*
            * VIDEO — dos formas:
            *  a) Archivo propio:  mode: 'file'   src: 'media/video.mp4'
@@ -238,15 +255,15 @@ export const seeds: Seed[] = [
           mode: 'file',
           src: null, // [VIDEO_URL]
           poster: null, // imagen de portada opcional: 'media/portada.jpg'
-          caption: '[62 — DESCRIBE EL VIDEO]',
+          caption: 'Una pequeña conversacion para que puedas hablar conmigo sin importar que pase',
         },
         {
           kind: 'facts',
-          heading: '[63 — ENCABEZADO DE LOS DATOS]',
+          heading: 'Nuestras Fechas:',
           items: [
-            { label: '[64 — DATO 01]', value: '[DATO 01]' },
-            { label: '[65 — DATO 02]', value: '[DATO 02]' },
-            { label: '[66 — DATO 03]', value: '[DATO 03]' },
+            { label: '15/12/2024', value: 'Nuestra Primera Cita' },
+            { label: '16/1/2025', value: 'Nuestro Primer Beso' },
+            { label: '4/2/2025', value: 'El comienzo de este viaje' },
           ],
         },
       ],
@@ -257,8 +274,8 @@ export const seeds: Seed[] = [
   {
     id: 'seed-05',
     kind: 'experience',
-    label: '[67 — TÍTULO DE LA SEMILLA 05]',
-    subtitle: '[68 — SUBTÍTULO 05]',
+    label: '¿Donde estamos?',
+    subtitle: 'Un mapa de nuestra nueva etapa',
     ariaLabel: 'Quinta semilla del jardín',
     accent: 'var(--seed-accent-5)',
     placement: {
@@ -267,15 +284,15 @@ export const seeds: Seed[] = [
       depth: 0.94,
     },
     experience: {
-      eyebrow: '[70 — ENCABEZADO DE LA EXPERIENCIA 05]',
-      title: '[71 — TÍTULO DE LA EXPERIENCIA 05]',
-      subtitle: '[72 — SUBTÍTULO DE LA EXPERIENCIA 05]',
+      eyebrow: 'Un mapa de nuestra nueva etapa',
+      title: '¿Donde estamos?',
+      subtitle: 'Damnnn si que estamos lejos, pero aunque estemos 1000 kilometros separados...',
       backLabel: 'Volver al jardín',
-      closingWhisper: '[73 — FRASE AL CERRAR ESTA SECCIÓN]',
+      closingWhisper: '...Nuestros corazones siempre estaran juntos',
       blocks: [
         {
           kind: 'map',
-          heading: '[75 — ENCABEZADO DEL MAPA]',
+          heading: '¡¡¡A 3632.67 km de distancia!!!',
           /*
            * MAPA
            * Si dejas `embedUrl` en null se dibuja un mapa ilustrado con los
@@ -284,10 +301,10 @@ export const seeds: Seed[] = [
            * → copia el valor de src y pégalo aquí entre comillas.
            */
           embedUrl: null,
-          from: { label: '[76 — TU LUGAR]', detail: '[CIUDAD, PAÍS]' },
-          to: { label: '[77 — SU LUGAR]', detail: '[CIUDAD, PAÍS]' },
-          distanceLabel: '[78 — LA DISTANCIA ENTRE LOS DOS]',
-          note: '[79 — ESCRIBE ALGO SOBRE ESTOS DOS LUGARES]',
+          from: { label: 'Tec de Monterrey', detail: 'Guadalajara, Mexico' },
+          to: { label: 'GCB', detail: 'Chía, Colombia' },
+          distanceLabel: '3632.67 km',
+          note: 'Pero tu corazon a solo milimetros',
         },
       ],
     },
@@ -300,8 +317,8 @@ export const seeds: Seed[] = [
   {
     id: 'seed-future',
     kind: 'final',
-    label: '[81 — TÍTULO DE LA ÚLTIMA SEMILLA]',
-    subtitle: '[82 — SUBTÍTULO DE LA ÚLTIMA SEMILLA]',
+    label: 'El gran final',
+    subtitle: 'Lo que te mereces en este dia tan especial',
     ariaLabel: 'La última semilla del jardín',
     accent: 'var(--seed-accent-future)',
     placement: {
@@ -329,11 +346,11 @@ export const seeds: Seed[] = [
 
 export const finalSequence = {
   /** [FINAL_MESSAGE] — la frase que aparece sobre el ramo. */
-  message: '[84 — ESCRIBE LA FRASE FINAL]',
+  message: 'Feliz Día De las Flores Amarillas',
   /** Línea pequeña encima de la frase. Déjala vacía ('') si no la quieres. */
-  eyebrow: '[85 — LÍNEA SOBRE LA FRASE FINAL]',
+  eyebrow: 'Esta vez yo encontre la solucion',
   /** Firma bajo la frase. Vacía ('') para no mostrarla. */
-  signature: '[86 — FIRMA]',
+  signature: '-Hectortilla',
 
   /** Apariencia de la frase final. */
   phrase: {
