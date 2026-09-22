@@ -72,14 +72,31 @@
   transform-origin: center;
 }
 
-/* El reproductor existe pero no se ve: sólo queremos que suene */
+/*
+ * El reproductor: pequeño y recogido, pero alcanzable con el dedo.
+ * Estuvo en 1x1 y oculto, y así no habria sonado nunca en un iPhone.
+ */
+.music__reproductor {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  overflow: hidden;
+  margin-top: 0.5rem;
+}
+
 .music__iframe {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 1px;
-  height: 1px;
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: 190px;
   border: 0;
-  opacity: 0.01;
-  pointer-events: none;
+  border-radius: var(--radius-m);
+  background: rgba(74, 53, 39, 0.12);
+}
+
+.music__pista {
+  font-family: var(--font-sans);
+  font-size: var(--fs-whisper);
+  color: rgba(74, 53, 39, 0.55);
+  text-align: center;
 }

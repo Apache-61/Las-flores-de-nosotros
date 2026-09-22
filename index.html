@@ -13,10 +13,13 @@
       Esto es un regalo privado, no una página que queramos encontrable.
       noindex pide a los buscadores que no la listen; noarchive y
       nosnippet, que no guarden copia ni muestren un trozo del texto.
-      No impide entrar a quien tenga el enlace: para eso, ver el README.
+      No impide entrar a quien tenga el enlace: para eso, ver PRIVACIDAD.md.
+
+      Aquí hubo un `referrer: no-referrer` que hubo que quitar: sin
+      cabecera Referer, YouTube rechaza el reproductor incrustado con un
+      error 153 y la canción de la carta no sonaba.
     -->
     <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
-    <meta name="referrer" content="no-referrer" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

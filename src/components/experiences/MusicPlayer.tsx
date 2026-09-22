@@ -6,20 +6,33 @@ import './musicPlayer.css'
 /*
  * La canción que acompaña a una sección.
  *
- * El reproductor de YouTube se carga oculto y sólo después de que ella
- * toque el control: ningún navegador deja sonar nada sin un gesto
- * previo, y aunque lo dejara, la música no debería empezar sin avisar.
- * Lo que se ve es un control pequeño, del mismo material que el resto
- * del jardín, no la interfaz de YouTube.
+ * El reproductor no se carga hasta que ella toca el control: ningún
+ * navegador deja sonar nada sin un gesto previo, y aunque lo dejara, la
+ * música no debería empezar sin avisar.
+ *
+ * Y cuando se carga, se ve. Estuvo escondido en un iframe de 1×1 y fue un
+ * error por dos motivos: en el iPhone el sonido sólo arranca si el dedo cae
+ * sobre el propio reproductor, así que oculto no habría sonado nunca; y un
+ * reproductor invisible no da ninguna pista cuando algo falla. Ahora queda
+ * pequeño y recogido bajo el control, pero alcanzable: en el ordenador y en
+ * Android empieza solo, y en el iPhone basta un toque encima.
  */
 export function MusicPlayer({ block, cid }: { block: MusicBlock; cid?: string }) {
   const [sonando, setSonando] = useState(false)
 
   if (!block.youtubeId) return null
 
+  /*
+   * `origin` le dice a YouTube desde dónde se le llama. Sin esa referencia
+   * —y sin cabecera Referer— el reproductor responde con un error 153 y no
+   * suena nada, que es justo lo que pasaba.
+   */
+  const origen = typeof window === 'undefined' ? '' : window.location.origin
   const fuente =
     `https://www.youtube-nocookie.com/embed/${block.youtubeId}` +
-    `?autoplay=1&loop=1&playlist=${block.youtubeId}&rel=0&modestbranding=1`
+    `?autoplay=1&loop=1&playlist=${block.youtubeId}` +
+    `&rel=0&modestbranding=1&playsinline=1` +
+    (origen ? `&origin=${encodeURIComponent(origen)}` : '')
 
   return (
     <div className="music" data-cid={cid}>
@@ -64,16 +77,22 @@ export function MusicPlayer({ block, cid }: { block: MusicBlock; cid?: string })
         )}
       </motion.button>
 
-      {/* El reproductor, sin ocupar sitio: sólo nos interesa el sonido */}
       {sonando && (
-        <iframe
-          className="music__iframe"
-          src={fuente}
-          title={`${block.title}, de ${block.artist}`}
-          allow="autoplay; encrypted-media"
-          tabIndex={-1}
-          aria-hidden="true"
-        />
+        <motion.div
+          className="music__reproductor"
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: 'auto' }}
+          transition={{ duration: 0.5, ease: [0.22, 0.61, 0.36, 1] }}
+        >
+          <iframe
+            className="music__iframe"
+            src={fuente}
+            title={`${block.title}, de ${block.artist}`}
+            allow="autoplay; encrypted-media; picture-in-picture"
+            allowFullScreen
+          />
+          <span className="music__pista">Si no empieza sola, tócala una vez.</span>
+        </motion.div>
       )}
     </div>
   )

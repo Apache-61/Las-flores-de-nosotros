@@ -2,7 +2,16 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { gardenSettings, seeds } from '../data/garden'
 import type { SeedId, SeedStatus } from '../data/types'
 
-const STORAGE_KEY = 'jardin-de-nuestra-distancia:v1'
+/*
+ * La versión va en la clave a propósito.
+ *
+ * Hasta la v1 las cinco semillas se abrían en cualquier orden, así que lo
+ * guardado entonces significa otra cosa que ahora: un jardín con las cinco
+ * marcadas y el final visto deja el orden sin sentido y la última semilla
+ * sin nada que abrir. Al cambiar de número, lo viejo se ignora y quien ya
+ * había entrado empieza de nuevo, que es justo lo que queremos.
+ */
+const STORAGE_KEY = 'jardin-de-nuestra-distancia:v2'
 
 const experienceSeedIds = seeds
   .filter((seed) => seed.kind === 'experience')
@@ -21,6 +30,12 @@ function readStored(): StoredProgress | null {
   if (window.location.hash === gardenSettings.resetHash) {
     window.localStorage.removeItem(STORAGE_KEY)
     return null
+  }
+  // Lo guardado por versiones anteriores ya no significa lo mismo: se tira.
+  try {
+    window.localStorage.removeItem('jardin-de-nuestra-distancia:v1')
+  } catch {
+    /* sin almacenamiento no hay nada que barrer */
   }
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY)
@@ -46,7 +61,7 @@ function readStored(): StoredProgress | null {
  *   - cuál está vibrando (activa);
  *   - si el final ya está listo.
  *
- * Las cinco primeras pueden abrirse en cualquier orden: nada se bloquea.
+ * Las semillas se abren en orden: sólo responde la que toca.
  */
 export function useGardenProgress() {
   // Se lee una sola vez; el envoltorio evita releer cuando no hay nada guardado
